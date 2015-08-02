@@ -46,8 +46,8 @@ role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
         </div>
         <p>
         </p>  
-    <button type="button" class="btn-primary">
-        <a href="Admin/HomePageAdmin.jsp">
+    <button type="Submit" class="btn-primary">
+        <a href="Admin/HomePageAdmin.jsp"></a>
             Sign In</a></button>
                     </div>
                     <div class="modal-footer">
