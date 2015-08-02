@@ -103,7 +103,7 @@ and open the template in the editor.
                 
             </div>
          
-        <img src="../images/utm.jpg" alt="UTM" style="width:1350px;height:550px;">
+        <img src="../images/utm.jpg" alt="UTM" style="width:1365px;height:550px;">
        </nav>
        <br><br><p>Welcome to admin home page!</p>
     </body>
