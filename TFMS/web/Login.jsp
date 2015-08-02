@@ -1,3 +1,4 @@
+<body background="images/utm2.jpg" background-size:100%;>
 <html>
     <head>
         <title>UTM Task Force</title>
@@ -20,7 +21,6 @@
 </div>
 <div class="row header" style="text-align:center;margin-top:40px;">
 <a href="#" data-toggle="modal" data-target="#LoginModal">Login</a><br><br><br><br>
- <img src="images/utm1.jpg" alt="UTM" style="width:1350px;height:550px;">
 </div>
     
 <div class="modal fade" id="LoginModal" tabindex="-1" 
@@ -46,8 +46,8 @@ role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
         </div>
         <p>
         </p>  
-    <button type="button" class="btn-primary">
-        <a href="Admin/HomePageAdmin.jsp">
+    <button type="Submit" class="btn-primary">
+        <a href="Admin/HomePageAdmin.jsp"></a>
             Sign In</a></button>
                     </div>
                     <div class="modal-footer">
@@ -58,9 +58,4 @@ role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
                 </div
             </div>
 </div>
-        
-        </body>
-
-    
-
-    
+/body>
