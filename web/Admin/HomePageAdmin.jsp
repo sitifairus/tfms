@@ -23,6 +23,7 @@ and open the template in the editor.
         
         <nav class="navbar navbar-inverse" role="navigation" style="width:1365px">
             <div class="navbar-header" >
+                
                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
