@@ -10,10 +10,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../head.jsp" %>
         <title>View Task Force</title>
     </head> 
     <body>
+        <%@ include file="adminHeader.jsp" %>
         <h1 align="center">View Committee/Task Force</h1>
         <h2 align="center">Search Engine</h2>
     <form action="./viewCTinfo.jsp" method="post">
@@ -96,7 +97,7 @@
         %>
     </body>
     
-    <table align="center" border="1">
+    <table >
             
             <tbody>
                 <tr>

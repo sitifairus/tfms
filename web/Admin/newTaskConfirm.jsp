@@ -8,10 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../head.jsp" %>
         <title>New Task Confirm</title>
     </head>
     <body>
+        <%@ include file="adminHeader.jsp" %>
         <table border="0" align="center">
             <thead>
                 <tr>

@@ -8,10 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Create Task</title>
+        <%@include file="../head.jsp" %>
     </head>
     <body>
+        <%@ include file="adminHeader.jsp" %>
        <form action="newCoordinator.jsp" method="POST">
             <table align="center" border="0">
                 <thead>

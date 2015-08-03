@@ -1,6 +1,6 @@
 <%-- 
-    Document   : searchExpired1
-    Created on : Jul 29, 2015, 11:24:21 AM
+    Document   : noGroup
+    Created on : Aug 2, 2015, 8:05:52 AM
     Author     : user8
 --%>
 
@@ -8,16 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="../head.jsp" %>
+        <title>No group/No Task Force</title>
     </head>
-   <body>
-        
+    <body>
+    <%@ include file="adminHeader.jsp" %>
     </body>
 </html>
 <f:view>
-        <h:form><h2 align="center">C/T Expiring within 1 months</h2>
-      <h2 align="center">Search Engine</h2></h:form>
+        <h:form><h2 align="center">Staff that isn't in taskforce/committee</h2>
+           <h2 align="center">Search Engine</h2></h:form>
             <table align="center" border="0" cellspacing="1" cellpadding="1">
                
                 <tbody>
@@ -59,3 +59,4 @@
             </table>
            
 </f:view>
+

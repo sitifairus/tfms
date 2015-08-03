@@ -8,10 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../head.jsp" %>
         <title>View Task Alter</title>
     </head>
     <body>
+        <%@ include file="adminHeader.jsp" %>
         <form method="POST" action="viewTaskforce_alter.jsp">
             <table border="0" align="center">
                 <thead>

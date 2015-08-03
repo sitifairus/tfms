@@ -1,6 +1,6 @@
 <%-- 
-    Document   : searchOverdue
-    Created on : Jul 29, 2015, 12:31:47 PM
+    Document   : searchExpired2
+    Created on : Jul 29, 2015, 11:24:09 AM
     Author     : user8
 --%>
 
@@ -8,16 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="../head.jsp" %>
         <title>JSP Page</title>
     </head>
    <body>
-        
+       <%@ include file="adminHeader.jsp" %> 
     </body>
 </html>
 <f:view>
-        <h:form><h2 align="center">Overdue expiry date for C/T members</h2>
-      <h2 align="center">Search Engine</h2></h:form>
+        <h:form><h2 align="center">C/T Expiring within 2 months</h2>
+           <h2 align="center">Search Engine</h2></h:form>
             <table align="center" border="0" cellspacing="1" cellpadding="1">
                
                 <tbody>
@@ -57,7 +57,5 @@
                                         
                 </tbody>
             </table>
-   <table><tr><td>Name</td><td>Staff ID</td><td>Position</td><td>Department</td><td>C/T</td></tr>
-   
+           
 </f:view>
-
