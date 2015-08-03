@@ -12,7 +12,7 @@
         
     </head>
     <body>
-        <nav class="jumbotron">
+        
         <nav class="navbar navbar-inverse" role="navigation" >
             <div class="navbar-header" >
                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
@@ -94,7 +94,6 @@
                </ul>
                 
             </div>
-        </nav>
         </nav>
     </body>
 </html>
