@@ -106,7 +106,7 @@
         </nav>
         <table align="center">
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
-            <h2>New Staff Data</h2>
+            <h2>Edit Staff Detail</h2>
             <form role="form">
               <div class="form-group">
                 <label for="userID" class="col-sm-3 control-label">Username:</label>
