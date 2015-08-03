@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <title>UTM Task Force</title>
@@ -13,51 +14,53 @@
             }       
         </style>
     </head>
+    
     <body>
-<div class="row-header" style="text-align:center; color:black;">
-    
-<h3>Welcome to UTM Task Force Login</h3>
-</div>
-<div class="row header" style="text-align:center;margin-top:40px;">
-<a href="#" data-toggle="modal" data-target="#LoginModal">Login</a><br><br><br><br>
- <img src="images/utm1.jpg" alt="UTM" style="width:1350px;height:550px;">
-</div>
-    
-<div class="modal fade" id="LoginModal" tabindex="-1" 
-role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;
-                            </span><span class="sr-only">
-                                     Close</span></button>
-                    </div>
-                    <div class="modal-body">
-                       <div class="input-group">
-            <span class="input-group-addon">@</span>
-            <input type="text" class="form-control" placeholder="UserID/Acid ID" />
+        <div class="row-header" style="text-align:center; color:black;">
+
+        <h3>Welcome to UTM Task Force Login</h3>
         </div>
-        <p>
-        </p>
-        <div class="input-group">
-            <span class="input-group-addon">@</span>
-            <input type="text" class="form-control" placeholder="Password" />
+        <div class="row header" style="text-align:center;margin-top:40px;">
+        <a href="#" data-toggle="modal" data-target="#LoginModal">Login</a><br><br><br><br>
+         <img src="images/utm1.jpg" alt="UTM" style="width:1350px;height:550px;">
         </div>
-        <p>
-        </p>  
-    <button type="button" class="btn-primary">
-        <a href="Admin/HomePageAdmin.jsp">
-            Sign In</a></button>
+
+        <form >
+            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group">
+                                 <span class="input-group-addon">@</span>
+                                 <input name="username" type="text" class="form-control" placeholder="UserID/Acid ID" />
+                             </div>
+                             <p>
+                             </p>
+                             <div class="input-group">
+                                 <span class="input-group-addon">@</span>
+                                 <input name="password" type="text" class="form-control" placeholder="Password" />
+                             </div>
+                             <p>
+                             </p>  
+                             <button type="button" class="btn-primary">
+                             <a href="databaseCoonection.jsp">Sign In</a>
+                             </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                            </button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" 
-                        class="btn btn-default" data-dismiss="modal">
-                            Close</button>
-                    </div>
-                </div
+                </div>
             </div>
-</div>
+        </form>
         
         </body>
 
