@@ -11,7 +11,6 @@ and open the template in the editor.
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
-        <img src="../images/utm.jpg" alt="UTM" style="width:1297px;height:550px;">
-       <br><br><p>Welcome to admin home page!</p>
+        <p>Welcome to admin home page!</p>
     </body>
 </html>
