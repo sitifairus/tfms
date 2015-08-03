@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*"%>
-<% Class.forName("com.mysql.jdbc.Driver");%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +16,7 @@
         <%@ include file="adminHeader.jsp" %>
         <h1 align="center">View Committee/Task Force</h1>
         <h2 align="center">Search Engine</h2>
-    <form action="./viewCTinfo.jsp" method="post">
+    <form action="viewCTinfo.jsp" method="post">
    
         <table border="0" align="center">
             
@@ -57,67 +56,10 @@
             </tbody>
         </table>
     </form>
-        <%!
-        public class Taskforce{
-         String url = "jdbc:mysql://localhost:3306/ctms";
-         String USERNAME = "root";
-         String PASSWORD = "";
-         
-        Connection connection = null;
-	PreparedStatement ct = null;
-	ResultSet resultset = null;
-         
-        public Taskforce(){
-            try{
-            connection = DriverManager.getConnection (url,USERNAME,PASSWORD);
-            ct = connection.prepareStatement(
-                    "SELECT * FROM ctms.tf");
-            }catch(SQLException e){
-		e.printStackTrace();
-	
-		}
         
-        }
-        
-        public ResultSet getTaskforce(){
-            
-            try{
-             resultset = ct.executeQuery();
-            }catch(SQLException e){
-		e.printStackTrace();
-            }
-            return resultset;
-        }
-         
-        }     
-        %>
-        <%
-            Taskforce taskforce = new Taskforce();
-            ResultSet aa = taskforce.getTaskforce();
-        %>
     </body>
     
-    <table >
-            
-            <tbody>
-                <tr>
-                    <td>Committee/Taskforce</td>
-                    <td>Coordinator Name</td>
-                    <td>Office</td>
-                    <td>Year Start</td>
-                    
-                </tr>
-                <% while (aa.next()) {%>
-                <tr>
-                    <td><%= aa.getString("CTname")%></td>
-                    <td><%= aa.getString("coordinatorName")%></td>
-                    <td><%= aa.getString("office") %></td>
-                    <td><%= aa.getString("year") %></td>
-                    
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+    
     
     
     
