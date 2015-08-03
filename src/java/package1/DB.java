@@ -1,89 +1,143 @@
 package package1;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+public class DB{
+	
+	public final static String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
+        public final static String DRIVERMGRCONN_MYSQL = "jdbc:mysql:";
 
-/**
- *
- * @author on
- */
-@WebServlet(urlPatterns = {"/DB"})
-public class DB extends HttpServlet {
+	private Connection conn;
+	private ResultSet rs;
+	private Statement statement;
+	private String db;
+	private String user;
+	private String pwd;
+	private String driver;
+	private String driverMgrConn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DB</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DB at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+      public DB(){
+      rs = null;
+      statement = null;
+     /*
+      db = "//se.fsksm.utm.my:3306/finalyearproject";  
+      user = "hishammuddin";
+      pwd = "sulit";
+      */
+      
+      ///*
+      db = "//localhost:3306/TFMSbd";  
+      user = "root";
+      pwd = "";
+      //*/
+      
+      /*
+      db = "//localhost:3307/ipproject?autoReconnect=true";
+      user = "ipproject";
+      pwd = "scj2303";
+      //*/
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+      /*
+      db = "//localhost:3307/ipproject";
+      user = "root";
+      pwd = "scj2303";
+      //*/
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+      driver = DRIVER_MYSQL;
+      driverMgrConn = DRIVERMGRCONN_MYSQL;
+   }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   public boolean connect(){
+		try{
+                    
+			Class.forName(driver);
+			conn = DriverManager.getConnection(driverMgrConn + db , user, pwd);
 
+			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/ipproject?autoReconnect=true");
+
+			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TFMSbd?user=root&password=&autoReconnect=true");
+
+			conn.setAutoCommit(false);
+                        System.out.println("okey");
+			return true;
+		}
+		catch(SQLException sqlEx){
+			System.out.println("xxxxxxx!E@@"+sqlEx.getMessage());
+
+			return false;
+		}
+		catch(ClassNotFoundException classEx){
+			System.out.println("!@$E@#D@"+classEx.getMessage());
+
+			return false;
+		}
+   }
+
+   public boolean query(String sql){
+		try{
+			if(sql.substring(0, 6).toLowerCase().equals("select")){
+				statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+				rs = statement.executeQuery(sql);
+			}
+			else{
+				statement = conn.createStatement();
+				statement.executeUpdate(sql);
+			}
+
+			return true;
+		}
+		catch(SQLException sqlEx){
+			System.out.println(sqlEx.getMessage());
+
+			return false;
+		}
+	}
+
+	public void rollback(){
+   	try{
+   		conn.rollback();
+   	}
+   	catch(SQLException sqlEx){
+			System.out.println(sqlEx.getMessage());
+		}
+   }
+
+   public int getNumberOfRows(){
+		try{
+			rs.last();
+
+			return rs.getRow();
+		}
+		catch(SQLException sqlEx){
+			System.out.println(sqlEx.getMessage());
+
+			return 0;
+		}
+	}
+	public String getDataAt(int row, String columnName){
+		try{
+			rs.absolute(row+1);
+
+			return rs.getString(columnName);
+		}
+		catch(SQLException sqlEx){
+			System.out.println(sqlEx.getMessage());
+
+			return null;
+		}
+	}
+	public void close(){
+		try{
+			statement.close();
+			conn.commit();
+			conn.close();
+		}
+		catch(SQLException sqlEx){
+			System.out.println(sqlEx.getMessage());
+		}
+	}
 }

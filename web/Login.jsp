@@ -1,4 +1,4 @@
-
+<%@page import="package1.DB"%>
 <html>
     <head>
         <title>UTM Task Force</title>
@@ -16,6 +16,7 @@
     </head>
     
     <body>
+        
         <div class="row-header" style="text-align:center; color:black;">
 
         <h3>Welcome to UTM Task Force Login</h3>
@@ -24,45 +25,66 @@
         <a href="#" data-toggle="modal" data-target="#LoginModal">Login</a><br><br><br><br>
          <img src="images/utm1.jpg" alt="UTM" style="width:1350px;height:550px;">
         </div>
-
-        <form >
-            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group">
-                                 <span class="input-group-addon">@</span>
-                                 <input name="username" type="text" class="form-control" placeholder="UserID/Acid ID" />
-                             </div>
-                             <p>
-                             </p>
-                             <div class="input-group">
-                                 <span class="input-group-addon">@</span>
-                                 <input name="password" type="text" class="form-control" placeholder="Password" />
-                             </div>
-                             <p>
-                             </p>  
-                             <button type="button" class="btn-primary">
-                             <a href="Admin/HomePageAdmin.jsp">Sign In</a>
-                             </button>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
         
+        <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
+            <div class="container">    
+                <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
+                    <div class="panel panel-info" >
+                        <div class="panel-heading">
+                            <div class="panel-title"><img src="images/logoUtm.png" alt="" style="width:50px; height: 50px;"/>.  <b>Sign In</b></div>
+
+                            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                        </div>     
+
+                        <div style="padding-top:30px" class="panel-body" >
+
+                            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                            <form id="loginform" class="form-horizontal" role="form" method="post" action="LoginVerification.jsp">
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Staff'd ID">                                        
+                                        </div>
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                </div>
+                                    <div style="margin-top:10px" class="form-group">
+                                        <!-- Button -->
+
+                                        <div class="col-sm-12 controls" style=" left:0px;">
+                                          <button id="btn-login" class="btn btn-success" >Login  </button>
+                                     
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12 control">
+                                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                                copyright D'Amateur UTM
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </form>     
+                        </div>                     
+                    </div>  
+            </div>
+            </div>
+        </div>
         </body>
+
+    
+
+    
+
+                        
+     
 
     
 
