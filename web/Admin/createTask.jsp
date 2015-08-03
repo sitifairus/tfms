@@ -14,69 +14,66 @@
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
-       <form action="newCoordinator.jsp" method="POST">
-            <table align="center" border="0">
-                <thead>
-                    <tr>
-                        <th>&nbsp;</th>  
-                        <th colspan="2"><h2>New Committee/Taskforce data</h2></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Committee/Taskforce name</td>
-                        <td>:</td>
-                        <td><input size="30" type="text" name="taskname" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td>Office</td>
-                        <td>:</td>
-                        <td><select name="office">
-                                <option value="1">Jawatankuasa/Penyelaras di Pejabat Pembangunan</option>
-                                <option value="2">Jawatankuasa di Pejabat Akademik</option>
-                                <option value="3">Penyelaras Program Pra-Siswazah (Undergraduate)</option>
-                                <option value="4">Penyelaras Program Pasca-Siswazah (Postgraduate)</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td>Date Start</td>
-                        <td>:</td>
-                        <td><select name="day">
-                                <option>--</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
-                            </select>
-                         <select name="month">
-                             <option>--</option>
+        <table align="center">
+            <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
+                <h2 align="center">New Committee/Taskforce data</h2>
+                <form role="form">
+                    <div class="form-group">
+                      <label for="TaskName" class="col-sm-3 control-label">C/T Name:</label>
+                      <div class="col-sm-9">
+                          <input type="" class="form-control" id="TaskName" placeholder="Enter Task Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="office" class="col-sm-3 control-label">office:</label>
+                    <div class="col-sm-9">
+                        <select name="office" class="form-control">
+                            <option value="1">Jawatankuasa/Penyelaras di Pejabat Pembangunan</option>
+                            <option value="2">Jawatankuasa di Pejabat Akademik</option>
+                            <option value="3">Penyelaras Program Pra-Siswazah (Undergraduate)</option>
+                            <option value="4">Penyelaras Program Pasca-Siswazah (Postgraduate)</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
+                    <div class="col-sm-9">
+                        <select name="stday" >
+                            <option>-- Day --</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                            <option>31</option>
+                        </select>
+                        <select name="stmonth" >
+                             <option>-- Month --</option>
                              <option>January</option>
                              <option>February</option>
                              <option>March</option>
@@ -90,64 +87,66 @@
                              <option>November</option>
                              <option>December</option>
                          </select>
-                            <select name="year">
-                    <option>--</option>
-                    <option>2002</option>
-                    <option>2003</option>
-                    <option>2004</option>
-                    <option>2005</option>
-                    <option>2006</option>
-                    <option>2007</option>
-                    <option>2008</option>
-                    <option>2009</option>
-                    <option>2010</option>
-                    <option>2011</option>
-                    <option>2012</option>
-                    <option>2013</option>
-                    <option>2014</option>
-                    <option>2015</option>
-                    <option>2016</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td>Date End</td>
-                        <td>:</td>
-                        <td><select name="day">
-                                <option>--</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
-                            </select>
-                         <select name="month">
-                             <option>--</option>
+                        <select name="styear">
+                            <option>-- Year --</option>
+                            <option>2002</option>
+                            <option>2003</option>
+                            <option>2004</option>
+                            <option>2005</option>
+                            <option>2006</option>
+                            <option>2007</option>
+                            <option>2008</option>
+                            <option>2009</option>
+                            <option>2010</option>
+                            <option>2011</option>
+                            <option>2012</option>
+                            <option>2013</option>
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                        </select>
+                    </div>
+                    </div>
+                    .
+                    <div class="form-group">
+                    <label for="EndDate" class="col-sm-3 control-label">Date End:</label>
+                    <div class="col-sm-9">
+                        <select name="endday" >
+                            <option>-- Day --</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                            <option>31</option>
+                        </select>
+                        <select name="endmonth" >
+                             <option>-- Month --</option>
                              <option>January</option>
                              <option>February</option>
                              <option>March</option>
@@ -161,34 +160,31 @@
                              <option>November</option>
                              <option>December</option>
                          </select>
-                            <select name="year">
-                    <option>--</option>
-                    <option>2002</option>
-                    <option>2003</option>
-                    <option>2004</option>
-                    <option>2005</option>
-                    <option>2006</option>
-                    <option>2007</option>
-                    <option>2008</option>
-                    <option>2009</option>
-                    <option>2010</option>
-                    <option>2011</option>
-                    <option>2012</option>
-                    <option>2013</option>
-                    <option>2014</option>
-                    <option>2015</option>
-                    <option>2016</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td colspan="3"><input type="submit" value="proceed" /></td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-
-        </form>
-
+                        <select name="endyear" >
+                            <option>-- Year --</option>
+                            <option>2002</option>
+                            <option>2003</option>
+                            <option>2004</option>
+                            <option>2005</option>
+                            <option>2006</option>
+                            <option>2007</option>
+                            <option>2008</option>
+                            <option>2009</option>
+                            <option>2010</option>
+                            <option>2011</option>
+                            <option>2012</option>
+                            <option>2013</option>
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="form-group" style="padding-left:171px;">
+                       <button type="submit" class="btn btn-default">Proceed</button>
+                    </div>
+                </form>
+            </div>
+        </table>
     </body>
 </html>
