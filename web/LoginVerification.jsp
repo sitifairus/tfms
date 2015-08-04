@@ -19,11 +19,14 @@
              String userN = request.getParameter("username");
              String passs= request.getParameter("password");
              String username=null;
-         DB db= new DB();
-         if(db.connect())
-         {
-            db.query("select * from user where username='"+userN+"' and password='"+passs+"' ");
-            username=db.getDataAt( 0,"username");
+            DB db= new DB();
+            //System.out.println("password:");
+            if(db.connect())
+            {
+            db.query("select * from user where userID='"+userN+"' and password='"+passs+"' ");
+            
+            username=db.getDataAt( 0,"userID");
+
             if(username!=null)
             {
                 out.println("password:"+username);
