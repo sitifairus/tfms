@@ -27,36 +27,37 @@
                     
                 </tr>
                 <tr>
-                    <td>Filter search by committee/taskforce</td>
-                    <td>:</td>
-                    <td><input type="text" name="name" value="" size='30'/></td>
+                    <td valign="top"><b>Filter search by committee/taskforce</b></td>
+                    <td valign="top">:</td>
+                    <td><input type="text" name="name" value="" size='30'/><br><br></td>
                 </tr>
                 <tr>
-                    <td>Filter search by coordinator</td>
-                    <td>:</td>
-                    <td><input type="text" name="staffID" value="" size='30'/></td>
+                    <td valign="top"><b>Filter search by coordinator</b></td>
+                    <td valign="top">:</td>
+                    <td><input type="text" name="staffID" value="" size='30'/><br><br></td>
                 </tr>
                 <tr>
-                    <td>Office</td>
-                    <td>:</td>
+                    <td valign="top"><b>Office</b></td>
+                    <td valign="top">:</td>
                     <td><select name="office">
+                            <option value=""> Not Selected </option>
                             <option value="1">Jawatankuasa/Penyelaras di Pejabat Pembangunan</option>
                             <option value="2">Jawatankuasa di Pejabat Akademik</option>
                             <option value="3">Penyelaras Program Pra-Siswazah (Undergraduate)</option>
                             <option value="4">Penyelaras Program Pasca-Siswazah (Postgraduate)</option>
-                        </select></td>
+                        </select><br><br></td>
                 </tr>
                 <tr>
-                    <td>Filter search by year</td>
-                    <td>:</td>
-                    <td><input type="text" name="year" value="" size='30'/></td>
+                    <td valign="top"><b>Filter search by year</b></td>
+                    <td valign="top">:</td>
+                    <td><input type="text" name="year" value="" size='30'/><br><br></td>
                         
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                      <?--by clicking on button search,the data will be display from database and allow user choose which data they want to del--?>
-                    <td><input type="submit" value="search" /></td>
+                    <td><input type="submit" value="Search" /><br><br></td>
                 </tr>
                 
                 <tr>           
