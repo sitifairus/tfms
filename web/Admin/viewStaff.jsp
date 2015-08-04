@@ -85,7 +85,7 @@
             dept=request.getParameter("FilterDepartment");
             stat=request.getParameter("FilterStatus");
             out.println(name+staffID+post+dept+stat);
-            if(!name.equals("")||!staffID.equals("")||post!=null||dept!=null||stat!=null)
+            if(name!=null||staffID!=null||post!=null||dept!=null||stat!=null)
             {
                 
                 out.print("okey");
