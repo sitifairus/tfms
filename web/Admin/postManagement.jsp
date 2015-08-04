@@ -27,15 +27,15 @@
                     <td style="text-align: center" colspan='2'><b>Admin options</b></td>
 
                 </tr>
-            <script>//using java to display all data</script>
+            
                 <tr>
-                    <td style="text-align:center;">Dekan</a></td>
+                    <td style="text-align:center;">Dekan</td>
                     <td style="text-align:center;">Ab Razak Bin Che Hussin</td>
                     <td style="text-align:center;">abrazak@utm.my</td>
                     <td style="text-align:center;">1st January 2000</td>
                     <td style="text-align:center;">1st July 2014</td>
                     <td style="text-align:center;">
-                        <form action="../viewProfile/profileEdit.jsp" method="post"> <?---where to,action & method---?>
+                        <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
                             <input type="hidden" name="id" value="2">
                             <input type="hidden" name="vipID" value="1">
                             <input type="submit" value="Edit">
@@ -51,7 +51,7 @@
                 </tr>
 
                 <tr>
-                    <td style="text-align:center;">Timbalan Dekan (A)</a></td>
+                    <td style="text-align:center;">Timbalan Dekan (A)</td>
                     <td style="text-align:center;">Abdul Hanan Bin Abdullah</td>
                     <td style="text-align:center;">hanan@fsksm.utm.my</td>
                     <td style="text-align:center;">2nd June 2014</td>
@@ -73,7 +73,7 @@
                 </tr>
 
                 <tr>
-                    <td style="text-align:center;">Timbalan Dekan (P)</a></td>
+                    <td style="text-align:center;">Timbalan Dekan (P)</td>
                     <td style="text-align:center;">Abdul Samad Bin Ismail</td>
                     <td style="text-align:center;">abdulsamad.ismail@gmail.com</td>
                     <td style="text-align:center;">2nd June 2014</td>

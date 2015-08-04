@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@ page import="java.util.*" %>
-import com.mysql.jdbc.Driver;
+<%@page import="java.util.*" %>
+<%@page import="package1.DB"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,41 +15,35 @@ import com.mysql.jdbc.Driver;
         <title>Database Connection</title>
     </head>
     <body>
-         <%!
-         public class con{
-            String url = "jdbc:mysql://localhost:3306/forcetaskmanagement";
-            String USERNAME = "root";
-            String PASSWORD = "";
-            PreparedStatement selectUser=null;
-            ResultSet resultset=null;
-           Connection connection = null;
-
-           public con(){
-               try{
-               connection = DriverManager.getConnection (url,USERNAME,PASSWORD);
-               selectUser= connection.prepareStatement(
-                    "SELECT * FROM forcetaskmanagement.viewstaff");
-               }catch(SQLException e){
-                   e.printStackTrace();
-
-                   }
-           }
-           
-           public ResultSet getStaff(){
-            try{
-            resultset= selectUser.executeQuery();
-            }
-            catch(SQLException e){
-                e.printStackTrace();
-            }
-            return resultset;
-            }
-        }     
-        %>
          <%
-            con user = new con();
-            ResultSet staffs = user.getStaff();
-        %>
+             String userN = request.getParameter("username");
+             String passs= request.getParameter("password");
+             String username=null;
+            DB db= new DB();
+            //System.out.println("password:");
+            if(db.connect())
+            {
+            db.query("select * from user where userID='"+userN+"' and password='"+passs+"' ");
+            
+            username=db.getDataAt( 0,"userID");
 
+            if(username!=null)
+            {
+                out.println("password:"+username);
+                response.sendRedirect("Admin/HomePageAdmin.jsp");
+                        }
+            else
+            {
+                out.println("wrong username or password");
+                response.sendRedirect("Login.jsp");
+            }
+         }
+         else
+         {
+             System.out.println("not connecteed!!");
+         }
+         
+         
+         %>
     </body>
 </html>
