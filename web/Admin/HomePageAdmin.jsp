@@ -11,6 +11,6 @@ and open the template in the editor.
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
-        <p>Welcome to admin home page!</p>
+        <p><h3>Welcome to Admin home page!</h3>></p>
     </body>
 </html>
