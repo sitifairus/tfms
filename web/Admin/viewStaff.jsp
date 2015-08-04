@@ -17,58 +17,59 @@
         <%@ include file="adminHeader.jsp" %>
         <table align="center">
              <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
-                <h2 align="center">View Staff- Search engine</h2>
+                <h2 align="center">View Staff</h2>
+                <h4 align="center"> Search Engine</h4><br>
             <form role="form">
               <div class="form-group">
                 <label for="FilterName" class="col-sm-4 control-label">By Name:</label>
                 <div class="col-sm-8">
-                    <input type="" class="form-control" id="filterName" placeholder="Enter Staff's Name">
+                    <input type="" class="form-control" id="filterName" placeholder="Enter Staff's Name" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
                 <label for="FilterID" class="col-sm-4 control-label">By Staff ID:</label>
                 <div class="col-sm-8">
-                    <input type="" class="form-control" id="filterID" placeholder="Enter Staff's ID">
+                    <input type="" class="form-control" id="filterID" placeholder="Enter Staff's ID" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
                 <label for="FilterPosition" class="col-sm-4 control-label">By Position:</label>
                 <div class="col-sm-8">
-                    <select name="FilterPosition" id="FilterPosition" class="form-control">
-                        <option value="">Choose Position...</option>
-                        <option>Lecturer</option>
-                        <option>Senior Lecturer</option>                                
-                        <option>Associate Professor</option>
-                        <option>Professor</option>
+                    <select name="FilterPosition" id="FilterPosition" class="form-control" required>
+                        <option value="">Not Selected</option>
+                        <option value="1">Lecturer</option>
+                        <option value="2">Senior Lecturer</option>                                
+                        <option value="3">Associate Professor</option>
+                        <option value="4">Professor</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
                 <div class="form-group">
                 <label for="FilterDepartment" class="col-sm-4 control-label">By Department:</label>
                 <div class="col-sm-8">
-                    <select name="FilterDepartment" id="FilterDepartment" class="form-control">
-                        <option value="">Choose Department...</option>
-                        <option>Computer Science</option>
-                        <option>Software Engineering</option>
-                        <option>Information System</option>
+                    <select name="FilterDepartment" id="FilterDepartment" class="form-control" required>
+                        <option value="">Not Selected</option>
+                        <option value="1">Computer Science</option>
+                        <option value="2">Software Engineering</option>
+                        <option value="3">Information System</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
                 
               <div class="form-group">
                 <label for="FilterStatus" class="col-sm-4 control-label">By Status:</label>
                 <div class="col-sm-8">
-                    <select name="FilterStatus" id="FilterStatus" class="form-control">
-                        <option value="">Choose Status...</option>
-                        <option>Active</option>
-                        <option>Not Active</option>
+                    <select name="FilterStatus" id="FilterStatus" class="form-control" required>
+                        <option value="">Not Selected</option>
+                        <option value="1">Active</option>
+                        <option value="2">Not Active</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
                 <div class="form-group" style="padding-left:171px;">
-                  
-                    <button type="submit" class="btn btn-default">Search</button>
-              </div>
+                    
+                    <button type="submit" class="btn btn-default">Search</button></a>
+              </div><br><br>
             </form>
              </div>
         </table>
