@@ -19,6 +19,8 @@
              String userN = request.getParameter("username");
              String passs= request.getParameter("password");
              String username=null;
+             String status=null;
+             String userType=null;
             DB db= new DB();
             //System.out.println("password:");
             if(db.connect())
@@ -30,8 +32,31 @@
             if(username!=null)
             {
                 out.println("password:"+username);
-                response.sendRedirect("Admin/HomePageAdmin.jsp");
-                        }
+                status=db.getDataAt( 0,"status");
+                userType=db.getDataAt( 0,"userType");
+                out.println(status);
+                if(status.equals("active"))
+                {
+                    if(userType.equals("admin"))
+                    {
+                        response.sendRedirect("Admin/HomePageAdmin.jsp");
+                    }
+                    else if(userType.equals("lecturer"))
+                    {
+                        response.sendRedirect("Staff/HomePage Staff.jsp");
+                    }
+                    else
+                    {
+                        response.sendRedirect("Pentadbir/HomePagePentadbir.jsp");
+                    }
+                     
+                }
+                else
+                {
+                    out.println("your account not active!");
+                    
+                }
+            }
             else
             {
                 out.println("wrong username or password");
