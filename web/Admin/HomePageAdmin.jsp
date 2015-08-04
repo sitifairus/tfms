@@ -13,7 +13,7 @@ and open the template in the editor.
         <%
             String UserSession = (String)session.getAttribute("user");
             String UserType = (String)session.getAttribute("userType");
-            out.println(UserSession);
+            //out.println(UserSession);
             if ((!(UserSession==null))&&(UserType.equals("admin"))) {
 
         %>
