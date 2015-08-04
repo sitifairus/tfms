@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="TFMSystem.Test"%>
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +47,7 @@
         <table align="center">
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
             <h2 align="center">Register New Staff</h2><br>
-            <form role="form" action="comfirmNewStaff.jsp" method="post">
+            <form role="form" action="registerMember.jsp" method="post">
               <div class="form-group">
                   <label for="userID" class="col-sm-3 control-label">Username :</label>
                 <div class="col-sm-9">
@@ -201,7 +202,7 @@
             else
             {
                 out.println("username:"+username+"\npassword:"+password);
-                //response.sendRedirect("DBcontroller/insertNewStaff.jsp?userID="+username+"&password="+password+"&name="+name+"&satffID="+staffID+"&phone="+phone+"&email="+email+"&psosition="+position+"&department="+department+"&qualification="+qualification+"&day="+day+"&month="+month+"&year="+year);
+                //response.sendRedirect("./Test.java?userID="+username+"&password="+password+"&name="+name+"&satffID="+staffID+"&phone="+phone+"&email="+email+"&psosition="+position+"&department="+department+"&qualification="+qualification+"&day="+day+"&month="+month+"&year="+year);
             }
             
         %>
