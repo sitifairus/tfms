@@ -1,4 +1,4 @@
-<%@page import="package1.DB"%>
+<%@page import="TFMSystem.LoginVerification"%>
 <html>
     <head>
         <title>UTM Task Force</title>
@@ -40,7 +40,7 @@
 
                             <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-                            <form id="loginform" class="form-horizontal" role="form" method="post" action="LoginVerification.jsp">
+                            <form id="loginform" class="form-horizontal" role="form" method="post" action="./LoginVerification">
 
                                 <div style="margin-bottom: 25px" class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
