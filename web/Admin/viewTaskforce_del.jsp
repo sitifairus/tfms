@@ -9,6 +9,7 @@
 <html>
     <head>
         <%@include file="../head.jsp" %>
+        
         <title>delete taskforce</title>
     </head>
     <body>
@@ -16,14 +17,14 @@
         <table border="0" align="center">
             <thead>
                 <tr>
-                    <th colspan="3"><h2>Please input the commitee/taskforce you want to delete</h2></th>
+                    <th colspan="3"><h2>Please input the committee / taskforce you want to delete</h2></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><h3>Search Engine</h3></td>
+                    <td><h4>Search Engine</h4></td>
                     
                 </tr>
                 <tr>
