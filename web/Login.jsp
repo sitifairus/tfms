@@ -71,14 +71,16 @@
                                             </div>
                                         </div>
                                     </div>    
-                                </form>     
+                                </form> 
+                               
                         </div>                     
                     </div>  
             </div>
             </div>
         </div>
+        
         </body>
-
+<%@ include file="footer.jsp" %> 
     
 
     

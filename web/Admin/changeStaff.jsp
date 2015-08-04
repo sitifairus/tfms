@@ -58,7 +58,8 @@
                     <button type="submit" class="btn btn-default">Search</button>
               </div>
         </table>
+        
     </body>
 </html>
-
+<%@ include file="../footer.jsp" %>
 <?----display table(need data from DB) ... button "PROCEED" got prob,take note---?>

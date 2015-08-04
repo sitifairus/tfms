@@ -6,81 +6,63 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <%@include file="../head.jsp" %>
         <title>New Coordinator</title>
     </head>
-    <body>
+        <body>
         <%@ include file="adminHeader.jsp" %>
-        <form method="POST">
-             <table border="0" align="center">
-            <thead>
-                <tr>
-                    <td>&nbsp;</td>
-                    <th colspan="2"><h2>Choose a new coordinator for the newly assigned committee/taskforce</h2></th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td><h3>Search engine</h3></td>
-                 
-                </tr>
-                <tr>
-                    <td>Filter search by name</td>
-                    <td>:</td>
-                    <td><input type="text" name="name" value="" size='30'/></td>
-                </tr>
-                <tr>
-                    <td>Filter search by staff ID</td>
-                    <td>:</td>
-                    <td><input type="text" name="staffID" value="" size='30'/></td>
-                </tr>
-                <tr>
-                    <td>Filter search by position</td>
-                    <td>:</td>
-                    <td><select name="position">
-                                <option>Lecturer</option>
-                                <option>Senior Lecturer</option>                                
-                                <option>Associate Professor</option>
-                                <option>Professor</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <td>Filter search by department</td>
-                    <td>:</td>
-                    <td><select name="department">
-                                <option>Computer Science</option>
-                                <option>Software Engineering</option>
-                                <option>Information System</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td><input type="submit" value="search" /></td>
-                </tr>
-            </tbody>
+        <table align="center">
+             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
+                <h3 align="center">Choose a new coordinator for the newly assigned committee/taskforce</h3>
+                <h4 align="center">Search engine</h4>
+            <form role="form">
+              <div class="form-group">
+                <label for="FilterName" class="col-sm-4 control-label">By Name:</label>
+                <div class="col-sm-8">
+                    <input type="" class="form-control" id="filterName" placeholder="Enter Staff's Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="FilterID" class="col-sm-4 control-label">By Staff ID:</label>
+                <div class="col-sm-8">
+                    <input type="" class="form-control" id="filterID" placeholder="Enter Staff's ID">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="FilterPosition" class="col-sm-4 control-label">By Position:</label>
+                <div class="col-sm-8">
+                    <select name="FilterPosition" id="FilterPosition" class="form-control">
+                        <option value="">Choose Position...</option>
+                        <option>Lecturer</option>
+                        <option>Senior Lecturer</option>                                
+                        <option>Associate Professor</option>
+                        <option>Professor</option>
+                    </select>
+                </div>
+              </div>
+                <div class="form-group">
+                <label for="FilterDepartment" class="col-sm-4 control-label">By Department:</label>
+                <div class="col-sm-8">
+                    <select name="FilterDepartment" id="FilterDepartment" class="form-control">
+                        <option value="">Choose Department...</option>
+                        <option>Computer Science</option>
+                        <option>Software Engineering</option>
+                        <option>Information System</option>
+                    </select>
+                </div>
+              </div>
+                
+              
+                <div class="form-group" style="padding-left:171px;">
+                  
+                    <button type="submit" class="btn btn-default">Search</button>
+              </div>
+            </form>
+             </div>
         </table>
-
-        </form>
-        
-        
-        <form method="POST" action="newTaskConfirm.jsp">
-        
        
-        <table align="center" border="0">
-            <tr> 
-                <?--table from DB,display list of staff--?>
-                <td>&nbsp;</td>
-                <td><input type="submit" value="proceed"/></td>
-            </tr>            
-        </table>
-        
-       </form>
-        
     </body>
 </html>
+<%@ include file="../footer.jsp" %>

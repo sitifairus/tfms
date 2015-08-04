@@ -45,75 +45,76 @@
         %>
         <table align="center">
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
-            <h2>New Staff Data</h2>
-            <form role="form" method="get" action="#">
+            <h2 align="center">Register New Staff</h2><br>
+            <form role="form" action="comfirmNewStaff.jsp" method="post">
               <div class="form-group">
-                <label for="userID" class="col-sm-3 control-label">Username:</label>
+                  <label for="userID" class="col-sm-3 control-label">Username :</label>
                 <div class="col-sm-9">
                     <input type="" class="form-control" name="userID" placeholder="Enter Staff's Username" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Password:</label>
+                  <label for="password" class="col-sm-3 control-label">Password :</label>
                 <div class="col-sm-9">
                     <input type="password" class="form-control" name="password" placeholder="Enter Staff's Password" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">Staff Name:</label>
+                <label for="name" class="col-sm-3 control-label">Staff Name :</label>
                 <div class="col-sm-9">
                     <input type="" class="form-control" name="name" placeholder="Enter Staff's Name" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
-                <label for="staffID" class="col-sm-3 control-label">Staff ID:</label>
+                <label for="staffID" class="col-sm-3 control-label">Staff ID :</label>
                 <div class="col-sm-9">
                     <input type="" class="form-control" name="staffID" placeholder="Enter Staff's ID" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
-                <label for="phone" class="col-sm-3 control-label">Phone:</label>
+                <label for="phone" class="col-sm-3 control-label">Phone :</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="phone" placeholder="Enter Staff's Telephone Number" required>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email:</label>
+                <label for="email" class="col-sm-3 control-label">Email :</label>
                 <div class="col-sm-9">
                     <input type="email" class="form-control" name="email" placeholder="Enter Staff's Email" required>
                 </div>
-              </div>
-                      
+              </div><br><br>                      
               <div class="form-group">
                 <label for="position" class="col-sm-3 control-label">Position:</label>
                 <div class="col-sm-9">
-                    <select name="position" id="position" class="form-control">
-                        <option>Lecturer</option>
-                        <option>Senior Lecturer</option>                                
-                        <option>Associate Professor</option>
-                        <option>Professor</option>
+                    <select name="position" id="position" class="form-control" required>
+                        <option value="0">Not Selected</option>
+                        <option value="1">Lecturer</option>
+                        <option value="2">Senior Lecturer</option>                                
+                        <option value="3">Associate Professor</option>
+                        <option value="4">Professor</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
                 <label for="department" class="col-sm-3 control-label">Department:</label>
                 <div class="col-sm-9">
-                    <select name="department" id="department" class="form-control">
-                        <option>Computer Science</option>
-                        <option>Software Engineering</option>
-                        <option>Information System</option>
+                    <select name="department" id="department" class="form-control" required>
+                        <option value="0">Not Selected</option>
+                        <option value="1">Computer Science</option>
+                        <option value="2">Software Engineering</option>
+                        <option value="3">Information System</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
                 <label for="qulification" class="col-sm-3 control-label">Qualification:</label>
                 <div class="col-sm-9">
-                    <select name="qualification" id="qualification" class="form-control">
-                        <option>None</option>
-                        <option>Dr.</option>
+                    <select name="qualification" id="qualification" class="form-control" required>
+                        <option value="1">None</option>
+                        <option value="2">Dr.</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group">
                 <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
                 <div class="col-sm-9">
@@ -185,7 +186,7 @@
                         <option>2016</option>
                     </select>
                 </div>
-              </div>
+              </div><br><br>
               <div class="form-group" style="padding-left: 171px;">
                   <div class="col-sm-offset-2 col-sm-10" >
                     <button type="submit" class="btn btn-default"  >Proceed</button>
@@ -206,4 +207,4 @@
         %>
     </body>
 </html>
-
+<%@ include file="../footer.jsp" %>
