@@ -18,7 +18,7 @@
 <f:view>
         <h:form><br>
       <h2 align="center">Overdue expiry date for C/T members</h2>
-      <h2 align="center">Search Engine</h2></h:form>
+      <h3 align="center">Search Engine</h3></h:form>
             <table align="center" border="0" cellspacing="1" cellpadding="1">
               <tbody>
                     <tr>
