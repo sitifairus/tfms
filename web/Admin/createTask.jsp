@@ -180,9 +180,11 @@
                         </select>
                     </div>
                     </div>
+                   .
                     <div class="form-group" style="padding-left:171px;">
-                       <button type="submit" class="btn btn-default">Proceed</button>
+                        <a href="newCoordinator.jsp"><input type="button" value="Proceed"></a>
                     </div>
+                    
                 </form>
             </div>
         </table>
