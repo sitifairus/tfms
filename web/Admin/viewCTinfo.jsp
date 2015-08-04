@@ -16,7 +16,7 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
        
-        <h1 align="center">View Committee/Task Force</h1>
+        <h2 align="center">View Committee/Task Force</h2>
         <h3 align="center">Search Engine</h3>
     <form action="viewCTinfo.jsp" method="post">
    
