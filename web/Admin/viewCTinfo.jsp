@@ -14,7 +14,7 @@
         <title>View Task Force</title>
     </head> 
     <body>
-        <%@ include file="adminHeader.jsp" %>
+        <%@ include file="adminHeader.jsp" %><br>
        
         <h2 align="center">View Committee/Task Force</h2>
         <h3 align="center">Search Engine</h3>
