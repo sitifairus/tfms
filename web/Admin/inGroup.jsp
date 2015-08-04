@@ -58,6 +58,6 @@
                                         
                 </tbody>
             </table>
-           
+   
 </f:view>
-
+ <%@ include file="../footer.jsp" %>       

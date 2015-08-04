@@ -12,5 +12,6 @@ and open the template in the editor.
     <body>
         <%@ include file="adminHeader.jsp" %><br><br><br>
         <p><h3 align="center">Welcome to Admin home page!</h3></p>
+    <%@ include file="../footer.jsp" %>
     </body>
 </html>

@@ -60,3 +60,4 @@
            
 </f:view>
 
+<%@ include file="../footer.jsp" %>
