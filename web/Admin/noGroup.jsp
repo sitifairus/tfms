@@ -20,8 +20,7 @@
             <h2 align="center">Staff that isn't in taskforce/committee</h2>
            <h3 align="center">Search Engine</h3></h:form>
             <table align="center" border="0" cellspacing="1" cellpadding="1">
-               
-                <tbody>
+               <tbody>
                     <tr>
                         <td valign="top"><b>Filter search by name</b></td>
                         <td valign="top">:<input type="text" name="name" size="30" /><br><br></td>
