@@ -18,7 +18,7 @@
         <table align="center">
              <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
                 <h2 align="center">View Staff</h2>
-                <h4 align="center"> Search Engine</h4><br>
+                <h3 align="center"> Search Engine</h3><br>
             <form role="form">
               <div class="form-group">
                 <label for="FilterName" class="col-sm-4 control-label">By Name:</label>
