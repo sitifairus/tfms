@@ -8,8 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-       
-      <style>
+        
+        <style>
+           
           .UTMlogo {
             position: absolute;
             left: 0px;
@@ -117,8 +118,8 @@
                      </ul> 
                      </li>
                </ul>
-                
             </div>
+            
             
             
         </nav>
