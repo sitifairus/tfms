@@ -35,7 +35,7 @@
                     <td style="text-align:center;">1st January 2000</td>
                     <td style="text-align:center;">1st July 2014</td>
                     <td style="text-align:center;">
-                        <form action="../viewProfile/profileEdit.jsp" method="post"> <?---where to,action & method---?>
+                        <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
                             <input type="hidden" name="id" value="2">
                             <input type="hidden" name="vipID" value="1">
                             <input type="submit" value="Edit">
