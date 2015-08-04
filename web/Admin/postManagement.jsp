@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %><br>
-        <h1 align="center">Post Management</h1><br>
+        <h2 align="center">Post Management</h2><br>
         <div class="container">
         <table border="2"  align="center" cellspacing="2" cellpadding="2" class="table table-bordered">
             <tbody>
