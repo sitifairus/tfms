@@ -16,7 +16,8 @@
     </body>
 </html>
 <f:view>
-        <h:form><h2 align="center">C/T Expiring within 2 months</h2>
+        <h:form><br>
+            <h2 align="center">C/T Expiring within 2 months</h2>
            <h2 align="center">Search Engine</h2></h:form>
             <table align="center" border="0" cellspacing="1" cellpadding="1">
               <tbody>
