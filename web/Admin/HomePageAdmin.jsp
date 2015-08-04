@@ -10,7 +10,7 @@ and open the template in the editor.
         <%@include file="../head.jsp" %>
     </head>
     <body>
-        <%@ include file="adminHeader.jsp" %>
-        <p><h3>Welcome to Admin home page!</h3>></p>
+        <%@ include file="adminHeader.jsp" %><br><br><br>
+        <p><h3 align="center">Welcome to Admin home page!</h3></p>
     </body>
 </html>
