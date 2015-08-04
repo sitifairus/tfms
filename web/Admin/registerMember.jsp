@@ -14,45 +14,73 @@
     </head>
     <body>
     <%@ include file="adminHeader.jsp" %>
-        
+        <%
+            String username=null;
+            String password=null;
+            String name=null;
+            String staffID=null;        
+            String phone=null;        
+            String email=null;              
+            String position=null;               
+            String department=null;                       
+            String qualification=null;                        
+            String day=null;                                
+            String month=null;                                
+            String year=null;                                            
+                                        
+            username=request.getParameter("userID");
+            password=request.getParameter("password");
+            name=request.getParameter("name");
+            staffID=request.getParameter("staffID");       
+            phone=request.getParameter("phone");       
+            email=request.getParameter("email");            
+            position=request.getParameter("position");             
+            department=request.getParameter("department");                      
+            qualification=request.getParameter("qualification");                     
+            day=request.getParameter("day");                                
+            month=request.getParameter("month");                                
+            year=request.getParameter("year");
+            if(password==null)
+            {
+        %>
         <table align="center">
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
             <h2>New Staff Data</h2>
-            <form role="form" action="comfirmNewStaff.jsp" method="post">
+            <form role="form" method="get" action="#">
               <div class="form-group">
                 <label for="userID" class="col-sm-3 control-label">Username:</label>
                 <div class="col-sm-9">
-                    <input type="" class="form-control" id="userID" placeholder="Enter Staff's Username" required>
+                    <input type="" class="form-control" name="userID" placeholder="Enter Staff's Username" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Password:</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="password" placeholder="Enter Staff's Password" required>
+                    <input type="password" class="form-control" name="password" placeholder="Enter Staff's Password" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="name" class="col-sm-3 control-label">Staff Name:</label>
                 <div class="col-sm-9">
-                    <input type="" class="form-control" id="name" placeholder="Enter Staff's Name" required>
+                    <input type="" class="form-control" name="name" placeholder="Enter Staff's Name" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="staffID" class="col-sm-3 control-label">Staff ID:</label>
                 <div class="col-sm-9">
-                    <input type="" class="form-control" id="staffID" placeholder="Enter Staff's ID" required>
+                    <input type="" class="form-control" name="staffID" placeholder="Enter Staff's ID" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="phone" class="col-sm-3 control-label">Phone:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="phone" placeholder="Enter Staff's Telephone Number" required>
+                    <input type="text" class="form-control" name="phone" placeholder="Enter Staff's Telephone Number" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="email" class="col-sm-3 control-label">Email:</label>
                 <div class="col-sm-9">
-                    <input type="email" class="form-control" id="email" placeholder="Enter Staff's Email" required>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Staff's Email" required>
                 </div>
               </div>
                       
@@ -160,11 +188,22 @@
               </div>
               <div class="form-group" style="padding-left: 171px;">
                   <div class="col-sm-offset-2 col-sm-10" >
-                    <button type="submit" class="btn btn-default">Proceed</button>
+                    <button type="submit" class="btn btn-default"  >Proceed</button>
                   </div>
               </div>
             </form>
           </div>
         </table>
+        <%
+                
+            }
+            else
+            {
+                out.println("username:"+username+"\npassword:"+password);
+                //response.sendRedirect("DBcontroller/insertNewStaff.jsp?userID="+username+"&password="+password+"&name="+name+"&satffID="+staffID+"&phone="+phone+"&email="+email+"&psosition="+position+"&department="+department+"&qualification="+qualification+"&day="+day+"&month="+month+"&year="+year);
+            }
+            
+        %>
     </body>
 </html>
+
