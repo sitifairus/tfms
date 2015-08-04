@@ -10,8 +10,22 @@ and open the template in the editor.
         <%@include file="../head.jsp" %>
     </head>
     <body>
-        <%@ include file="adminHeader.jsp" %><br><br><br>
-        <p><h3 align="center">Welcome to Admin home page!</h3></p>
-    <%@ include file="../footer.jsp" %>
+        <%
+            String UserSession = (String)session.getAttribute("user");
+            String UserType = (String)session.getAttribute("userType");
+            out.println(UserSession);
+            if ((!(UserSession==null))&&(UserType.equals("admin"))) {
+
+        %>
+        <%@include file="adminHeader.jsp" %><br><br><br>
+        <p><h3 align="center">Welcome to Admin home page!</h3>
+        <%@include file="../footer.jsp" %>
+        <%
+            }
+        else
+            {
+                out.println("your not login!");
+            }
+        %>
     </body>
 </html>

@@ -16,7 +16,11 @@
     </head>
     
     <body>
-        
+        <%
+           // session.ivalidate();
+            
+            
+        %>
         <div class="row-header" style="text-align:center; color:black;">
 
         <h3>Welcome to UTM Task Force Login</h3>
