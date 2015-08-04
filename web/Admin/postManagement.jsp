@@ -13,10 +13,10 @@
         <%@include file="../head.jsp" %>
     </head>
     <body>
-        <%@ include file="adminHeader.jsp" %>
-        <h1 align="center">Post Management</h1>
+        <%@ include file="adminHeader.jsp" %><br>
+        <h1 align="center">Post Management</h1><br>
         <div class="container">
-        <table align="center" border="1" cellspacing="1" cellpadding="1" class="table table-bordered">
+        <table border="2"  align="center" cellspacing="2" cellpadding="2" class="table table-bordered">
             <tbody>
                 <tr>
                     <td style="text-align: center"><b>Post</b></td>
