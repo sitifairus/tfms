@@ -17,7 +17,7 @@
             <table border="0" align="center">
                 <thead>
                     <tr>
-                        <th colspan="3" ><h1 align="center">Please input the committee/taskforce <br>you want to alter</h1></th>
+                        <th colspan="3" ><h2 align="center">Please input the committee/taskforce <br>you want to alter</h2></th>
                     </tr>
                 </thead>
                 <tbody>
