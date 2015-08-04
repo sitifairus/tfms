@@ -16,37 +16,38 @@
     </body>
 </html>
 <f:view>
-        <h:form><h2 align="center">C/T Expiring within 3 months</h2>
-            <h2 align="center">Search Engine</h2></h:form>
+        <h:form><br>
+            <h2 align="center">C/T Expiring within 3 months</h2>
+            <h3 align="center">Search Engine</h3></h:form>
             <table align="center" border="0" cellspacing="1" cellpadding="1">
                
                 <tbody>
                     <tr>
-                        <td>Filter search by name</td>
-                        <td>:<input type="text" name="name" size="30" /></td>
+                        <td valign="top"><b>Filter search by name</b></td>
+                        <td valign="top">:<input type="text" name="name" size="30" /><br><br></td>
                     </tr>
                     <tr>
-                        <td>Filter search by staff ID</td>
-                        <td>:<input type="text" name="username" size="30" /></td>
+                        <td valign="top"><b>Filter search by staff ID</b></td>
+                        <td valign="top">:<input type="text" name="username" size="30" /><br><br></td>
                     </tr>
                     <tr>
-                        <td>Filter search by position</td>
-                         <td>:<select name="position">
+                        <td valign="top"><b>Filter search by position</b></td>
+                        <td valign="top">:<select name="position">
                                 <option value="">--Not Selected--</option>
                                 <option value="1">Senior Lecturer</option>
                                 <option value="2">Lecturer</option>
                                 <option value="3">Associate Professor</option>
                                 <option value="4">Professor</option>
-                            </select></td>
+                            </select><br><br></td>
                     </tr>
                     <tr>
-                        <td>Filter search by department</td>
-                        <td>:<select name="department">
+                        <td valign="top"><b>Filter search by department &nbsp;&nbsp;</b></td>
+                        <td valign="top">:<select name="department">
                                 <option value="">--Not Selected--</option> 
                                 <option value="1">Computer Science</option>
                                 <option value="2">Software Engineering</option>
                                 <option value="3">Information System</option>
-                            </select></td>
+                            </select><br><br></td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td> 
