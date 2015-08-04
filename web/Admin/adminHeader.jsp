@@ -45,11 +45,11 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="HomePageAdmin.jsp">Register New Staff</a>
+               <a class="navbar-brand" href="HomePageAdmin.jsp">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                <ul class="nav navbar-nav">
-                   <li><a href="HomePageAdmin.jsp">Home</a></li>
+                 
                   <li><a href="#">News</a></li>
                   
                   <li class="dropdown">
@@ -57,7 +57,7 @@
                         Staff Option <b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a href="registerMember.jsp">Input new staff data</a></li>
+                        <li><a href="registerMember.jsp">Register new staff</a></li>
                         <li class="divider"></li>
                         <li><a href="viewStaff.jsp">View all staff profile</a></li>
                         <li class="divider"></li>
