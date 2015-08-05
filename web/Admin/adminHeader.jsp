@@ -49,6 +49,7 @@
                <a class="navbar-brand" href="HomePageAdmin.jsp">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
+              
                <ul class="nav navbar-nav">
                  
                   <li><a href="#">News</a></li>
@@ -110,13 +111,11 @@
                      </li>
                      
                      <ul class="nav navbar-nav navbar-right">
+                        
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> FAQ</a></li>
                         <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
                       </ul>
-                    
-            </div>
-            
-            
+                </div>              
             
         </nav>
         
