@@ -81,7 +81,7 @@
 
                     
                     }
-                    
+                    db.close();
         %>
                 
                 </tbody>
