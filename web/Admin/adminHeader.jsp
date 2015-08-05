@@ -109,11 +109,6 @@
                      </ul> 
                      </li>
                      
-                      <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Log Out <b class="caret"></b>
-                     </a>
-                         
                      <ul class="nav navbar-nav navbar-right">
                         <li><a href="../Login.jsp"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Log Out</a></li>
