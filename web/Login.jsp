@@ -23,11 +23,11 @@
         %>
         <div class="row-header" style="text-align:center; color:black;">
 
-        <h3>Welcome to UTM Task Force Login</h3>
+        <h3>Welcome to UTM Task Force</h3>
         </div>
         <div class="row header" style="text-align:center;margin-top:40px;">
         <a href="#" data-toggle="modal" data-target="#LoginModal">Login</a><br><br><br><br>
-         <img src="images/utm1.jpg" alt="UTM" style="width:1350px;height:550px;">
+         <img src="images/utm3.jpg" alt="UTM" style="width:1350px;height:550px;">
         </div>
         
         <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
@@ -48,7 +48,7 @@
 
                                 <div style="margin-bottom: 25px" class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Staff'd ID" required>                                        
+                                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Staff's ID" required>                                        
                                         </div>
 
                                 <div style="margin-bottom: 25px" class="input-group">
