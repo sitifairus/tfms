@@ -11,11 +11,15 @@
         
         <title>Create Task</title>
         <%@include file="../head.jsp" %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
         <table align="center">
-            <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
+            <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;" border="2">
                 <h2 align="center">New Committee/Taskforce data</h2><br>
                 <form role="form">
                     <div class="form-group">
