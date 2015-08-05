@@ -10,11 +10,9 @@
     <head>
         
         <title>Create Task</title>
+        
         <%@include file="../head.jsp" %>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
@@ -114,77 +112,27 @@
                     </div>
                     
                     <div class="form-group">
-                    <label for="EndDate" class="col-sm-3 control-label">Date End:</label>
-                    <div class="col-sm-9">
-                        <select name="endday" >
-                            <option>-- Day --</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
-                            <option>31</option>
-                        </select>
-                        <select name="endmonth" >
-                             <option>-- Month --</option>
-                             <option>January</option>
-                             <option>February</option>
-                             <option>March</option>
-                             <option>April</option>
-                             <option>May</option>
-                             <option>June</option>
-                             <option>July</option>
-                             <option>August</option>
-                             <option>September</option>
-                             <option>October</option>
-                             <option>November</option>
-                             <option>December</option>
-                         </select>
-                        <select name="endyear" >
-                            <option>-- Year --</option>
-                            <option>2002</option>
-                            <option>2003</option>
-                            <option>2004</option>
-                            <option>2005</option>
-                            <option>2006</option>
-                            <option>2007</option>
-                            <option>2008</option>
-                            <option>2009</option>
-                            <option>2010</option>
-                            <option>2011</option>
-                            <option>2012</option>
-                            <option>2013</option>
-                            <option>2014</option>
-                            <option>2015</option>
-                            <option>2016</option>
-                        </select>
-                    </div><br><br>
+                <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
+                <div class="container">
+                <div class="row">
+                    <div class='col-sm-3'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text'name="startDate" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker();
+                        });
+                    </script>
+                </div>
+                </div>
+              </div>
                    .
                     <div class="form-group" style="padding-left:171px;">
                         <a href="newCoordinator.jsp"><input type="button" value="Proceed"></a>
