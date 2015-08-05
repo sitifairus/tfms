@@ -61,7 +61,7 @@ public class Test extends HttpServlet {
             //day=request.getParameter("day");                                
             //month=request.getParameter("month");                                
             //year=request.getParameter("year");            
-            out.println("password:"+username);
+            
             DB db= new DB();
             //System.out.println("password:");
             if(db.connect())
@@ -70,7 +70,7 @@ public class Test extends HttpServlet {
             
             username=db.getDataAt( 0,"userID");
             out.println("password:"+username);
-            db.query("insert into user(userID,password) values('siti123','opai'");
+            db.query("insert into user(userID,password) values('siti123','opai')");
             
          }
          else
