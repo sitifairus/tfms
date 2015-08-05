@@ -110,8 +110,8 @@
                      </li>
                      
                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../Login.jsp"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Log Out</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> FAQ</a></li>
+                        <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
                       </ul>
                     
             </div>
