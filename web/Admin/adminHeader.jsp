@@ -49,6 +49,7 @@
                <a class="navbar-brand" href="HomePageAdmin.jsp">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
+              
                <ul class="nav navbar-nav">
                  
                   <li><a href="#">News</a></li>
