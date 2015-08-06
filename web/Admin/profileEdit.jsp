@@ -13,156 +13,102 @@
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
-        <table align="center">
-            <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
-            <h2>Edit Staff Detail</h2>
-            <form role="form">
-              <div class="form-group">
-                <label for="userID" class="col-sm-3 control-label">Username:</label>
-                <div class="col-sm-9">
-                    <input type="" class="form-control" id="userID" placeholder="Enter Staff's Username" required>
+        
+        <div class="container">
+            <a href="ViewAllStaff.jsp">back</a>
+     <h1 class="">Edit Profile</h1>
+
+    <hr class="">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-3">
+            <div class="text-center">
+                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+                 <h6 class="">Upload a different photo...</h6>
+
+                <input class="form-control" type="file">
+            </div>
+        </div>
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+            <div style="display: none;" class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a>  <i class="fa fa-coffee"></i>
+This
+                is an <strong class="">.alert</strong>. Use this to show important messages
+                to the user.</div>
+             <h3 class="">Personal info</h3>
+
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" value="xxx" type="text">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Password:</label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" id="password" placeholder="Enter Staff's Password" required>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Last name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" value="xxx" type="text">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">Staff Name:</label>
-                <div class="col-sm-9">
-                    <input type="" class="form-control" id="name" placeholder="Enter Staff's Name" required>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Company:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" value="" type="text">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="staffID" class="col-sm-3 control-label">Staff ID:</label>
-                <div class="col-sm-9">
-                    <input type="" class="form-control" id="staffID" placeholder="Enter Staff's ID" required>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Email:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" value="xxxx" type="text">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="phone" class="col-sm-3 control-label">Phone:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="phone" placeholder="Enter Staff's Telephone Number" required>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Time Zone:</label>
+                    <div class="col-lg-8">
+                        <div class="ui-select">
+                            <select id="user_time_zone" class="form-control">
+                                <option class="" value="Hawaii">(GMT-10:00) Hawaii</option>
+                                <option class="" value="Alaska">(GMT-09:00) Alaska</option>
+                                <option class="" value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                <option class="" value="Arizona">(GMT-07:00) Arizona</option>
+                                <option class="" value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                <option class="" value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                <option class="" value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                <option class="" value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email:</label>
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="email" placeholder="Enter Staff's Email" required>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Username:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="janeuser" type="text">
+                    </div>
                 </div>
-              </div>
-                      
-              <div class="form-group">
-                <label for="position" class="col-sm-3 control-label">Position:</label>
-                <div class="col-sm-9">
-                    <select name="position" id="position" class="form-control">
-                        <option>Lecturer</option>
-                        <option>Senior Lecturer</option>                                
-                        <option>Associate Professor</option>
-                        <option>Professor</option>
-                    </select>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Password:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="11111122333" type="password">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="department" class="col-sm-3 control-label">Department:</label>
-                <div class="col-sm-9">
-                    <select name="department" id="department" class="form-control">
-                        <option>Computer Science</option>
-                        <option>Software Engineering</option>
-                        <option>Information System</option>
-                    </select>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Confirm password:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="11111122333" type="password">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="qulification" class="col-sm-3 control-label">Qualification:</label>
-                <div class="col-sm-9">
-                    <select name="qualification" id="qualification" class="form-control">
-                        <option>None</option>
-                        <option>Dr.</option>
-                    </select>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <input class="btn btn-primary" value="Save Changes" type="button"> <span class=""></span>
+
+                        <input class="btn btn-default" value="Cancel" type="reset">
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
-                <div class="col-sm-9">
-                    <select name="day">
-                        <option>--</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>26</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option>
-                        <option>31</option>
-                    </select>
-                    <select name="month">
-                        <option>--</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-                    </select>
-                    <select name="year">
-                        <option>--</option>
-                        <option>2002</option>
-                        <option>2003</option>
-                        <option>2004</option>
-                        <option>2005</option>
-                        <option>2006</option>
-                        <option>2007</option>
-                        <option>2008</option>
-                        <option>2009</option>
-                        <option>2010</option>
-                        <option>2011</option>
-                        <option>2012</option>
-                        <option>2013</option>
-                        <option>2014</option>
-                        <option>2015</option>
-                        <option>2016</option>
-                    </select>
-                </div>
-              </div>
-              <div class="form-group" style="padding-left:171px;">
-                   <button type="submit" class="btn btn-default">Edit</button>
-                   <button type="submit" class="btn btn-default">Cancel</button>
-              </div>
             </form>
-          </div>
-        </table>
+        </div>
+    </div>
+</div>
     </body>
 </html>
 
