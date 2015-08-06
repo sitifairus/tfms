@@ -66,17 +66,17 @@ public class Test extends HttpServlet {
             //System.out.println("password:");
             if(db.connect())
             {
-            db.query("select * from user where userID='opai' and password='123' ");
-            
-            username=db.getDataAt( 0,"userID");
-            out.println("password:"+username);
-            db.query("insert into user(userID,password) values('siti123','opai')");
-            
-         }
-         else
-         {
-             System.out.println("not connecteed!!");
-         }
+                db.query("select * from user where userID='opai' and password='123' ");
+
+                username=db.getDataAt( 0,"userID");
+                out.println("password:"+username);
+                db.query("insert into user(userID,password) values('siti123','opai')");
+                db.close();
+            }
+            else
+            {
+                System.out.println("not connecteed!!");
+            }
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
