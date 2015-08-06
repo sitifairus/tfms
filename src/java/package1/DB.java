@@ -82,16 +82,19 @@ public class DB{
 			if(sql.substring(0, 6).toLowerCase().equals("select")){
 				statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 				rs = statement.executeQuery(sql);
+                                
 			}
 			else{
 				statement = conn.createStatement();
-				statement.executeUpdate(sql);
+                                System.out.println("sql:"+sql);
+                                statement.executeUpdate(sql);
+                                System.out.println("Done");
 			}
 
 			return true;
 		}
 		catch(SQLException sqlEx){
-			System.out.println(sqlEx.getMessage());
+			System.out.println("error:"+sqlEx.getMessage());
 
 			return false;
 		}
