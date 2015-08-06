@@ -68,7 +68,7 @@
              System.out.println("not connecteed!!");
          }
          
-         
+         db.close();
          %>
     </body>
 </html>
