@@ -40,7 +40,7 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="HomePageAdmin.jsp">Home</a>
+               <a class="navbar-brand" href="HomePage Staff.jsp">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
