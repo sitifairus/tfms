@@ -42,7 +42,7 @@
             day=request.getParameter("day");                                
             month=request.getParameter("month");                                
             year=request.getParameter("year");
-            if(password==null)
+            if(username==null)
             {
         %>
         <table align="center">
@@ -146,12 +146,19 @@
               </div>
             </form>
           </div>
-        </table>
+        </table>        
+        
         <%
                 
             }
             else
             {
+        %>
+        
+        
+        
+        
+        <%
                 out.println("username:"+username+"\npassword:"+password);
                 //response.sendRedirect("./Test.java?userID="+username+"&password="+password+"&name="+name+"&satffID="+staffID+"&phone="+phone+"&email="+email+"&psosition="+position+"&department="+department+"&qualification="+qualification+"&day="+day+"&month="+month+"&year="+year);
             }
