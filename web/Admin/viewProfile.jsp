@@ -14,7 +14,7 @@
         <title>Edit Staff Detail</title>
         <%@include file="../head.jsp" %>
     </head>
-    <body>
+    <body >
         <%@ include file="adminHeader.jsp" %>
         <%
             String name=null;
@@ -44,8 +44,8 @@
                 email=db.getDataAt(0, "email");
                 stat=db.getDataAt( 0,"status");
                 phone=db.getDataAt(0, "phone");
-            }
-            db.close();
+            
+            
                         
         %>
         <div class="container">
@@ -53,12 +53,53 @@
      <h1 class="">Staff Personal Info</h1>
 
     <hr class="">
-    <div class="row">
+    <div class="row" style="align:center;">
         <!-- left column -->
         <div class="col-md-3">
             <div class="text-center">
                 <img src="//placehold.it/100" class="avatar img-circle" alt="avatar"><!--pic for the user-->
              
+            </div>
+            <div>
+                <br><br>
+                <span></span><h3>Task Assign</h3>
+                <a href="#">+ add task</a>
+                <div >
+                    <table class="table table-user-information">
+                        <tr>
+                            <td><b>Task Name</b></td>
+                            <td><b>Position</b></td>
+                        </tr>
+                        <%
+                            db.query("SELECT * FROM tf_member WHERE userID='"+userID+"'");
+                            
+                            int row=db.getNumberOfRows();
+                            if(row-1!=-1)
+                            {
+                                System.out.println("sql:"+userID);
+                                for(int i=0;i<row;i++)
+                                {
+                                    String tName=db.getDataAt(i, "tfID");
+                                    String pos=db.getDataAt(i,"post");
+                        %>
+                        <tr>
+                            <td><%=tName%></td>
+                            <td><%=pos%></td>
+                        </tr>
+                        <%
+                                }
+                            }
+                            else
+                            {
+                        %>
+                        <tr style="align:center">
+                            <td align="center" colspan="2">No Task Assign...</td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- edit form column -->
@@ -126,7 +167,11 @@ This
             </div>
         </div>
     </div>
-</div>                               
+</div>         
+                            <%
+                            db.close();
+            }
+                            %>
     </body>
 </html>
 

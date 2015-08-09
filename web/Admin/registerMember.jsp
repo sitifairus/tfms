@@ -22,7 +22,8 @@
             String gender=null;
             String name=null;
             String staffID=null;        
-            String phone=null;        
+            String phone=null;     
+            String userType=null;
             String email=null;              
             String position=null;               
             String department=null;                       
@@ -33,6 +34,7 @@
             String year=null;                                            
                                         
             username=request.getParameter("userID");
+            userType=request.getParameter("userType");
             gender=request.getParameter("gender");
             password=request.getParameter("password");
             name=request.getParameter("name");
@@ -138,6 +140,17 @@
                 </div><br><br>
               </div>
               <div class="form-group">
+                <label for="User Type" class="col-sm-3 control-label">User Type:</label>
+                <div class="col-sm-9">
+                    <select name="userType"  class="form-control" required>
+                        <option value="lecturer">Not Selected</option>
+                        <option value="admin">Admin</option>
+                        <option value="lecturer">Lecturer</option>
+                        <option value="pentadbir">Dean</option>
+                    </select>
+                </div><br><br>
+              </div>
+              <div class="form-group">
                 <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
                 <div class="container">
                 <div class="row">
@@ -208,6 +221,10 @@
                         <td><%=staffID%></td>
                       </tr>
                       <tr>
+                        <td>User Type</td>
+                        <td><%=userType%></td>
+                      </tr>
+                      <tr>
                         <td>Position:</td>
                         <td><%=position%></td>
                       </tr>
@@ -231,7 +248,7 @@
                       
                   </table>
                   
-                      <form action="./Test.java" method="post"> <?---where to,action & method---?>
+                      <form action="../Test" method="get"> <?---where to,action & method---?>
                             <input type="hidden" name="userID" value="<%=username%>">
                             <input type="hidden" name="password" value="<%=password%>">
                             <input type="hidden" name="name" value="<%=name%>">
@@ -242,7 +259,8 @@
                             <input type="hidden" name="gender" value="<%=gender%>">
                             <input type="hidden" name="position" value="<%=position%>">
                             <input type="hidden" name="department" value="<%=department%>">
-                            <input type="hidden" name="office" value="<%=office%>">                            
+                            <input type="hidden" name="office" value="<%=office%>">
+                            <input type="hidden" name="userType" value="<%=userType%>"> 
                             <input type="submit" class="btn btn-default" value="Comfirm">
                       </form>
             </div>
