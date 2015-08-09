@@ -8,9 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
-        <title>Create Task</title>
-        
+              
         <%@include file="../head.jsp" %>
         
     </head>
