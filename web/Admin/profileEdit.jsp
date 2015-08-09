@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*" %>
+<%@page import="package1.DB"%>
+<%@page import="TFMSystem.ProfileEdit"%>
 <!DOCTYPE html>
 <html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
@@ -13,7 +17,30 @@
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
-        
+        <%
+            String name=null;
+            String staffID=null;
+            String post=null;
+            String email=null;
+            String dept=null;
+            String stat=null; 
+            String userID=request.getParameter("userID");
+            String sql="SELECT * FROM user WHERE userID='"+userID+"'";
+            DB db= new DB();
+            System.out.println("sql:"+sql);
+            if(db.connect())
+            {
+                db.query(sql);
+                name=db.getDataAt( 0,"name");
+                staffID=db.getDataAt( 0,"StaffID");
+                post=db.getDataAt( 0,"position");
+                dept=db.getDataAt( 0,"department");
+                email=db.getDataAt(0, "email");
+                stat=db.getDataAt( 0,"status");
+            }
+            db.close();
+                        
+        %>
         <div class="container">
             <a href="ViewAllStaff.jsp">back</a>
      <h1 class="">Edit Profile</h1>
@@ -37,78 +64,76 @@ This
                 to the user.</div>
              <h3 class="">Personal info</h3>
 
-            <form class="form-horizontal" role="form">
+             <form class="form-horizontal" role="form" action="./ProfileEdit" >
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
+                    <label class="col-lg-3 control-label">Name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" value="xxx" type="text">
+                        <input class="form-control" value="<%=name%>" name="name" type="text">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
+                    <label class="col-lg-3 control-label">StaffID:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" value="xxx" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Company:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" value="" type="text">
+                        <%=staffID%>
+                        <input class="hidden" value="<%=staffID%>" name="staffID">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" value="xxxx" type="text">
+                        <input class="form-control" value="<%=email%>" name="email" type="text">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Time Zone:</label>
+                    <label class="col-lg-3 control-label">Position:</label>
                     <div class="col-lg-8">
                         <div class="ui-select">
-                            <select id="user_time_zone" class="form-control">
-                                <option class="" value="Hawaii">(GMT-10:00) Hawaii</option>
-                                <option class="" value="Alaska">(GMT-09:00) Alaska</option>
-                                <option class="" value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                                <option class="" value="Arizona">(GMT-07:00) Arizona</option>
-                                <option class="" value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                                <option class="" value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                                <option class="" value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                                <option class="" value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                            <select name="position" id="position" class="form-control" required>
+                                <option value="<%=post%>"><%=post%></option>
+                                <option value="Lecturer">Lecturer</option>
+                                <option value="Senior Lecturer">Senior Lecturer</option>                                
+                                <option value="Associate Professor">Associate Professor</option>
+                                <option value="Professor">Professor</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Username:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" value="janeuser" type="text">
+                    <label for="department" class="col-sm-3 control-label">Department:</label>
+                    <div class="col-lg-8">
+                        <div class="ui-select">
+                            <select name="department" id="department" class="form-control" required>
+                                <option value="<%=dept%>"><%=dept%></option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Software Engineering">Software Engineering</option>
+                                <option value="Information System">Information System</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Password:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" value="11111122333" type="password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Confirm password:</label>
-                    <div class="col-md-8">
-                        <input class="form-control" value="11111122333" type="password">
+                    <label class="col-lg-3 control-label">Status:</label>
+                    <div class="col-lg-8">
+                        <div class="ui-select">
+                            <select name="position" id="position" class="form-control" required>
+                                <option value="<%=stat%>"><%=stat%></option>
+                                <option value="active">Active</option>
+                                <option value="not active">Not Active</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <input class="btn btn-primary" value="Save Changes" type="button"> <span class=""></span>
-
-                        <input class="btn btn-default" value="Cancel" type="reset">
+                        <button class="btn btn-primary" >Save Chage</button><span class=""></span>
+                        <button class="btn btn-default" onclick="history.back()" >Cancel</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-</div>
+</div>                               
     </body>
 </html>
 
