@@ -94,7 +94,7 @@
               </div><br><br>
                 <div class="form-group" style="padding-left:171px;">
                     
-                    <button type="submit" class="btn btn-default">Search</button></a>
+                    <button type="submit" class="btn btn-default">Search</button>
               </div><br><br>
             </form>
                 <a href="ViewAllStaff.jsp?">Display All Staff</a>

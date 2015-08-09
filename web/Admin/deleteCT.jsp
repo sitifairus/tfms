@@ -1,7 +1,7 @@
 <%-- 
-    Document   : profileEdit_confirm
-    Created on : Jul 27, 2015, 11:49:14 AM
-    Author     : asus
+    Document   : deleteCT
+    Created on : Aug 5, 2015, 11:39:26 PM
+    Author     : on
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,12 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>edit </title>
+        <title>JSP Page</title>
     </head>
     <body>
-        
+        <h1>Hello World!</h1>
     </body>
-    
-    
 </html>
-<%@ include file="../footer.jsp" %>

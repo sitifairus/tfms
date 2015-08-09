@@ -22,6 +22,7 @@
              String status=null;
              String userType=null;
             DB db= new DB();
+            System.out.println("loginverification.java");
             //System.out.println("password:");
             if(db.connect())
             {

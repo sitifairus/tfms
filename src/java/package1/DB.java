@@ -32,7 +32,7 @@ public class DB{
       ///*
       db = "//localhost:3306/TFMSbd";  
       user = "root";
-      pwd = "delta";
+      pwd = "";
       //*/
       
       /*
@@ -87,14 +87,14 @@ public class DB{
 			else{
 				statement = conn.createStatement();
                                 System.out.println("sql:"+sql);
-				statement.executeUpdate(sql);
-                                
+                                statement.executeUpdate(sql);
+                                System.out.println("Done");
 			}
 
 			return true;
 		}
 		catch(SQLException sqlEx){
-			System.out.println(sqlEx.getMessage());
+			System.out.println("error:"+sqlEx.getMessage());
 
 			return false;
 		}
