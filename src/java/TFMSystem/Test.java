@@ -36,12 +36,15 @@ public class Test extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String username=null;
+            String userID=null;
             String password=null;
+            String userType=null;
             String name=null;
-            String staffID=null;        
+            String staffID=null;
+            String office=null;
             String phone=null;        
-            String email=null;              
+            String email=null;    
+            String gender=null;
             String position=null;               
             String department=null;                       
             String qualification=null;                        
@@ -49,8 +52,11 @@ public class Test extends HttpServlet {
             //String month=null;                                
             //String year=null;                                            
                                         
-            username=request.getParameter("username");
+            userID=request.getParameter("userID");
             password=request.getParameter("password");
+            userType=request.getParameter("userType");
+            gender=request.getParameter("gender");
+            office=request.getParameter("office");
             name=request.getParameter("name");
             staffID=request.getParameter("staffID");       
             phone=request.getParameter("phone");       
@@ -66,11 +72,9 @@ public class Test extends HttpServlet {
             //System.out.println("password:");
             if(db.connect())
             {
-                db.query("select * from user where userID='opai' and password='123' ");
-
-                username=db.getDataAt( 0,"userID");
-                out.println("password:"+username);
-                db.query("insert into user(userID,password) values('siti123','opai')");
+                out.println("password:"+userID);
+                db.query("insert into user(userID,password,staffID,userType,name,email,position,department,status,Qualification,phone,office,gender) values('"+userID+"','"+password+"','"+staffID+"','"+userType+"','"+name+"','"+email+"','"+position+"','"+department+"','active','"+qualification+"','"+phone+"','"+office+"','"+gender+"')");
+                out.println("Done");
                 db.close();
             }
             else

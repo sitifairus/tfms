@@ -29,12 +29,14 @@
             String dept=null;
             String stat=null;
             String sql=null;
+            String userID=null;
             //sql=request.getParameter("sql");
             name=request.getParameter("filterName");
             staffID=request.getParameter("filterID");
             post=request.getParameter("FilterPosition");
             dept=request.getParameter("FilterDepartment");
             stat=request.getParameter("FilterStatus");
+            
             
             if((name==null||name=="")&&(staffID==null||staffID=="")&&(post==""||post==null)&&(dept==""||dept==null)&&(stat==""||stat==null))
             {
@@ -112,6 +114,7 @@
         
         <h2 align="center">Result</h2><br>
         <div class="container">
+            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
         <table border="2"  align="center" cellspacing="2" cellpadding="2" id="myTable" class="table table-striped">
             <tbody>
                 <tr>
@@ -294,6 +297,7 @@
                             post=db.getDataAt( i,"position");
                             dept=db.getDataAt( i,"department");
                             stat=db.getDataAt( i,"status");
+                            userID=db.getDataAt(i, "userID");
                             
         %>
         
@@ -306,9 +310,14 @@
                     <td style="text-align: center"><%=stat%></td>
                     <td style="text-align:center;">
                         <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" name="id" value="2">
-                            <input type="hidden" name="vipID" value="1">
-                            <input type="submit" value="Edit">
+                            <input type="hidden" id="userID" name="userID" value="<%=userID%>">
+                            <input type="submit" class="btn btn-default" value="Edit">
+                        </form>
+                    </td>
+                    <td style="text-align:center;">
+                        <form action="viewProfile.jsp" method="post"> <?---where to,action & method---?>
+                            <input type="hidden" id="userID" name="userID" value="<%=userID%>">
+                            <input type="submit" class="btn btn-default" value="View Profile">
                         </form>
                     </td>
                     
@@ -325,7 +334,6 @@
                 
                 </tbody>
         </table>
-        <div><a href="viewStaff.jsp">back</a></div>
         </div>
         
             

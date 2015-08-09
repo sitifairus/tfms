@@ -42,7 +42,7 @@
                         
         %>
         <div class="container">
-            <a href="ViewAllStaff.jsp">back</a>
+            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
      <h1 class="">Edit Profile</h1>
 
     <hr class="">
@@ -64,7 +64,7 @@ This
                 to the user.</div>
              <h3 class="">Personal info</h3>
 
-             <form class="form-horizontal" role="form" action="./ProfileEdit" >
+             <form class="form-horizontal" role="form" action="../ProfileEdit" method="post" >
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Name:</label>
                     <div class="col-lg-8">
