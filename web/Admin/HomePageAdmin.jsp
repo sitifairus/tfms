@@ -34,14 +34,7 @@ and open the template in the editor.
         <%@include file="adminHeader.jsp" %>
         <h2 align="center">Welcome to Admin home page!</h2><br>
         
-        <%
-            }
-        else
-            {
-                out.println("you are not login!");
-            }
-        %>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+         <div id="myCarousel" class="carousel slide" data-ride="carousel" >
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -80,5 +73,14 @@ and open the template in the editor.
         </a>
         </div>
         <%@include file="../footer.jsp" %>
+        
+        <%
+            }
+        else
+            {
+                out.println("you are not login!");
+            }
+        %>
+       
     </body>
 </html>
