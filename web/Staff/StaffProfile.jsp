@@ -56,7 +56,7 @@
         </script>
     </head>
     <body>
-      <%@ include file="staffHeader.jsp" %>
+      <%@ include file="StaffHeader.jsp" %>
       <div class="container">
       <div class="row">
       
