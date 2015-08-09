@@ -109,7 +109,8 @@
                         <li><a href="noGroup.jsp">Not in any taskforce</a></li>
                      </ul> 
                      </li>
-                     
+                    </ul> 
+                
                      <ul class="nav navbar-nav navbar-right">
                         
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> FAQ</a></li>
