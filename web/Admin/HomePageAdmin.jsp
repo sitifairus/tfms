@@ -46,19 +46,19 @@ and open the template in the editor.
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="se.jpg" alt="se">
+            <img src="../images/se.jpg" alt="se">
         </div>
 
         <div class="item">
-            <img src="raya.jpg" alt="raya">
+            <img src="../images/raya.jpg" alt="raya">
         </div>
 
         <div class="item">
-            <img src="staff.jpg" alt="staff">
+            <img src="../images/staff.jpg" alt="staff">
         </div>
 
         <div class="item">
-            <img src="psm.jpg" alt="psm">
+            <img src="../images/psm.jpg" alt="psm">
         </div>
         </div>
 

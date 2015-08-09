@@ -41,6 +41,7 @@
                     String post=null;
                     String dept=null;
                     String stat=null; 
+                    String userID=null;
                     String sql="SELECT * FROM user ";
                     DB db= new DB();
                     System.out.println("sql:"+sql);
@@ -55,6 +56,7 @@
                             post=db.getDataAt( i,"position");
                             dept=db.getDataAt( i,"department");
                             stat=db.getDataAt( i,"status");
+                            userID=db.getDataAt(i,"userID");
                             
         %>
         
@@ -66,9 +68,8 @@
                     <td style="text-align:center;"><%=dept%></td>
                     <td style="text-align: center"><%=stat%></td>
                     <td style="text-align:center;">
-                        <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" name="id" value="2">
-                            <input type="hidden" name="vipID" value="1">
+                        <form action="profileEdit.jsp" method="get"> <?---where to,action & method---?>
+                            <input type="hidden" name="userID" value="<%=userID%>">
                             <input type="submit" value="Edit">
                         </form>
                     </td>
