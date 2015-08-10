@@ -59,7 +59,6 @@
                     email=db.getDataAt( i,"email");
                     postID=db.getDataAt(i,"postID");
                     startDate=db.getDataAt( i,"startDate");
-                    lastDate=db.getDataAt(i, "lastDate");
                     status=db.getDataAt(i, "status");
                     if(status.equals("active")){
                                   
@@ -69,7 +68,6 @@
                     <td style="text-align:center;"><%=name%></td>
                     <td style="text-align:center;"><%=email%></td>
                     <td style="text-align:center;"><%=startDate%></td>
-                    <td style="text-align:center;"><%=lastDate%></td>
                     <td style="text-align:center;">
                         <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
                             <input type="hidden" name="userID" value="<%=userID%>">
