@@ -174,9 +174,8 @@
                                 </div>
                             </div> <br><br><br>
                                     <input type="hidden" name="postID" value="<%=postID%>"> 
-                                    <button type="submit" class="btn btn-default">Proceed</button>
-                                
-                                                      
+                                    <input type="hidden" name="postName" value="<%=postName%>">
+                                    <button type="submit" class="btn btn-default">Proceed</button>                                 
                     </form>
                 </div>
             </div>
