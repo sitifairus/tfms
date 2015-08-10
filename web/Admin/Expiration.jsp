@@ -44,23 +44,23 @@
 		}
 	});
 	$('[data-action="filter"]').filterTable();
-})(jQuery);
+                })(jQuery);
 
-$(function(){
-    // attach table filter plugin to inputs
-	$('[data-action="filter"]').filterTable();
-	
-	$('.container').on('click', '.panel-heading span.filter', function(e){
-		var $this = $(this), 
-			$panel = $this.parents('.panel');
-		
-		$panel.find('.panel-body').slideToggle();
-		if($this.css('display') != 'none') {
-			$panel.find('.panel-body input').focus();
-		}
-	});
-	$('[data-toggle="tooltip"]').tooltip();
-})
+            $(function(){
+                // attach table filter plugin to inputs
+                    $('[data-action="filter"]').filterTable();
+
+                    $('.container').on('click', '.panel-heading span.filter', function(e){
+                            var $this = $(this), 
+                                    $panel = $this.parents('.panel');
+
+                            $panel.find('.panel-body').slideToggle();
+                            if($this.css('display') != 'none') {
+                                    $panel.find('.panel-body input').focus();
+                            }
+                    });
+                    $('[data-toggle="tooltip"]').tooltip();
+            })
     </script>
           <style>
             .row{
@@ -81,14 +81,15 @@ $(function(){
 		.panel-body{
 			display: none;
 		}
-                    </style>
+                    
+          </style>
     </head>
 <body>
      <%@ include file="adminHeader.jsp" %>
   <div class="container" align="center">
     <h1 align="center"> Task Expiration <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
     	<div class="row" align="center">
-			<div class="col-md-20">
+			<div class="col-md-30">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Task Force Members</h3>
