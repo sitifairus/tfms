@@ -30,6 +30,9 @@
          <img src="images/utm3.jpg" alt="UTM" style="width:1350px;height:550px;">
         </div>
         
+       
+
+        
         <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
             <div class="container">    
                 <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
