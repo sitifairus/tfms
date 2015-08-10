@@ -77,13 +77,9 @@
                         C/T Option<b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a href="viewCTinfo.jsp">View C/T info</a></li>
-                        <li class="divider"></li>
                         <li><a href="createTask.jsp">Create C/T</a></li>
                         <li class="divider"></li>
-                        <li><a href="viewTaskforce_alter.jsp">Update C/T</a></li>
-                        <li class="divider"></li>
-                        <li><a href="viewTaskforce_del.jsp">Delete C/T</a></li>
+                         <li><a href="viewCTinfo.jsp">View C/T info</a></li>
                         <li class="divider"></li>
                         </ul>
                      </li>    
