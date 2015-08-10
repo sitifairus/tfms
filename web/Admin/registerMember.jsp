@@ -29,9 +29,7 @@
             String department=null;                       
             String qualification=null;   
             String office=null;
-            String day=null;                                
-            String month=null;                                
-            String year=null;                                            
+            String startDate=null;
                                         
             username=request.getParameter("userID");
             userType=request.getParameter("userType");
@@ -44,10 +42,8 @@
             email=request.getParameter("email");            
             position=request.getParameter("position");             
             department=request.getParameter("department");                      
-            qualification=request.getParameter("qualification");                     
-            day=request.getParameter("day");                                
-            month=request.getParameter("month");                                
-            year=request.getParameter("year");
+            qualification=request.getParameter("qualification");
+            startDate=request.getParameter("startDate");
             if(username==null)
             {
         %>
@@ -114,7 +110,7 @@
                         <option value="0">Not Selected</option>
                         <option value="Lecturer">Lecturer</option>
                         <option value="Senior Lecturer">Senior Lecturer</option>                                
-                        <option value="Assiociate Professor">Associate Professor</option>
+                        <option value="Associate Professor">Associate Professor</option>
                         <option value="Professor">Professor</option>
                     </select>
                 </div><br><br>
@@ -152,25 +148,7 @@
               </div>
               <div class="form-group">
                 <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
-                <div class="container">
-                <div class="row">
-                    <div class='col-sm-3'>
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text'name="startDate" class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker();
-                        });
-                    </script>
-                </div>
-                </div>
+                <input type="date" class="form-control" name="startDate" >
               </div><br><br>
               <div class="form-group" style="padding-left: 171px;">
                   <div class="col-sm-offset-2 col-sm-10" >
@@ -244,6 +222,10 @@
                         <td>Email</td>
                         <td><%=email%></td>
                       </tr>
+                      <tr>
+                        <td>Start Date</td>
+                        <td><%=startDate%></td>
+                      </tr>
                     </tbody>
                       
                   </table>
@@ -261,6 +243,7 @@
                             <input type="hidden" name="department" value="<%=department%>">
                             <input type="hidden" name="office" value="<%=office%>">
                             <input type="hidden" name="userType" value="<%=userType%>"> 
+                            <input type="hidden" name="startDate" value="<%=startDate%>">
                             <input type="submit" class="btn btn-default" value="Comfirm">
                       </form>
             </div>
@@ -268,7 +251,7 @@
         
         
         <%
-                //response.sendRedirect("./Test.java?userID="+username+"&password="+password+"&name="+name+"&satffID="+staffID+"&phone="+phone+"&email="+email+"&psosition="+position+"&department="+department+"&qualification="+qualification+"&day="+day+"&month="+month+"&year="+year);
+                
             }
             
         %>

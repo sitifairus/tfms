@@ -49,7 +49,7 @@
                         
         %>
         <div class="container">
-            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
+            <div><a href="viewStaff.jsp">Back</a></div><br>
      <h1 class="">Staff Personal Info</h1>
 
     <hr class="">

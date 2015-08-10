@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import package1.DB;
 
 /**
  *
@@ -34,8 +36,27 @@ public class ProfileEdit extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String staffID = request.getParameter("staffID");
-            //String passs= request.getParameter("password");
+            String password=request.getParameter("password");
+            String name=request.getParameter("name");        
+            String phone=request.getParameter("phone");     
+            String userType=request.getParameter("userType");
+            String email=request.getParameter("email");             
+            String position=request.getParameter("position");               
+            String department=request.getParameter("department");                       
+            String qualification=request.getParameter("qualification");   
+            String status=request.getParameter("status");
+            String office=request.getParameter("office");
+            String username=request.getParameter("userID");
+            String sql="UPDATE user SET password='"+password+"', name='"+name+"', phone='"+phone+"', userType='"+userType+"', email='"+email+"', position='"+position+"', department='"+department+"', qualification='"+qualification+"', status='"+status+"', office='"+office+"' WHERE userID='"+username+"'";
+            DB db= new DB();
+            System.out.println("sql:"+sql);
+            if(db.connect())
+            {
+                db.query(sql);
+                System.out.println("done");
+                response.sendRedirect("Admin/viewProfile.jsp?userID="+username+"");
+            }
+            db.close();
             
             
             

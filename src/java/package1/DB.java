@@ -82,6 +82,7 @@ public class DB{
 			if(sql.substring(0, 6).toLowerCase().equals("select")){
 				statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 				rs = statement.executeQuery(sql);
+                                System.out.println("sql done");
                                 
 			}
 			else{
