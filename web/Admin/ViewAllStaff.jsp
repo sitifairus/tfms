@@ -23,6 +23,8 @@
         <%@ include file="adminHeader.jsp" %>
         <h2 align="center">Result</h2><br>
         <div class="container">
+            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
+                
         <table border="2"  align="center" cellspacing="2" cellpadding="2" id="myTable" class="table table-striped">
             <tbody>
                 <tr>
@@ -70,7 +72,13 @@
                     <td style="text-align:center;">
                         <form action="profileEdit.jsp" method="get"> <?---where to,action & method---?>
                             <input type="hidden" name="userID" value="<%=userID%>">
-                            <input type="submit" value="Edit">
+                            <input type="submit" class="btn btn-default" value="Edit">
+                        </form>
+                    </td>
+                    <td style="text-align:center;">
+                        <form action="viewProfile.jsp" method="post"> <?---where to,action & method---?>
+                            <input type="hidden" id="userID" name="userID" value="<%=userID%>">
+                            <input type="submit" class="btn btn-default" value="View Profile">
                         </form>
                     </td>
                     
@@ -87,7 +95,6 @@
                 
                 </tbody>
         </table>
-        <div><a href="viewStaff.jsp">back</a></div>
         </div>
         
         <%@ include file="../footer.jsp" %>
