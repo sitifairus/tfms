@@ -24,10 +24,15 @@
             width: 500px;
             background-color: darkred;
             }
+            
+            body {
+                -webkit-filter:opacity(.2);
+                filter: opacity(.2); 
+            }  
         }
       </style>
     </head>
-    <body style="background-color:#FFDE9D">
+    <body style="background-color:#FFFFCC">
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
@@ -83,22 +88,8 @@
                         </ul>
                      </li>    
                   
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        C/T Expiration <b class="caret"></b>
-                     </a>
-                     <ul class="dropdown-menu">
-                        <li><a href="searchExpired3.jsp">3 months</a></li>
-                        <li class="divider"></li>
-                        <li><a href="searchExpired2.jsp">2 months</a></li>
-                        <li class="divider"></li>
-                        <li><a href="searchExpired1.jsp">1 months</a></li>
-                        <li class="divider"></li>
-                        <li><a href="searchOverdue.jsp">Overdue</a></li>
-                        <li class="divider"></li>
-                     </ul>
-                     </li>
-                      
+                       <li><a href="Expiration.jsp">C/T Expiration</a></li>
+                                        
                       <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                          Group <b class="caret"></b>
