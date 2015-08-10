@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*" %>
+<%@page import="package1.DB"%>
 <!DOCTYPE html>
 <html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
@@ -14,9 +17,12 @@
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
+        <%
+            String postName=request.getParameter("postName");
+        %>
         <table align="center">
              <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
-                <h2 align="center">Change Staff for Dekan/Timbalan Dekan position</h2>
+                <h2 align="center">Change Staff for <%=postName%> position</h2>
             <form role="form">
               <div class="form-group">
                 <label for="FilterName" class="col-sm-4 control-label">By Name:</label>
@@ -58,6 +64,7 @@
                     <button type="submit" class="btn btn-default">Search</button>
               </div>
         </table>
+            
         
     </body>
 </html>

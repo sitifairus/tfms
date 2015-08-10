@@ -29,18 +29,14 @@
             String dept=null;
             String stat=null;
             String sql=null;
+            String qualification=null;
             String userID=null;
-            //sql=request.getParameter("sql");
+            sql="SELECT * FROM user";
             name=request.getParameter("filterName");
             staffID=request.getParameter("filterID");
             post=request.getParameter("FilterPosition");
             dept=request.getParameter("FilterDepartment");
-            stat=request.getParameter("FilterStatus");
-            
-            
-            if((name==null||name=="")&&(staffID==null||staffID=="")&&(post==""||post==null)&&(dept==""||dept==null)&&(stat==""||stat==null))
-            {
-               
+            stat=request.getParameter("FilterStatus"); 
         %>
         
         <table align="center" >
@@ -67,8 +63,8 @@
                         <option value="">Not Selected</option>
                         <option value="lecturer">Lecturer</option>
                         <option value="senior lecturer">Senior Lecturer</option>                                
-                        <option value="associate professo">Associate Professor</option>
-                        <option value="professo">Professor</option>
+                        <option value="associate professor">Associate Professor</option>
+                        <option value="professor">Professor</option>
                     </select>
                 </div>
               </div><br><br>
@@ -97,24 +93,15 @@
                 <div class="form-group" style="padding-left:171px;">
                     
                     <button type="submit" class="btn btn-default">Search</button>
-              </div><br><br>
+                    <a href="viewStaff.jsp" style="text-decoration: underline;">Display All Staff</a>
+              </div>
             </form>
-                <a href="ViewAllStaff.jsp?">Display All Staff</a>
+               
              </div>
              
         </table>
-        <%
-                
-            }         
-            if(name!=null||staffID!=null||post!=null||dept!=null||stat!=null)
-            {
-               if(name!=""||staffID!=""||post!=""||dept!=""||stat!="")
-                {
-        %>
-        
-        <h2 align="center">Result</h2><br>
         <div class="container">
-            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
+            
         <table border="2"  align="center" cellspacing="2" cellpadding="2" id="myTable" class="table table-striped">
             <tbody>
                 <tr>
@@ -124,14 +111,13 @@
                     <td style="text-align: center"><b>Position</b></td>
                     <td style="text-align: center"><b>Department</b></td>
                     <td style="text-align: center"><b>Status</b></td>
-                    <td style="text-align: center" colspan='2'><b>Admin options</b></td>
 
                 </tr>
         <%
                     
                     
                     System.out.println("0");
-                    if(name!=""&&staffID!=""&&post!=""&&dept!=""&&stat!="")
+                    if(name!=null&&staffID!=null&&post!=null&&dept!=null&&stat!=null)
                     {
                         System.out.println("1");
                         sql="SELECT * FROM user WHERE name='"+name+"' and staffID='"+staffID+"' and position='"+post+"' and department='"+dept+"' and status='"+stat+"'";
@@ -290,6 +276,9 @@
                     {
                         db.query(sql);
                         int numOfRow=db.getNumberOfRows();
+                        if(numOfRow-1!=-1)
+                        {
+                            System.out.println(numOfRow);
                         for(int i=0; i<numOfRow; i++)
                         {
                             name=db.getDataAt( i,"name");
@@ -298,34 +287,37 @@
                             dept=db.getDataAt( i,"department");
                             stat=db.getDataAt( i,"status");
                             userID=db.getDataAt(i, "userID");
+                            qualification=db.getDataAt(i,"qualification");
                             
         %>
         
                 <tr>
                     <td style="text-align:center;"><%=i+1%></td>
-                    <td style="text-align:center;"><%=name%></td>
+                    <td style="text-decoration: underline;">
+                        <a href="viewProfile.jsp?userID=<%=userID%>"><%
+                                    if(qualification!="none")
+                                    {
+                                        out.print(qualification);
+                                    }
+                                %><%=name%></a>
+                    </td>
                     <td style="text-align:center;"><%=staffID%></td>
                     <td style="text-align:center;"><%=post%></td>
                     <td style="text-align:center;"><%=dept%></td>
                     <td style="text-align: center"><%=stat%></td>
-                    <td style="text-align:center;">
-                        <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" id="userID" name="userID" value="<%=userID%>">
-                            <input type="submit" class="btn btn-default" value="Edit">
-                        </form>
-                    </td>
-                    <td style="text-align:center;">
-                        <form action="viewProfile.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" id="userID" name="userID" value="<%=userID%>">
-                            <input type="submit" class="btn btn-default" value="View Profile">
-                        </form>
-                    </td>
-                    
                 </tr>   
         
         <%
                         }
-                        
+                        }
+                        else
+                        {
+        %>
+        <tr>
+            <td style="text-align:center;" colspan="6">------------No Search Found-----------</td>
+        </tr>
+        <%
+                        }
 
                     db.close();
                     }
@@ -339,9 +331,7 @@
             
         
         <%
-                }
-               
-            }
+                
             
         %>
     </body>

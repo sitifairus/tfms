@@ -63,19 +63,18 @@ public class Test extends HttpServlet {
             email=request.getParameter("email");            
             position=request.getParameter("position");             
             department=request.getParameter("department");                      
-            qualification=request.getParameter("qualification");                     
-            //day=request.getParameter("day");                                
-            //month=request.getParameter("month");                                
-            //year=request.getParameter("year");            
-            
+            qualification=request.getParameter("qualification");           
+            String startDate=request.getParameter("startDate");
             DB db= new DB();
             //System.out.println("password:");
             if(db.connect())
             {
                 out.println("password:"+userID);
-                db.query("insert into user(userID,password,staffID,userType,name,email,position,department,status,Qualification,phone,office,gender) values('"+userID+"','"+password+"','"+staffID+"','"+userType+"','"+name+"','"+email+"','"+position+"','"+department+"','active','"+qualification+"','"+phone+"','"+office+"','"+gender+"')");
+                db.query("insert into user(userID,password,staffID,userType,name,email,position,department,status,Qualification,phone,office,gender, startDate) values('"+userID+"','"+password+"','"+staffID+"','"+userType+"','"+name+"','"+email+"','"+position+"','"+department+"','active','"+qualification+"','"+phone+"','"+office+"','"+gender+"','"+startDate+"')");
                 out.println("Done");
                 db.close();
+                out.println("Input has been accepted");
+                response.sendRedirect("Admin/viewStaff.jsp");
             }
             else
             {
