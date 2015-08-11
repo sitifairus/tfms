@@ -24,7 +24,12 @@
             width: 500px;
             background-color: darkred;
             }
+            
+            body {
+                -webkit-filter:opacity(.2);
+                filter: opacity(.2); 
             }  
+        }
       </style>
     </head>
     <body style="background-color:#FFFFCC">
