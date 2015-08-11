@@ -24,10 +24,10 @@
             width: 500px;
             background-color: darkred;
             }
-        }
+            }  
       </style>
     </head>
-    <body style="background-color:#FFDE9D">
+    <body style="background-color:#FFFFCC">
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
@@ -72,33 +72,15 @@
                         C/T Option<b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu">
-                        <li><a href="viewCTinfo.jsp">View C/T info</a></li>
-                        <li class="divider"></li>
                         <li><a href="createTask.jsp">Create C/T</a></li>
                         <li class="divider"></li>
-                        <li><a href="viewTaskforce_alter.jsp">Update C/T</a></li>
-                        <li class="divider"></li>
-                        <li><a href="viewTaskforce_del.jsp">Delete C/T</a></li>
+                         <li><a href="viewCTinfo.jsp">View C/T info</a></li>
                         <li class="divider"></li>
                         </ul>
                      </li>    
                   
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        C/T Expiration <b class="caret"></b>
-                     </a>
-                     <ul class="dropdown-menu">
-                        <li><a href="searchExpired3.jsp">3 months</a></li>
-                        <li class="divider"></li>
-                        <li><a href="searchExpired2.jsp">2 months</a></li>
-                        <li class="divider"></li>
-                        <li><a href="searchExpired1.jsp">1 months</a></li>
-                        <li class="divider"></li>
-                        <li><a href="searchOverdue.jsp">Overdue</a></li>
-                        <li class="divider"></li>
-                     </ul>
-                     </li>
-                      
+                       <li><a href="Expiration.jsp">C/T Expiration</a></li>
+                                        
                       <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                          Group <b class="caret"></b>
@@ -109,7 +91,8 @@
                         <li><a href="noGroup.jsp">Not in any taskforce</a></li>
                      </ul> 
                      </li>
-                     
+                    </ul> 
+                
                      <ul class="nav navbar-nav navbar-right">
                         
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> FAQ</a></li>

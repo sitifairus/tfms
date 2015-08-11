@@ -18,31 +18,44 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
         <%
+           
+            String password=null;
+            String gender=null;
             String name=null;
-            String staffID=null;
-            String post=null;
-            String email=null;
-            String dept=null;
-            String stat=null; 
-            String userID=request.getParameter("userID");
-            String sql="SELECT * FROM user WHERE userID='"+userID+"'";
+            String staffID=null;        
+            String phone=null;     
+            String userType=null;
+            String email=null;              
+            String position=null;               
+            String department=null;                       
+            String qualification=null;   
+            String status=null;
+            String office=null;
+            String username=request.getParameter("userID");
+            String sql="SELECT * FROM user WHERE userID='"+username+"'";
             DB db= new DB();
             System.out.println("sql:"+sql);
             if(db.connect())
             {
                 db.query(sql);
                 name=db.getDataAt( 0,"name");
+                userType=db.getDataAt(0,"userType");
+                password=db.getDataAt(0, "password");
+                gender=db.getDataAt(0,"gender");
+                phone=db.getDataAt(0,"phone");
+                office=db.getDataAt(0,"office");
                 staffID=db.getDataAt( 0,"StaffID");
-                post=db.getDataAt( 0,"position");
-                dept=db.getDataAt( 0,"department");
+                qualification=db.getDataAt(0,"Qualification");
+                position=db.getDataAt( 0,"position");
+                department=db.getDataAt( 0,"department");
                 email=db.getDataAt(0, "email");
-                stat=db.getDataAt( 0,"status");
+                status=db.getDataAt( 0,"status");
             }
             db.close();
                         
         %>
         <div class="container">
-            <a href="ViewAllStaff.jsp">back</a>
+            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
      <h1 class="">Edit Profile</h1>
 
     <hr class="">
@@ -64,7 +77,20 @@ This
                 to the user.</div>
              <h3 class="">Personal info</h3>
 
-             <form class="form-horizontal" role="form" action="./ProfileEdit" >
+             <form class="form-horizontal" role="form" action="../ProfileEdit" method="get" >
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Username:</label>
+                    <div class="col-lg-8">
+                        <%=username%>
+                        <input class="hidden" value="<%=username%>" name="userID">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Password:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" value="<%=password%>" name="password">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Name:</label>
                     <div class="col-lg-8">
@@ -72,51 +98,86 @@ This
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">StaffID:</label>
+                    <label class="col-lg-3 control-label">Staff ID:</label>
                     <div class="col-lg-8">
                         <%=staffID%>
-                        <input class="hidden" value="<%=staffID%>" name="staffID">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Email:</label>
+                    <label class="col-lg-3 control-label">Gender:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" value="<%=email%>" name="email" type="text">
+                        <%=gender%>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Position:</label>
-                    <div class="col-lg-8">
-                        <div class="ui-select">
-                            <select name="position" id="position" class="form-control" required>
-                                <option value="<%=post%>"><%=post%></option>
-                                <option value="Lecturer">Lecturer</option>
-                                <option value="Senior Lecturer">Senior Lecturer</option>                                
-                                <option value="Associate Professor">Associate Professor</option>
-                                <option value="Professor">Professor</option>
-                            </select>
-                        </div>
-                    </div>
+                <label class="col-lg-3 control-label">Office :</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="office" value="<%=office%>" >
                 </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Phone :</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="phone" value="<%=phone%>r" >
+                </div><br><br>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Email :</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" name="email" value="<%=email%>">
+                </div><br><br>
+              </div>                      
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Position:</label>
+                <div class="col-sm-8">
+                    <select name="position" id="position" class="form-control" >
+                        <option value="<%=position%>"><%=position%></option>
+                        <option value="Lecturer">Lecturer</option>
+                        <option value="Senior Lecturer">Senior Lecturer</option>                                
+                        <option value="Assiociate Professor">Associate Professor</option>
+                        <option value="Professor">Professor</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Department:</label>
+                <div class="col-sm-8">
+                    <select name="department" id="department" class="form-control" >
+                        <option value="<%=department%>"><%=department%></option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="Information System">Information System</option>
+                    </select>
+                </div>
+              </div>
                 <div class="form-group">
-                    <label for="department" class="col-sm-3 control-label">Department:</label>
+                    <label class="col-lg-3 control-label">Qualification:</label>
                     <div class="col-lg-8">
-                        <div class="ui-select">
-                            <select name="department" id="department" class="form-control" required>
-                                <option value="<%=dept%>"><%=dept%></option>
-                                <option value="Computer Science">Computer Science</option>
-                                <option value="Software Engineering">Software Engineering</option>
-                                <option value="Information System">Information System</option>
-                            </select>
-                        </div>
+                        <select name="qualification" class="form-control" >
+                            <option value="<%=qualification%>"><%=qualification%></option>
+                            <option value="Dr. ">Dr.</option>
+                            <option value="none">None</option>
+                        </select>
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">User Type:</label>
+                    <div class="col-sm-8">
+                        <select name="userType"  class="form-control" >
+                            <option value="<%=userType%>"><%=userType%></option>
+                            <option value="admin">Admin</option>
+                            <option value="lecturer">Lecturer</option>
+                            <option value="pentadbir">Dean</option>
+                        </select>
+                    </div>
+              </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Status:</label>
                     <div class="col-lg-8">
                         <div class="ui-select">
-                            <select name="position" id="position" class="form-control" required>
-                                <option value="<%=stat%>"><%=stat%></option>
+                            <select name="status" id="position" class="form-control" >
+                                <option value="<%=status%>"><%=status%></option>
                                 <option value="active">Active</option>
                                 <option value="not active">Not Active</option>
                             </select>
@@ -126,7 +187,7 @@ This
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <button class="btn btn-primary" >Save Chage</button><span class=""></span>
+                        <button class="btn btn-primary" >Save Change</button><span class=""></span>
                         <button class="btn btn-default" onclick="history.back()" >Cancel</button>
                     </div>
                 </div>

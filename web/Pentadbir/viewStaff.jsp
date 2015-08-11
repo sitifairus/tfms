@@ -21,7 +21,7 @@
         <%@include file="../head.jsp" %>
     </head>
     <body>
-        <%@ include file="adminHeader.jsp" %>
+        <%@ include file="PentadbirHeader.jsp" %>
         <%
             String name=null;
             String staffID=null;

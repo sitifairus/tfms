@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
         <style>
            
           .UTMlogo {
@@ -40,21 +39,19 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="HomePage Staff.jsp">Home</a>
+               <a class="navbar-brand" href="HomePageStaff.jsp">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
                     <li><a href="#">News</a></li>
+                    <li><a href="StaffProfile.jsp">View Profile</a></li>
                     <li><a href="#">View all staff profile</a></li>
                     <li><a href="#">View C/T info</a></li>
-                
+                </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="../Login.jsp"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
                     </ul>
-                    
-                </ul>
-                    
             </div>
         </nav>
     </body>

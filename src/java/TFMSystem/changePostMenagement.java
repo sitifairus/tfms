@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package TFMSystem;
 
 import java.io.IOException;
@@ -13,14 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import package1.DB;
 
 /**
  *
  * @author on
  */
-@WebServlet(name = "Test", urlPatterns = {"/Test"})
-public class Test extends HttpServlet {
+@WebServlet(name = "changePostMenagement", urlPatterns = {"/changePostMenagement"})
+public class changePostMenagement extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,58 +36,27 @@ public class Test extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userID=null;
-            String password=null;
-            String userType=null;
-            String name=null;
-            String staffID=null;
-            String office=null;
-            String phone=null;        
-            String email=null;    
-            String gender=null;
-            String position=null;               
-            String department=null;                       
-            String qualification=null;                        
-            //String day=null;                                
-            //String month=null;                                
-            //String year=null;                                            
-                                        
-            userID=request.getParameter("userID");
-            password=request.getParameter("password");
-            userType=request.getParameter("userType");
-            gender=request.getParameter("gender");
-            office=request.getParameter("office");
-            name=request.getParameter("name");
-            staffID=request.getParameter("staffID");       
-            phone=request.getParameter("phone");       
-            email=request.getParameter("email");            
-            position=request.getParameter("position");             
-            department=request.getParameter("department");                      
-            qualification=request.getParameter("qualification");           
-            String startDate=request.getParameter("startDate");
+            String userID=request.getParameter("userID");
+            String postID=request.getParameter("postID");
+            String postName=request.getParameter("postName");
+            String newstartDate=request.getParameter("newstartDate");
             DB db= new DB();
-            //System.out.println("password:");
             if(db.connect())
             {
-                out.println("password:"+userID);
-                db.query("insert into user(userID,password,staffID,userType,name,email,position,department,status,Qualification,phone,office,gender, startDate) values('"+userID+"','"+password+"','"+staffID+"','"+userType+"','"+name+"','"+email+"','"+position+"','"+department+"','active','"+qualification+"','"+phone+"','"+office+"','"+gender+"','"+startDate+"')");
-                out.println("Done");
-                db.close();
-                out.println("Input has been accepted");
-                response.sendRedirect("Admin/viewStaff.jsp");
+                db.query("INSERT INTO ak_position (postName,userID,status,startDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"')");
+                db.query("UPDATE ak_position SET status='not active', lastDate='"+newstartDate+"' WHERE postID='"+postID+"'");
+                System.out.println("okeynn");
+                response.sendRedirect("Admin/postManagement.jsp");
             }
-            else
-            {
-                System.out.println("not connecteed!!");
-            }
+            db.close();
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Test</title>");            
+            out.println("<title>Servlet changePostMenagement</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Test at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet changePostMenagement at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
