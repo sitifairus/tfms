@@ -14,21 +14,7 @@
 		    margin-top:40px;
 		    padding: 0 280px ;
 		}
-		.clickable{
-		    cursor: pointer;   
-		}
-
-		.panel-heading div {
-			margin-top: -18px;
-			font-size: 15px;
-		}
-		.panel-heading div span{
-			margin-left:5px;
-		}
-		.panel-body{
-			display: none;
-		}
-                    
+		 
           </style>
     </head>
 <body>

@@ -51,6 +51,14 @@
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
             <h2 align="center">Register New Staff</h2><br>
             <form role="form" action="registerMember.jsp" method="post">
+                <div class="form-group">
+                    <div class="text-center">
+                        <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+                         <h6 class="">Upload a different photo...</h6>
+
+                        <input class="form-control" type="file">
+                    </div>
+                </div>
               <div class="form-group">
                   <label for="userID" class="col-sm-3 control-label">Username :</label>
                 <div class="col-sm-9">
@@ -79,7 +87,7 @@
                 <label for="position" class="col-sm-3 control-label">Gender:</label>
                 <div class="col-sm-9">
                     <select name="gender" id="gender" class="form-control" required>
-                        <option value="Not Selected">Not Selected</option>
+                        <option value="Male">Not Selected</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -148,8 +156,10 @@
               </div>
               <div class="form-group">
                 <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
-                <input type="date" class="form-control" name="startDate" >
-              </div><br><br>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" name="startDate" >
+                </div>
+              </div><br><br><br>
               <div class="form-group" style="padding-left: 171px;">
                   <div class="col-sm-offset-2 col-sm-10" >
                     <button type="submit" class="btn btn-default"  >Proceed</button>
