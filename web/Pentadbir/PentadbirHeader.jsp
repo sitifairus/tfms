@@ -45,8 +45,8 @@
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
                     <li><a href="#">News</a></li>
-                    <li><a href="#">View all staff profile</a></li>
-                    <li><a href="#">View C/T info</a></li>
+                    <li><a href="viewStaff.jsp">View all staff profile</a></li>
+                    <li><a href="viewCTinfo.jsp">View C/T info</a></li>
                 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
