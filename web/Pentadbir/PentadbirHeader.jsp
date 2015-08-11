@@ -18,7 +18,7 @@
             width: 500px;
             background-color: darkred;
             }
-        }
+}
       </style>
 </head>
 <body style="background-color:#FFDE9D">
@@ -44,7 +44,7 @@
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">News</a></li>
+                    <li><a href="News.jsp">News</a></li>
                     <li><a href="#">View all staff profile</a></li>
                     <li><a href="#">View C/T info</a></li>
                 
