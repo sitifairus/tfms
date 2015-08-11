@@ -13,7 +13,7 @@
            
           .UTMlogo {
             position: absolute;
-            left: 0px;
+            left: 20px;
             width: 300px;
             padding: 10px;
           .taskLogo{
@@ -36,10 +36,12 @@
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
-                <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:210px; height:100px; "/></div>
-                <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: darkred; height: 30px; width: 45%;
-                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;">Committee/Taskforce Management System</div>
-                <div style="position: absolute; right: 10px; padding-top: 40px;"><img src="../images/foc.png" style="height:70px; "/></div>
+               
+                <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:300px; height:100px; "/></div>
+               <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: #990033; height: 30px; width: 35%;
+                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;">COMMITTEE / TASKFORCE MANAGEMENT SYSTEM</div>
+                <div style="position: absolute; right: 60px; padding-top: 25px;"><h3 style="font-family: Arial Black, Gadget, sans-serif; color: darkred">FACULTY OF COMPUTING</h3></div>
+                 <div style="position: absolute; right: 85px; padding-top: 70px;"><h4 style="font-family: sans-serif; color: darkred">innovative . entrepreneurial . global</h4></div>
                 
             </div>
             <div style="background: -webkit-linear-gradient(white, grey); height: 10px">
@@ -51,12 +53,12 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="HomePageAdmin.jsp">Home</a>
+               
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
               
                <ul class="nav navbar-nav">
-                 
+                <li> <a href="HomePageAdmin.jsp">Home</a></li>
                   <li><a href="news.jsp">News</a></li>
                   
                   <li class="dropdown">
