@@ -21,9 +21,9 @@
      <%@ include file="adminHeader.jsp" %>
   <div class="container" align="center">
     <h1 align="center"> Task Expiration <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
-    	<div class="row" align="center">
+    <div class="row" align="center">
 			<div class="col-md-30">
-				<div class="panel panel-primary">
+				<div class="panel panel-primary" >
 					<div class="panel-heading">
 						<h3 class="panel-title">Task Force Members</h3>
 						<div class="pull-right">
