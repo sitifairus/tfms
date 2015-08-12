@@ -24,15 +24,10 @@
             width: 500px;
             background-color: darkred;
             }
-            
-            body {
-                -webkit-filter:opacity(.2);
-                filter: opacity(.2); 
-            }  
         }
       </style>
     </head>
-    <body style="background-color:#FFFFD6">
+    <body style="background-color: #FFFFCC">
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
