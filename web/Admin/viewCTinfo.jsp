@@ -97,9 +97,7 @@
                                         <td><%=officeName%></td>
                                         <td><%=year%></td>
                                         <td>
-                                            <form action="#" data-toggle="modal" data-target="#ConfirmModal<%=i%>"> <?---where to,action & method---?>
-                                                <input type="submit" value="Delete Committee/Taskforce">
-                                            </form>
+                                            <a href="#" data-toggle="modal" data-target="#ConfirmModal<%=i%>" class="btn btn-default">Delete Committee/Taskforce</a>
                                         </td>
                                     </tr>   
                                     
