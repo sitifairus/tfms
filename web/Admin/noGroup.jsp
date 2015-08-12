@@ -6,59 +6,90 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
+        <html><head>
+                 <title>TFMSystem</title>
         <%@include file="../head.jsp" %>
-        <title>No group/No Task Force</title>
+          <style>
+            .row{
+		    margin-top:40px;
+		    padding: 0 300px ;
+		}
+		 
+          </style>
     </head>
-    <body>
-    <%@ include file="adminHeader.jsp" %>
-    </body>
+<body>
+     <%@ include file="adminHeader.jsp" %>
+  <div class="container" align="center">
+    <h1 align="center"> Staffs that no involve in taskforce/committee <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
+    <div class="row" align="center">
+			<div class="col-md-60">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Staff Details</h3>
+						<div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+						</div>
+					</div>
+					<div class="panel-body">
+						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Search Staff" />
+					</div>
+					<table class="table table-hover" id="dev-table">
+						<thead>
+							<tr align="center">
+								<th>No</th>
+								<th>Staff Name</th>
+								<th>Staff ID</th>
+                                                                <th>Department</th>
+                                                        </tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Ras</td>
+								<td>a13cs0139</td>
+                                                                <td>Software Engineering</td>
+                                                        </tr>
+							<tr>
+								<td>2</td>
+								<td>Surayya</td>
+								<td>a13cs0158</td>
+                                                                <td>Software Engineering</td>
+                                                        </tr>
+							<tr>
+								<td>3</td>
+								<td>Siti Fairus</td>
+								<td>a13cs0139</td>
+                                                                <td>Computer Science</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>4</td>
+                                                                <td>Bethrise</td>
+								<td>a13cs0084</td>
+                                                                <td>Software Engineering</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>5</td>
+                                                                <td>Rafael</td>
+								<td>a13cs0045</td>
+                                                                <td>Computer Science</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>6</td>
+                                                                <td>Alvin</td>
+								<td>a13cs0084</td>
+                                                                <td>Software Engineering</td>
+                                                        </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
 </html>
-<f:view>
-        <h:form><br>
-            <h2 align="center">Staff that isn't in taskforce/committee</h2>
-           <h3 align="center">Search Engine</h3></h:form>
-            <table align="center" border="0" cellspacing="1" cellpadding="1">
-               <tbody>
-                    <tr>
-                        <td valign="top"><b>Filter search by name</b></td>
-                        <td valign="top">:<input type="text" name="name" size="30" /><br><br></td>
-                    </tr>
-                    <tr>
-                        <td valign="top"><b>Filter search by staff ID</b></td>
-                        <td valign="top">:<input type="text" name="username" size="30" /><br><br></td>
-                    </tr>
-                    <tr>
-                        <td valign="top"><b>Filter search by position</b></td>
-                         <td valign="top">:<select name="position">
-                                <option value="">--Not Selected--</option>
-                                <option value="1">Senior Lecturer</option>
-                                <option value="2">Lecturer</option>
-                                <option value="3">Associate Professor</option>
-                                <option value="4">Professor</option>
-                            </select>
-                         <br><br></td>
-                    </tr>
-                    <tr>
-                        <td valign="top"><b>Filter search by department &nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-                        <td valign="top">:<select name="department">
-                                <option value="">--Not Selected--</option> 
-                                <option value="1">Computer Science</option>
-                                <option value="2">Software Engineering</option>
-                                <option value="3">Information System</option>
-                            </select><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td> 
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align:center;"><input type="submit" value="Search" /></td>
-                    </tr>
-                                        
-                </tbody>
-            </table>
-           
-</f:view>
 
-<%@ include file="../footer.jsp" %>
+
+<%@ include file="../footer.jsp" %>"../footer.jsp" %>

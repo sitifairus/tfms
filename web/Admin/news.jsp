@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>news</title>
+        <title>TFMSystem</title>
         <%@include file="../head.jsp" %>
         
         
@@ -21,15 +21,20 @@
         <div id="Wrapper">
             <center>
                 <br>
-                <br>
-                <br>
-                <br>
-                <marquee direction="up" width="500" height="300"  style="border:solid" scrollamount="2">
-                    <h1 align="center"><font color="#FF0000">Test<br><br></h1>
+                <h2 style="font-family: Serif, Gadget, sans-serif; color: #CC0000;">Announcement</h2>
+                
+                <marquee direction="up" width="600" height="300"  style="border:solid darkred" scrollamount="2" BGCOLOR=black>
                     <h4 align="center">
-                        <font color="#1A0000">
+                        <font color="#FFFFFF">
                         test<br>
                         test<br>
+                        new system is being created<br><br>
+                        checking for error..<br><br>
+                        deploying..<br><br><br><br>
+                        A new system created ! ---> named : TFMSystem ^_^  <br><br>
+                        
+                        Database have been updated. Please check your info and update where necessary
+                        
                     </h4>
                 
                 </marquee>
