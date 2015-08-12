@@ -97,12 +97,31 @@
                                         <td><%=officeName%></td>
                                         <td><%=year%></td>
                                         <td>
-                                            <form action="#" method="post" > <?---where to,action & method---?>
-                                                <input type="hidden" name="taskID" value="<%=taskID%>">
+                                            <form action="#" data-toggle="modal" data-target="#ConfirmModal<%=i%>"> <?---where to,action & method---?>
                                                 <input type="submit" value="Delete Committee/Taskforce">
                                             </form>
                                         </td>
-                                    </tr>
+                                    </tr>   
+                                    
+                                    <div class="modal fade" id="ConfirmModal<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
+                                        <div class="container">    
+                                            <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
+                                                <div class="panel panel-info" >
+                                                    <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to delete this '<%=taskName%>' Committee/Taskforce?</b>
+                                                        <form class="form-horizontal" role="form" method="post" action="../CTdelete">
+                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
+                                                                <button id="btn-login" class="btn btn-success" >Comfirm</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                                                                <br><br>
+                                                        </form>
+                                                    </div>                      
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
                                  <%
                                     }
                                     }
@@ -115,8 +134,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    
+        </div>                            
     </body>
 </html>
 <%@ include file="../footer.jsp" %>

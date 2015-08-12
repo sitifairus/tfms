@@ -77,13 +77,13 @@
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <form action="#" method="post" > <?---where to,action & method---?>
+                                        <form action="CT_alter.jsp" method="post" > <?---where to,action & method---?>
                                             <input type="hidden" name="taskID" value="<%=taskID%>">
                                             <input type="submit" value="Edit CT">
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="#" method="post" > <?---where to,action & method---?>
+                                        <form action="addMembership.jsp" method="post" > <?---where to,action & method---?>
                                             <input type="hidden" name="taskID" value="<%=taskID%>">
                                             <input type="submit" value="Add Membership">
                                         </form>
