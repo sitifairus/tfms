@@ -40,16 +40,16 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="HomePageAdmin.jsp">Home</a>
+               <a class="navbar-brand" href="HomePagePentadbir.jsp">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">News</a></li>
+                    <li><a href="../Admin/news.jsp">News</a></li>
                     <li><a href="viewStaff.jsp">View all staff profile</a></li>
                     <li><a href="viewCTinfo.jsp">View C/T info</a></li>
                 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
+                        <li><a href="FAQ.jsp"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
                         <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
                     </ul>
                     
