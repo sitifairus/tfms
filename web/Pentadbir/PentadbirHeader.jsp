@@ -27,7 +27,8 @@
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
                 <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:210px; height:100px; "/></div>
                 <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: darkred; height: 30px; width: 45%;
-                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;">Committee/Taskforce Management System</div>
+                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;"> TASKFORCE MANAGEMENT SYSTEM</div>
+                     
                 <div style="position: absolute; right: 10px; padding-top: 40px;"><img src="../images/foc.png" style="height:70px; "/></div>
             </div>
             
@@ -44,7 +45,7 @@
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="../Admin/news.jsp">News</a></li>
+                    <li><a href="news.jsp">News</a></li>
                     <li><a href="viewStaff.jsp">View all staff profile</a></li>
                     <li><a href="viewCTinfo.jsp">View C/T info</a></li>
                 
