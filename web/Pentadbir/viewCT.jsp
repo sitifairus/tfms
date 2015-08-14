@@ -16,7 +16,7 @@
         <title>Community Task Force</title>
     </head>
     <body>
-        <%@ include file="adminHeader.jsp" %>
+        <%@ include file="PentadbirHeader.jsp" %>
         <%
             String taskID=request.getParameter("taskID");
             String taskName=null;
@@ -75,21 +75,7 @@
                                     <td><b>Status:</b></td>
                                     <td colspan="2"><%=taskStatus%></td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <form action="CT_alter.jsp" method="post" > <?---where to,action & method---?>
-                                            <input type="hidden" name="taskID" value="<%=taskID%>">
-                                            <input type="submit" value="Edit CT" class="btn btn-default">
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="addMembership.jsp" method="post" > <?---where to,action & method---?>
-                                            <input type="hidden" name="taskID" value="<%=taskID%>">
-                                            <input type="submit" value="Add Membership" class="btn btn-default">
-                                        </form>
-                                    </td>
-                                </tr>
+                                
                             </thead>
                         </table>
                     </div>
@@ -128,7 +114,6 @@
                                         <th>Group Status</th>
                                         <th>Start Date</th>
                                         <th>End Status</th>
-                                        <th colspan="3" align="center">Admin option</th>
                                     </tr>
                             </thead>
                             <tbody>
@@ -177,82 +162,7 @@
                                         <td><%=SDate%></td>
                                         <td><%=EDate%></td>
                                         <td>
-                                            <form action="EditMember.jsp" method="post" > <?---where to,action & method---?>
-                                                <input type="hidden" name="memberID" value="<%=memberID%>">
-                                                <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                <input type="submit" value="Edit" class="btn btn-default">
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <%
-                                                if(gStatus.equals("coordinator")||gStatus.equals("Coordinator"))
-                                                {
-                                            %>
-                                            <a href="#" data-toggle="modal" data-target="#ConfirmTerminateModala<%=i%>" class="btn btn-default">Terminate</a>
-                                            <%
-                                                }
-                                                else
-                                                {
-                                            %>
-                                            <a href="#" data-toggle="modal" data-target="#ConfirmTerminateModal<%=i%>" class="btn btn-default">Terminate</a>
-                                            <%
-                                                }
-                                            %>
-                                            
-                                        </td>
-                                        <td>
-                                            <form action="#" method="post" > <?---where to,action & method---?>
-                                                <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                <input type="hidden" name="memberID" value="<%=memberID%>">
-                                                <input type="submit" value="Create Appointment Letter" class="btn btn-default">
-                                            </form>
-                                        </td>
                                     </tr>
-                                    
-                                    <div class="modal fade" id="ConfirmTerminateModala<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
-                                        <div class="container">    
-                                            <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
-                                                <div class="panel panel-info" >
-                                                    <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to Terminate <%
-                                                                    if(coordinatorQ!="none"&&coordinatorQ!=null)
-                                                                    {
-                                                                        out.print(coordinatorQ);
-                                                                    }
-                                                                %><%=name%> (<%=gStatus%>) from this Committee/Taskforce?</b>
-                                                        <form class="form-horizontal" role="form" method="post" action="changeCoordinator.jsp">
-                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                                <input type="hidden" name="memberID" value="<%=memberID%>">
-                                                                <button id="btn-login" class="btn btn-success" >Confirm</button>
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
-                                                                <br><br>
-                                                        </form>
-                                                    </div>                      
-                                                </div>  
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="ConfirmTerminateModal<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
-                                        <div class="container">    
-                                            <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
-                                                <div class="panel panel-info" >
-                                                    <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to Terminate <%
-                                                                    if(coordinatorQ!="none"&&coordinatorQ!=null)
-                                                                    {
-                                                                        out.print(coordinatorQ);
-                                                                    }
-                                                                %><%=name%> (<%=gStatus%>) from this Committee/Taskforce?</b>
-                                                        <form class="form-horizontal" role="form" method="post" action="../terminateMember">
-                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                                <input type="hidden" name="memberID" value="<%=memberID%>">
-                                                                <button id="btn-login" class="btn btn-success" >Confirm</button>
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
-                                                                <br><br>
-                                                        </form>
-                                                    </div>                      
-                                                </div>  
-                                            </div>
-                                        </div>
-                                    </div>
                                  <%
                                             }
                                         }

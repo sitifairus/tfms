@@ -15,7 +15,7 @@
         <%@include file="../head.jsp" %>
     </head>
     <body >
-        <%@ include file="adminHeader.jsp" %>
+        <%@ include file="PentadbirHeader.jsp" %>
         <%
             String name=null;
             String staffID=null;
@@ -63,7 +63,6 @@
             <div>
                 <br><br>
                 <span></span><h3>Task Assign</h3>
-                <a href="#">+ add task</a>
                 <div >
                     <table class="table table-user-information">
                         <tr>
@@ -160,11 +159,6 @@ This
                     </tbody>
                       
                   </table>
-                  
-                      <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" id="userID" name="userID" value="<%=userID%>">
-                            <input type="submit" class="btn btn-default" value="Edit Profile">
-                      </form>
             </div>
         </div>
     </div>

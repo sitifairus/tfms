@@ -41,18 +41,23 @@ and open the template in the editor.
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
             <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
         <div class="item active">
+            <img src="../images/canselor.jpg" alt="canselor">
+        </div>
+
+        <div class="item">
             <img src="../images/se.jpg" alt="se">
         </div>
 
         <div class="item">
             <img src="../images/raya.jpg" alt="raya">
         </div>
-
+            
         <div class="item">
             <img src="../images/staff.jpg" alt="staff">
         </div>
@@ -78,7 +83,7 @@ and open the template in the editor.
             }
         else
             {
-                out.println("you are not login!");
+                out.println("You have not login!");
             }
         %>
        
