@@ -15,19 +15,24 @@
     <body>
         <%@ include file="PentadbirHeader.jsp" %>
         
-        <div class="container">
-            <p><a href="#Q1">What is Committe/TaskForce Management System?</a></p>
-            <p><a href="#Q2">How to access CTMS system?</a></p>
+        <div class="container" >
+            
+            <h1>Frequently Asked Questions(FAQ)</h1>
+                <br>
+                <br>
+            
+            <p><a href="#Q1">What is TaskForce Management System?</a></p>
+            <p><a href="#Q2">How to access TMS system?</a></p>
             <p><a href="#Q3">How to sign up/sign in?</a></p>
             <p><a href="#Q4">What to do if you forgot your password or can't sign in.</a></p>
-            
+            <br><br><br>
             <h2 id="Q1">What is Committe/TaskForce Management System?</h2>
             <p>bla bla bla</p>
-            <h2 id="Q2">?</h2>
+            <h2 id="Q2">How to access TMS system?</h2>
             <p>bla bla bla</p>
-            <h2 id="Q3">?</h2>
+            <h2 id="Q3">How to sign up/sign in?</h2>
             <p>bla bla bla</p>
-            <h2 id="Q4">?</h2>
+            <h2 id="Q4">What to do if you forgot your password or can't sign in.</h2>
             <p>bla bla bla</p>
             
         </div>
