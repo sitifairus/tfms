@@ -49,34 +49,43 @@
                         <tbody>
                         <%
                             DB db = new DB();
-                            DB db2 = new DB();
+                            //DB db2 = new DB();
                             String name;
                             String staffID;
                             String department;
                             String taskName;
-                            String tf_memberID;
+                            String userID;
                             int no=0;
                             if(db.connect())
                             {
-                                if(db.query("SELECT * FROM user INNER JOIN tf_member ON user.userID=tf_member.userID "))
+                                if(db.query("SELECT * FROM user NOT JOIN tf_member ON user.userID=tf_member.userID "))
                                 {
+                                    System.out.println(db.getNumberOfRows());
                                     for(int i=0; i<db.getNumberOfRows();i++)
                                     {
                                         name=db.getDataAt(i, "name");
                                         staffID=db.getDataAt(i,"staffID");
                                         department=db.getDataAt(i, "department");
+                                        userID=db.getDataAt(i, "userID");
+                                        System.out.println(userID);
+                                        %>
+                                        <tr>
+                                        <td>1</td>
+                                        <td><%=name%></td>
+                                        <td><%=staffID%></td>
+                                        <td><%=department%></td>
+                                        <td>
+                        
+                                            <li><%//=taskName%></li>
+                                            
+                                        </td>
+                                        </tr>
+                        <%
                                     }
                                 }
                                 db.close();
                             }
-                        %>
-                            <tr>
-                                <td>1</td>
-                                <td>Ras</td>
-                                <td>a13cs0139</td>
-                                <td>Software Engineering</td>
-                                <td><li>Jawatankuasa Pemasaran</li></td>
-                            </tr>
+                        %>          
                         </tbody>
                     </table>
                 </div>
