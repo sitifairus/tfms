@@ -48,7 +48,7 @@
                     <li><a href="news.jsp">News</a></li>
                     <li><a href="viewStaff.jsp">View all staff profile</a></li>
                     <li><a href="viewCTinfo.jsp">View C/T info</a></li>
-                
+                </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="FAQ.jsp"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
                         <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
