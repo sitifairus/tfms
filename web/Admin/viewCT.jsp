@@ -102,7 +102,7 @@
         %>
         
         
-        <div class="container" align="center" ">
+        <div class="container" align="center">
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
