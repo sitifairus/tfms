@@ -24,22 +24,17 @@
             width: 500px;
             background-color: darkred;
             }
-            
-            body {
-                -webkit-filter:opacity(.2);
-                filter: opacity(.2); 
-            }  
         }
       </style>
     </head>
-    <body style="background-color:#FFFFD6">
+    <body style="background-color: #FFFFCC">
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
                
                 <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:300px; height:100px; "/></div>
                <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: #990033; height: 30px; width: 35%;
-                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;">COMMITTEE / TASKFORCE MANAGEMENT SYSTEM</div>
+                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;"> TASKFORCE MANAGEMENT SYSTEM</div>
                 <div style="position: absolute; right: 15px; padding-top: 25px;"><h2 style="font-family: Arial Black, Gadget, sans-serif; color: darkred">FACULTY OF COMPUTING</h2></div>
                  <div style="position: absolute; right: 50px; padding-top: 85px;"><img src="../images/inno.png"></div>
                 

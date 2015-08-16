@@ -14,13 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import package1.DB;
 
-
 /**
  *
  * @author on
  */
-@WebServlet(name = "createTask", urlPatterns = {"/createTask"})
-public class createTask extends HttpServlet {
+@WebServlet(name = "EditMember", urlPatterns = {"/EditMember"})
+public class EditMember extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,39 +35,29 @@ public class createTask extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String officeName=request.getParameter("officeName");
-            String taskName=request.getParameter("taskName");
-            String officeID=request.getParameter("officeID");
-            String coordinator=request.getParameter("userID");
+            String memberID=request.getParameter("memberID");
             String startDate=request.getParameter("startDate");
             String endDate=request.getParameter("endDate");
-            
-            DB db= new DB();
-            //System.out.println("password:");
+            String position=request.getParameter("post");
+            String taskID=request.getParameter("taskID");
+            System.out.println(memberID);
+            DB db = new DB();
             if(db.connect())
             {
-                db.query("INSERT INTO tf(TFname,officeID,coordinatorID,startDate,endDate) VALUES('"+taskName+"','"+officeID+"','"+coordinator+"','"+startDate+"','"+endDate+"')");
-                db.query("SELECT * FROM tf WHERE TFname='"+taskName+"'");
-                String taskID=db.getDataAt(0, "idTF");
-                System.out.println(taskID);
-                db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+coordinator+"', 'Coordinator', 'Leader', '"+startDate+"', '"+endDate+"')");
-                out.println("Done");
+                if(db.query("UPDATE tf_member SET startDate='"+startDate+"', endDate='"+endDate+"',position='"+position+"' WHERE idtf_member='"+memberID+"'"))
+                {
+                    response.sendRedirect("Admin/viewCT.jsp?taskID="+taskID+"");
+                }
                 db.close();
-                System.out.println("Input has been accepted");
-                response.sendRedirect("Admin/viewCTinfo.jsp");
-            }
-            else
-            {
-                System.out.println("not connecteed!!");
             }
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet createTask</title>");            
+            out.println("<title>Servlet EditMember</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet createTask at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditMember at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

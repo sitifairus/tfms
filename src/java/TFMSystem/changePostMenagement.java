@@ -40,11 +40,12 @@ public class changePostMenagement extends HttpServlet {
             String postID=request.getParameter("postID");
             String postName=request.getParameter("postName");
             String newstartDate=request.getParameter("newstartDate");
+            String newendDate=request.getParameter("newendDate");
             DB db= new DB();
             if(db.connect())
             {
-                db.query("INSERT INTO ak_position (postName,userID,status,startDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"')");
-                db.query("UPDATE ak_position SET status='not active', lastDate='"+newstartDate+"' WHERE postID='"+postID+"'");
+                db.query("INSERT INTO ak_position (postName,userID,status,startDate,lastDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"','"+newendDate+"')");
+                db.query("UPDATE ak_position SET status='not active', WHERE postID='"+postID+"'");
                 System.out.println("okeynn");
                 response.sendRedirect("Admin/postManagement.jsp");
             }

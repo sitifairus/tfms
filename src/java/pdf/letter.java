@@ -4,29 +4,29 @@
  * and open the template in the editor.
  */
 package pdf;
-
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import java.io.FileOutputStream;
-
 /**
  *
- * @author asus
+ * @author on
  */
-public class alterLetter {
-    public static void main(String args[]){
-		try {
+public class letter {
+    letter()
+    {
+        
+    }
+    public boolean AlterLetter(String rujukan, String name, String position, String department, String gStatus, String sDate, String eDate, String taskName)
+    {
+        try {
 			PdfReader pdfReader;	
-                    pdfReader = new PdfReader("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Appointment letter.pdf");	
-                    //pdfReader = new PdfReader("C:\\Users\\asus\\Desktop\\TFMsystem\\Appointment letter.pdf");	
+                        pdfReader = new PdfReader("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Appointment letter.pdf");	
 			
 			//Create PdfStamper instance.
-			PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf"));
-
-			   //new FileOutputStream("C:\\Users\\asus\\Desktop\\TFMsystem\\Modified appointment letter.pdf"));
-
+			PdfStamper pdfStamper = new PdfStamper(pdfReader,
+			   new FileOutputStream("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf"));
 			
 			//Create BaseFont instance.
 			BaseFont baseFont = BaseFont.createFont(
@@ -47,26 +47,26 @@ public class alterLetter {
                                 
 				//Write text
 				pageContentByte.setTextMatrix(120, 706);
-                                pageContentByte.showText("[no rujukan(enter by admin/opai)]");
+                                pageContentByte.showText(rujukan);
                                 
                                 pageContentByte.setTextMatrix(500, 706);
                                 pageContentByte.showText("[current date]");
                                 //address
                                 pageContentByte.setTextMatrix(46, 641);
-                                pageContentByte.showText("[name]");
+                                pageContentByte.showText(name);
                                  pageContentByte.setTextMatrix(46, 629);
-                                pageContentByte.showText("[position]");
+                                pageContentByte.showText(position);
                                  pageContentByte.setTextMatrix(46, 617);
-                                pageContentByte.showText("[department]");
+                                pageContentByte.showText(department);
                                 
 				pageContentByte.setTextMatrix(155, 493);
-                                pageContentByte.showText("[status(penyelaras/ahli),taskforce name]");
+                                pageContentByte.showText(gStatus+", "+taskName);
                                 
                                 pageContentByte.setTextMatrix(178, 433);
-                                pageContentByte.showText("[start date]");
+                                pageContentByte.showText(sDate);
                                 
                                 pageContentByte.setTextMatrix(290, 433);
-                                pageContentByte.showText("[end date] .");
+                                pageContentByte.showText(eDate+" .");
                                 
                                 pageContentByte.setTextMatrix(46, 248);
                                 pageContentByte.showText("[name]");
@@ -80,13 +80,16 @@ public class alterLetter {
                                 
                                 pageContentByte.endText();
 			}
-			
 			//Close the pdfStamper.
-			pdfStamper.close();	
-			
+			pdfStamper.close();
 			System.out.println("PDF modified successfully.");
-		} catch (Exception e) {
+                        return true;
+		} 
+                catch (Exception e) {
 			e.printStackTrace();
+                        return false;
 		}
-	}
+	
+    }
+    
 }

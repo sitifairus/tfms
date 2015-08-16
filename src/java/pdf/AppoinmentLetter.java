@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TFMSystem;
-
+package pdf;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import package1.DB;
-
+import pdf.letter;
 
 /**
  *
  * @author on
  */
-@WebServlet(name = "createTask", urlPatterns = {"/createTask"})
-public class createTask extends HttpServlet {
+@WebServlet(name = "AppoinmentLetter", urlPatterns = {"/AppoinmentLetter"})
+public class AppoinmentLetter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,47 +30,71 @@ public class createTask extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    //String noRujukan=null;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String name=null;
+        String position=null;
+        String department=null;
+        String gStatus=null;
+        String startDate=null;
+        String endDate=null;
+        String taskName=null;
+        String noRujukan;
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String officeName=request.getParameter("officeName");
-            String taskName=request.getParameter("taskName");
-            String officeID=request.getParameter("officeID");
-            String coordinator=request.getParameter("userID");
-            String startDate=request.getParameter("startDate");
-            String endDate=request.getParameter("endDate");
+            String memberID=request.getParameter("memberID");
+            noRujukan=request.getParameter("noRujukan");
             
-            DB db= new DB();
-            //System.out.println("password:");
+            DB db = new DB();
+            letter Letter= new letter();
             if(db.connect())
             {
-                db.query("INSERT INTO tf(TFname,officeID,coordinatorID,startDate,endDate) VALUES('"+taskName+"','"+officeID+"','"+coordinator+"','"+startDate+"','"+endDate+"')");
-                db.query("SELECT * FROM tf WHERE TFname='"+taskName+"'");
-                String taskID=db.getDataAt(0, "idTF");
-                System.out.println(taskID);
-                db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+coordinator+"', 'Coordinator', 'Leader', '"+startDate+"', '"+endDate+"')");
-                out.println("Done");
+                if(db.query("SELECT user.name, user.position, user.department, tf_member.GStatus, tf_member.StartDate, tf_member.EndDate, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf_member.tfID=tf.idTF WHERE tf_member.idtf_member='"+memberID+"'"))
+                {
+                    name=db.getDataAt(0, "name");
+                    position=db.getDataAt(0, "position");
+                    department=db.getDataAt(0, "department");
+                    gStatus=db.getDataAt(0, "GStatus");
+                    startDate=db.getDataAt(0, "StartDate");
+                    endDate=db.getDataAt(0, "EndDate");
+                    taskName=db.getDataAt(0, "TFname");
+                }
                 db.close();
-                System.out.println("Input has been accepted");
-                response.sendRedirect("Admin/viewCTinfo.jsp");
             }
-            else
+            
+            System.out.println(name);
+                System.out.println(position);
+                System.out.println(department);
+                System.out.println(gStatus);
+                System.out.println(startDate);
+                System.out.println(endDate);
+                System.out.println(taskName);
+                System.out.println(noRujukan);
+            
+            if(Letter.AlterLetter(noRujukan, name, position, department, gStatus, startDate, endDate, taskName))
             {
-                System.out.println("not connecteed!!");
+                out.println("Success");
             }
+            
+            
+            
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet createTask</title>");            
+            out.println("<title>Servlet AppoinmentLetter</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet createTask at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AppoinmentLetter at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

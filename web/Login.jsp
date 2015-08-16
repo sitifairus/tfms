@@ -1,44 +1,24 @@
 <%@page import="TFMSystem.LoginVerification"%>
 <html>
-    <head>
-        <title>UTM Task Force</title>
         
+<head>
+    <title>UTM Task Force</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <style>
-            img {
-                opacity: 1.0;
-                filter: alpha(opacity=20); /* For IE8 and earlier */
-            }       
-        </style>
-    </head>
+        <%@include file="head.jsp" %>
+        
+</head>
     
-    <body>
-        
-        
-        
-
+<body style="background-color:lightgoldenrodyellow">
     
-
-        <%
-           // session.ivalidate();
-            
-            
-        %>
-        <div class="row-header" style="text-align:center; color:black;">
-
-        <h3>Welcome to UTM Task Force</h3>
+<center><br><br><img src="images/logo-UTM-baru.png" alt="utm" style="width:auto;height:200px;"><center>
+    
+    <div style="margin-top:40px;">
+    <MARQUEE> Welcome To UTM Task Force Login Page</MARQUEE>
+    </div>   
+        <div style="text-align:center;margin-top:55px;">
+            <button data-toggle="modal" data-target="#LoginModal" class="btn btn-primary">LOGIN</button>
         </div>
-        <div class="row header" style="text-align:center;margin-top:40px;">
-        <a href="#" data-toggle="modal" data-target="#LoginModal">Login</a><br><br><br><br>
-         <img src="images/utm3.jpg" alt="UTM" style="width:1350px;height:550px;">
-        </div>
-        
-       
-
-        
+            <br><br><br>
         <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
             <div class="container">    
                 <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
@@ -92,7 +72,38 @@
             </div>
         </div>
         
-        </body>
+    <script type="text/javascript">
+    
+    tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+    tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+    function GetClock(){
+        var d=new Date();
+        var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
+        if(nyear<1000) nyear+=1900;
+        var d=new Date();
+        var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+        if(nhour==0){ap=" AM";nhour=12;}
+            else if(nhour<12){ap=" AM";}
+                else if(nhour==12){ap=" PM";}
+                    else if(nhour>12){ap=" PM";nhour-=12;}
+
+        if(nmin<=9) nmin="0"+nmin;
+            if(nsec<=9) nsec="0"+nsec;
+
+            document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
+    }
+
+    window.onload=function(){
+    GetClock();
+    setInterval(GetClock,1000);
+    }
+
+</script>
+<div id="clockbox"></div>
+</body>
+</html>
 <%@ include file="footer.jsp" %> 
     
 
