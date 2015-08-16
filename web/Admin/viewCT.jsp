@@ -117,7 +117,7 @@
                         <div class="panel-body">
                                 <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table2" placeholder="Seacrh Staff" />
                         </div>
-                       
+                       <div style="max-height: 410px; overflow-y: scroll;">
                         <table class="table table-hover" id="dev-table2">
                             <thead>
                                     <tr align="center">
@@ -201,14 +201,54 @@
                                             
                                         </td>
                                         <td>
-                                            <form action="#" method="post" > <?---where to,action & method---?>
-                                                <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                <input type="hidden" name="memberID" value="<%=memberID%>">
-                                                <input type="submit" value="Create Appointment Letter" class="btn btn-default">
-                                            </form>
+                                            <a href="#" data-toggle="modal" data-target="#downloadLetterModal<%=i%>" class="btn btn-default">Create Appointment Letter</a>
                                         </td>
                                     </tr>
                                     
+                                    <div class="modal fade" id="downloadLetterModal<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
+                                        <div class="container">    
+                                            <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
+                                                <div class="panel panel-info" >
+                                                    <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Request Appointment Letter for <%
+                                                                    if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                                                    {
+                                                                        out.print(coordinatorQ);
+                                                                    }
+                                                                %><%=name%> (<%=gStatus%>)</b>
+                                                        <form class="form-horizontal" role="form" method="post" action="../AppoinmentLetter">
+                                                            <div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-4 control-label">Reference No  :</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input name="noRujukan" type="text" class="form-control" required>
+                                                                    </div>
+                                                                </div><br><br>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-4 control-label">Signature  :</label>
+                                                                    <div class="col-sm-8">
+                                                                        <select name="postName" class="form-control">
+                                                                            <option value="Dekan">Dekan</option>
+                                                                            <option value="Timbalan Dekan(A)">Timbalan Dekan(A)</option>
+                                                                            <option value="Timbalan Dekan(P)">Timbalan Dekan(P)</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <br><br>
+                                                                </div>
+                                                            </div>
+                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
+                                                                <input type="hidden" name="memberID" value="<%=memberID%>">
+                                                                <button id="btn-login" class="btn btn-success" >Confirm</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                                                                <br><br>
+                                                        </form>
+                                                    </div>                      
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                            
+                            
                                     <div class="modal fade" id="ConfirmTerminateModala<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
                                         <div class="container">    
                                             <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
@@ -261,6 +301,7 @@
                                  %>  
                             </tbody>
                         </table>
+                       </div>
                     </div>
                 </div>
             </div>
@@ -281,7 +322,7 @@
                         <div class="panel-body">
                                 <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table1" placeholder="Seacrh Staff" />
                         </div>
-                       
+                        <div style="max-height: 410px; overflow-y: scroll;">
                         <table class="table table-hover" id="dev-table1">
                             <thead>
                                     <tr align="center">
@@ -338,6 +379,7 @@
                                  %>  
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
