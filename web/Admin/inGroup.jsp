@@ -4,60 +4,96 @@
     Author     : user8
 --%>
 
+<%@page import="package1.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
+        <html><head>
+                 <title>TFMSystem</title>
         <%@include file="../head.jsp" %>
-        <title>No group/No Task Force</title>
+          <style>
+            .row{
+		    margin-top:40px;
+		    padding: 0 200px ;
+		}
+		 
+          </style>
     </head>
-    <body>
-    <%@ include file="adminHeader.jsp" %>
-    </body>
+<body>
+     <%@ include file="adminHeader.jsp" %>
+    <div class="container" align="center">
+    <h1 align="center"> Staffs in taskforce/committee <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
+        <div class="row" align="center">
+            <div class="col-md-60">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Task Force Members</h3>
+                        <div class="pull-right">
+                            <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                                <i class="glyphicon glyphicon-filter"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Task Member" />
+                    </div>
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                            <tr align="center">
+                                <th>No</th>
+                                <th>Staff Name</th>
+                                <th>Staff ID</th>
+                                <th>Department</th>
+                                <th>Taskforce </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            DB db = new DB();
+                            //DB db2 = new DB();
+                            String name;
+                            String staffID;
+                            String department;
+                            String taskName;
+                            String userID;
+                            int no=0;
+                            if(db.connect())
+                            {
+                                if(db.query("SELECT * FROM user NOT JOIN tf_member ON user.userID=tf_member.userID "))
+                                {
+                                    System.out.println(db.getNumberOfRows());
+                                    for(int i=0; i<db.getNumberOfRows();i++)
+                                    {
+                                        name=db.getDataAt(i, "name");
+                                        staffID=db.getDataAt(i,"staffID");
+                                        department=db.getDataAt(i, "department");
+                                        userID=db.getDataAt(i, "userID");
+                                        System.out.println(userID);
+                                        %>
+                                        <tr>
+                                        <td>1</td>
+                                        <td><%=name%></td>
+                                        <td><%=staffID%></td>
+                                        <td><%=department%></td>
+                                        <td>
+                        
+                                            <li><%//=taskName%></li>
+                                            
+                                        </td>
+                                        </tr>
+                        <%
+                                    }
+                                }
+                                db.close();
+                            }
+                        %>          
+                        </tbody>
+                    </table>
+                </div>
+            </div>	
+        </div>
+    </div>
+</body>
 </html>
-<f:view>
-        <h:form><br>
-            <h2 align="center">Staff that are in taskforce/committee</h2>
-           <h3 align="center">Search Engine</h3></h:form>
-            <table align="center" border="0" cellspacing="1" cellpadding="1">
-               <tbody>
-                    <tr>
-                        <td valign="top"><b>Filter search by name</b></td>
-                        <td valign="top">:<input type="text" name="name" size="30" /><br><br></td>
-                    </tr>
-                    <tr>
-                        <td valign="top"><b>Filter search by staff ID</b></td>
-                        <td valign="top">:<input type="text" name="username" size="30" /><br><br></td>
-                    </tr>
-                    <tr>
-                        <td valign="top"><b>Filter search by position</b></td>
-                         <td valign="top">:<select name="position">
-                                <option value="">--Not Selected--</option>
-                                <option value="1">Senior Lecturer</option>
-                                <option value="2">Lecturer</option>
-                                <option value="3">Associate Professor</option>
-                                <option value="4">Professor</option>
-                            </select>
-                         <br><br></td>
-                    </tr>
-                    <tr>
-                        <td valign="top"><b>Filter search by department &nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-                        <td valign="top">:<select name="department">
-                                <option value="">--Not Selected--</option> 
-                                <option value="1">Computer Science</option>
-                                <option value="2">Software Engineering</option>
-                                <option value="3">Information System</option>
-                            </select><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td> 
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align:center;"><input type="submit" value="Search" /></td>
-                    </tr>
-                                        
-                </tbody>
-            </table>
-   
-</f:view>
- <%@ include file="../footer.jsp" %>       
+
+
+<%@ include file="../footer.jsp" %>

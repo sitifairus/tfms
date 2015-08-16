@@ -17,7 +17,7 @@
         
     </head>
     <body>
-        <%@include file="adminHeader.jsp" %>
+        <%@include file="PentadbirHeader.jsp" %>
         <div id="Wrapper">
             <center>
                 <br>
@@ -28,12 +28,12 @@
                         <font color="#FFFFFF">
                         test<br>
                         test<br>
-                        new system is being created<br><br>
+                        news,jsp is being created in pentadbir page<br><br>
                         checking for error..<br><br>
                         deploying..<br><br><br><br>
                         A new system created ! ---> named : TFMSystem ^_^  <br><br>
                         
-                        Database have been updated. Please check your info and update where necessary
+                        this news for pentadbir page,i change the path by create the new jsp in pentadbir bcoz the old when u click it direct to admin page
                         
                     </h4>
                 

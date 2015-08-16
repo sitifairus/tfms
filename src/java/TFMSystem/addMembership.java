@@ -12,15 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import package1.DB;
-
 /**
  *
  * @author on
  */
-@WebServlet(name = "changePostMenagement", urlPatterns = {"/changePostMenagement"})
-public class changePostMenagement extends HttpServlet {
+@WebServlet(name = "addMembership", urlPatterns = {"/addMembership"})
+public class addMembership extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,27 +35,40 @@ public class changePostMenagement extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String userID=request.getParameter("userID");
-            String postID=request.getParameter("postID");
-            String postName=request.getParameter("postName");
-            String newstartDate=request.getParameter("newstartDate");
-            String newendDate=request.getParameter("newendDate");
-            DB db= new DB();
+            String taskID=request.getParameter("taskID");
+            String startDate=request.getParameter("StartDate");
+            String endDate=request.getParameter("endDate");
+            DB db = new DB();
+            
             if(db.connect())
             {
-                db.query("INSERT INTO ak_position (postName,userID,status,startDate,lastDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"','"+newendDate+"')");
-                db.query("UPDATE ak_position SET status='not active', WHERE postID='"+postID+"'");
-                System.out.println("okeynn");
-                response.sendRedirect("Admin/postManagement.jsp");
+                if(db.query("SELECT * FROM tf_member WHERE userID='"+userID+"'AND tfID='"+taskID+"'"))
+                {
+                    if(db.getNumberOfRows()==0)
+                    {
+                        if(db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+userID+"', 'member', 'member', '"+startDate+"', '"+endDate+"')"))
+                        {
+                            response.sendRedirect("Admin/viewCT.jsp?taskID="+taskID+"");
+                        }
+                    }
+                    else
+                        response.sendRedirect("Admin/message.jsp?message=The Staff has Already Register in this Task!");
+                }
+                
+                db.close();
             }
-            db.close();
+            else
+            {
+                
+            }
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet changePostMenagement</title>");            
+            out.println("<title>Servlet addMembership</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet changePostMenagement at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet addMembership at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

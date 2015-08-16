@@ -4,40 +4,27 @@
     Author     : user8
 --%>
 
+<%@page import="package1.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
         <html><head>
-                 <title>UTM Task Force</title>
+                 <title>TFMSystem</title>
         <%@include file="../head.jsp" %>
           <style>
             .row{
 		    margin-top:40px;
-		    padding: 0 280px ;
+		    padding: 0 100px ;
 		}
-		.clickable{
-		    cursor: pointer;   
-		}
-
-		.panel-heading div {
-			margin-top: -18px;
-			font-size: 15px;
-		}
-		.panel-heading div span{
-			margin-left:5px;
-		}
-		.panel-body{
-			display: none;
-		}
-                    
+		 
           </style>
     </head>
 <body>
      <%@ include file="adminHeader.jsp" %>
   <div class="container" align="center">
     <h1 align="center"> Task Expiration <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
-    	<div class="row" align="center">
+    <div class="row" align="center">
 			<div class="col-md-30">
-				<div class="panel panel-primary">
+				<div class="panel panel-primary" >
 					<div class="panel-heading">
 						<h3 class="panel-title">Task Force Members</h3>
 						<div class="pull-right">
@@ -52,46 +39,120 @@
 					<table class="table table-hover" id="dev-table">
 						<thead>
 							<tr align="center">
-								<th>No</th>
+								
 								<th>Staff Name</th>
 								<th>Staff ID</th>
 								<th>Position</th>
                                                                 <th>Department</th>
-                                                                <th>Expired in : </th>
+                                                                <th>CT Name</th>
+                                                                <th>Expired in  </th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Ras</td>
-								<td>a13cs0139</td>
-								<td>Professor</td>
-                                                                <td>Software Engineering</td>
-                                                                <td>Overdue</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Surayya</td>
-								<td>a13cs0158</td>
-								<td>Professor</td>
-                                                                <td>Software Engineering</td>
-                                                                <td>3 month</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>Siti Fairus</td>
-								<td>a13cs0139</td>
-								<td>Associate Professor</td>
-                                                                <td>Computer Science</td>
-                                                                <td>2 month</td>
-							</tr>
+                                                    <%
+                                                        DB db=new DB();
+                                                        if(db.connect())
+                                                        {
+                                                            String name;
+                                                            String staffID;
+                                                            String position;
+                                                            String department;
+                                                            String expiredIN;
+                                                            String taskName;
+                                                            if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_SUB(CURDATE(),INTERVAL 30 DAY) <= tf_member.endDate"))
+                                                            {
+                                                                for(int i=0; i<db.getNumberOfRows();i++)
+                                                                {
+                                                                    name=db.getDataAt(i, "name");
+                                                                    staffID=db.getDataAt(i, "staffID");
+                                                                    position=db.getDataAt(i, "position");
+                                                                    department=db.getDataAt(i, "department");
+                                                                    taskName=db.getDataAt(i,"TFname");
+                                                                    expiredIN="1 month";
+                                                    %>
                                                         <tr>
-                                                                <td>4</td>
-                                                                <td>Bethrise</td>
-								<td>a13cs0084</td>
-								<td>Senior Lecturer</td>
-                                                                <td>Software Engineering</td>
-                                                                <td>1 month</td>
+								<td><%=name%></td>
+								<td><%=staffID%></td>
+								<td><%=position%></td>
+                                                                <td><%=department%></td>
+                                                                <td><%=taskName%></td>
+                                                                <td><%=expiredIN%></td>
+							</tr> 
+                                                    
+                                                    <%
+                                                                }
+                                                            }
+                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_SUB(CURDATE(),INTERVAL -60 DAY) <= tf_member.endDate"))
+                                                            {
+                                                                for(int i=0; i<db.getNumberOfRows();i++)
+                                                                {
+                                                                    name=db.getDataAt(i, "name");
+                                                                    staffID=db.getDataAt(i, "staffID");
+                                                                    position=db.getDataAt(i, "position");
+                                                                    department=db.getDataAt(i, "department");
+                                                                    taskName=db.getDataAt(i,"TFname");
+                                                                    expiredIN="2 month";    
+                                                    %>
+                                                        <tr>
+								<td><%=name%></td>
+								<td><%=staffID%></td>
+								<td><%=position%></td>
+                                                                <td><%=department%></td>
+                                                                <td><%=taskName%></td>
+                                                                <td><%=expiredIN%></td>
+							</tr> 
+                                                    <%
+                                                                }
+                                                            }
+                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_SUB(CURDATE(),INTERVAL -90 DAY) <= tf_member.endDate"))
+                                                            {
+                                                                for(int i=0; i<db.getNumberOfRows();i++)
+                                                                {
+                                                                    name=db.getDataAt(i, "name");
+                                                                    staffID=db.getDataAt(i, "staffID");
+                                                                    position=db.getDataAt(i, "position");
+                                                                    department=db.getDataAt(i, "department");
+                                                                    taskName=db.getDataAt(i,"TFname");
+                                                                    expiredIN="3 month";    
+                                                    %>
+                                                        <tr>
+								<td><%=name%></td>
+								<td><%=staffID%></td>
+								<td><%=position%></td>
+                                                                <td><%=department%></td>
+                                                                <td><%=taskName%></td>
+                                                                <td><%=expiredIN%></td>
+							</tr> 
+                                                    <%
+                                                                }
+                                                            }
+                                                        
+                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE tf_member.endDate< CURDATE()"))
+                                                            {
+                                                                for(int i=0; i<db.getNumberOfRows();i++)
+                                                                {
+                                                                    name=db.getDataAt(i, "name");
+                                                                    staffID=db.getDataAt(i, "staffID");
+                                                                    position=db.getDataAt(i, "position");
+                                                                    department=db.getDataAt(i, "department");
+                                                                    taskName=db.getDataAt(i,"TFname");
+                                                                    expiredIN="Overdue";    
+                                                    %>
+                                                        <tr>
+								<td><%=name%></td>
+								<td><%=staffID%></td>
+								<td><%=position%></td>
+                                                                <td><%=department%></td>
+                                                                <td><%=taskName%></td>
+                                                                <td><%=expiredIN%></td>
+							</tr> 
+                                                    <%
+                                                                }
+                                                            }
+                                                            db.close();
+                                                        }
+                                                    %>
+							       
 						</tbody>
 					</table>
 				</div>

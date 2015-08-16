@@ -12,15 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import package1.DB;
 
 /**
  *
  * @author on
  */
-@WebServlet(name = "changePostMenagement", urlPatterns = {"/changePostMenagement"})
-public class changePostMenagement extends HttpServlet {
+@WebServlet(name = "CT_alter", urlPatterns = {"/CT_alter"})
+public class CT_alter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,28 +35,27 @@ public class changePostMenagement extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userID=request.getParameter("userID");
-            String postID=request.getParameter("postID");
-            String postName=request.getParameter("postName");
-            String newstartDate=request.getParameter("newstartDate");
-            String newendDate=request.getParameter("newendDate");
-            DB db= new DB();
+            String taskName=request.getParameter("taskName");
+            String taskID=request.getParameter("taskID");
+            String officeID=request.getParameter("officeID");
+            String StartDate=request.getParameter("StartDate");
+            String EndDate=request.getParameter("EndDate");
+            DB db = new DB();
+            
             if(db.connect())
             {
-                db.query("INSERT INTO ak_position (postName,userID,status,startDate,lastDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"','"+newendDate+"')");
-                db.query("UPDATE ak_position SET status='not active', WHERE postID='"+postID+"'");
-                System.out.println("okeynn");
-                response.sendRedirect("Admin/postManagement.jsp");
+                db.query("UPDATE tf SET TFname='"+taskName+"', officeID='"+officeID+"', StartDate='"+StartDate+"', EndDate='"+EndDate+"' WHERE idTF='"+taskID+"'");
+                response.sendRedirect("Admin/viewCT.jsp?taskID="+taskID+"");
+                db.close();
             }
-            db.close();
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet changePostMenagement</title>");            
+            out.println("<title>Servlet CT_alter</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet changePostMenagement at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CT_alter at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

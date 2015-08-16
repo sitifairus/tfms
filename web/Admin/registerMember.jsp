@@ -4,6 +4,7 @@
     Author     : asus
 --%>
 
+<%@page import="java.io.InputStream"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="TFMSystem.Test"%>
 
@@ -17,7 +18,7 @@
     <body>
     <%@ include file="adminHeader.jsp" %>
         <%
-            String username=null;
+            String userID=null;
             String password=null;
             String gender=null;
             String name=null;
@@ -31,7 +32,7 @@
             String office=null;
             String startDate=null;
                                         
-            username=request.getParameter("userID");
+            userID=request.getParameter("userID");
             userType=request.getParameter("userType");
             gender=request.getParameter("gender");
             password=request.getParameter("password");
@@ -44,13 +45,14 @@
             department=request.getParameter("department");                      
             qualification=request.getParameter("qualification");
             startDate=request.getParameter("startDate");
-            if(username==null)
+            if(userID==null)
             {
         %>
         <table align="center">
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
             <h2 align="center">Register New Staff</h2><br>
-            <form role="form" action="registerMember.jsp" method="post">
+            <form role="form" action="registerMember.jsp" method="get" >
+                
               <div class="form-group">
                   <label for="userID" class="col-sm-3 control-label">Username :</label>
                 <div class="col-sm-9">
@@ -79,7 +81,7 @@
                 <label for="position" class="col-sm-3 control-label">Gender:</label>
                 <div class="col-sm-9">
                     <select name="gender" id="gender" class="form-control" required>
-                        <option value="Not Selected">Not Selected</option>
+                        <option value="Male">Not Selected</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -148,8 +150,10 @@
               </div>
               <div class="form-group">
                 <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
-                <input type="date" class="form-control" name="startDate" >
-              </div><br><br>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" name="startDate" >
+                </div>
+              </div><br><br><br>
               <div class="form-group" style="padding-left: 171px;">
                   <div class="col-sm-offset-2 col-sm-10" >
                     <button type="submit" class="btn btn-default"  >Proceed</button>
@@ -173,7 +177,7 @@
                     <tbody>
                       <tr>
                         <td>Username:</td>
-                        <td><%=username%></td>
+                        <td><%=userID%></td>
                       </tr>
                       <tr>
                         <td>Password:</td>
@@ -230,8 +234,16 @@
                       
                   </table>
                   
-                      <form action="../Test" method="get"> <?---where to,action & method---?>
-                            <input type="hidden" name="userID" value="<%=username%>">
+                      <form action="../Test" method="get" enctype="multipart/form-data"> <?---where to,action & method---?>
+                            <div class="form-group">
+                                <div class="text-center">
+                                    <img src="//placehold.it/100" class="avatar img-circle" alt="avatar" size="50">
+                                     <h6 class="">Upload a different photo...</h6>
+
+                                    <input class="form-control" type="file" name="profilePic">
+                                </div>
+                            </div>
+                            <input type="hidden" name="userID" value="<%=userID%>">
                             <input type="hidden" name="password" value="<%=password%>">
                             <input type="hidden" name="name" value="<%=name%>">
                             <input type="hidden" name="staffID" value="<%=staffID%>">

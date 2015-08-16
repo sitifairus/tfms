@@ -12,15 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import package1.DB;
+
 
 /**
  *
  * @author on
  */
-@WebServlet(name = "changePostMenagement", urlPatterns = {"/changePostMenagement"})
-public class changePostMenagement extends HttpServlet {
+@WebServlet(name = "createTask", urlPatterns = {"/createTask"})
+public class createTask extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,28 +36,39 @@ public class changePostMenagement extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userID=request.getParameter("userID");
-            String postID=request.getParameter("postID");
-            String postName=request.getParameter("postName");
-            String newstartDate=request.getParameter("newstartDate");
-            String newendDate=request.getParameter("newendDate");
+            String officeName=request.getParameter("officeName");
+            String taskName=request.getParameter("taskName");
+            String officeID=request.getParameter("officeID");
+            String coordinator=request.getParameter("userID");
+            String startDate=request.getParameter("startDate");
+            String endDate=request.getParameter("endDate");
+            
             DB db= new DB();
+            //System.out.println("password:");
             if(db.connect())
             {
-                db.query("INSERT INTO ak_position (postName,userID,status,startDate,lastDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"','"+newendDate+"')");
-                db.query("UPDATE ak_position SET status='not active', WHERE postID='"+postID+"'");
-                System.out.println("okeynn");
-                response.sendRedirect("Admin/postManagement.jsp");
+                db.query("INSERT INTO tf(TFname,officeID,coordinatorID,startDate,endDate) VALUES('"+taskName+"','"+officeID+"','"+coordinator+"','"+startDate+"','"+endDate+"')");
+                db.query("SELECT * FROM tf WHERE TFname='"+taskName+"'");
+                String taskID=db.getDataAt(0, "idTF");
+                System.out.println(taskID);
+                db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+coordinator+"', 'Coordinator', 'Leader', '"+startDate+"', '"+endDate+"')");
+                out.println("Done");
+                db.close();
+                System.out.println("Input has been accepted");
+                response.sendRedirect("Admin/viewCTinfo.jsp");
             }
-            db.close();
+            else
+            {
+                System.out.println("not connecteed!!");
+            }
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet changePostMenagement</title>");            
+            out.println("<title>Servlet createTask</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet changePostMenagement at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet createTask at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

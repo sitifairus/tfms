@@ -15,23 +15,7 @@
         <title>UTM Task Force</title>
         
         <%@include file="../head.jsp" %>
-        <style>
-                .clickable{
-		    cursor: pointer;   
-		}
-
-		.panel-heading div {
-			margin-top: -18px;
-			font-size: 15px;
-		}
-		.panel-heading div span{
-			margin-left:5px;
-		}
-		.panel-body{
-			display: none;
-		}
-                    
-          </style>
+        
     </head>
     <body>
         <%@ include file="adminHeader.jsp" %>
@@ -39,58 +23,27 @@
             String postName=request.getParameter("postName");
             String postID=request.getParameter("postID");
         %>
-        <table align="center">
-             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
-                <h2 align="center">Change Staff for <%=postName%> position</h2>
-            <form role="form">
-              <div class="form-group">
-                <label for="FilterName" class="col-sm-4 control-label">By Name:</label>
-                <div class="col-sm-8">
-                    <input type="" class="form-control" id="filterName" placeholder="Enter Staff's Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="FilterID" class="col-sm-4 control-label">By Staff ID:</label>
-                <div class="col-sm-8">
-                    <input type="" class="form-control" id="filterID" placeholder="Enter Staff's ID">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="FilterPosition" class="col-sm-4 control-label">By Position:</label>
-                <div class="col-sm-8">
-                    <select name="FilterPosition" id="FilterPosition" class="form-control">
-                        <option value="">Choose Position...</option>
-                        <option>Lecturer</option>
-                        <option>Senior Lecturer</option>                                
-                        <option>Associate Professor</option>
-                        <option>Professor</option>
-                    </select>
-                </div>
-              </div>
-                <div class="form-group">
-                <label for="FilterDepartment" class="col-sm-4 control-label">By Department:</label>
-                <div class="col-sm-8">
-                    <select name="FilterDepartment" id="FilterDepartment" class="form-control">
-                        <option value="">Choose Department...</option>
-                        <option>Computer Science</option>
-                        <option>Software Engineering</option>
-                        <option>Information System</option>
-                    </select>
-                </div>
-              </div>
-              <div class="form-group" style="padding-left:171px;">
-                  
-                    <button type="submit" class="btn btn-default">Search</button>
-              </div>
-            </form>
-        </table>
-            
-            
+        <h2 align="center">Change Staff for <%=postName%> position</h2><br>
+        <form method="get" action="../changePostMenagement">
+            <div class="container" align="center" style="width: 700px;">
+                <div class="form-group" align="center">
+                    <label class="col-sm-3 control-label">Start Date:</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" name="newstartDate" required>
+                    </div>
+                </div> <br><br>
+                <div class="form-group" align="center">
+                    <label class="col-sm-3 control-label">End Date:</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" name="newendDate" required>
+                    </div>
+                </div> <br><br><br>
+            </div>
         <div class="container" align="center">
         
             <div class="" align="center">
                 <div class="col-md-30">
-                    <form method="get" action="../changePostMenagement">
+                    
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                                 <h3 class="panel-title">List of Staff</h3>
@@ -167,20 +120,14 @@
                             </tbody>
                         </table>
                     </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Start Date:</label>
-                                <div class="col-sm-4">
-                                    <input type="date" class="form-control" name="newstartDate" required>
-                                </div>
-                            </div> <br><br><br>
-                                    <input type="hidden" name="postID" value="<%=postID%>"> 
-                                    <input type="hidden" name="postName" value="<%=postName%>">
-                                    <button type="submit" class="btn btn-default">Proceed</button>                                 
-                    </form>
+                        <input type="hidden" name="postID" value="<%=postID%>"> 
+                        <input type="hidden" name="postName" value="<%=postName%>">
+                        <button type="submit" class="btn btn-default">Proceed</button>                                 
+                    
                 </div>
             </div>
         </div>    
-
+    </form>
     </body>
 </html>
 <%@ include file="../footer.jsp" %>
