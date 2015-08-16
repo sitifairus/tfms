@@ -29,11 +29,11 @@ public class letter {
         String currDate = df.format(today);
         try {
 			PdfReader pdfReader;	
-                        pdfReader = new PdfReader("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Appointment letter.pdf");	
+                        pdfReader = new PdfReader("C:\\Users\\asus\\Desktop\\TFMsystem\\web\\Appointment letter.pdf");	
 			
 			//Create PdfStamper instance.
 			PdfStamper pdfStamper = new PdfStamper(pdfReader,
-			   new FileOutputStream("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf"));
+			   new FileOutputStream("C:\\Users\\asus\\Desktop\\TFMsystem\\web\\Modified appointment letter.pdf"));
 			
 			//Create BaseFont instance.
 			BaseFont baseFont = BaseFont.createFont(
