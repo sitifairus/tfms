@@ -22,20 +22,29 @@
     <body>
         <%@ include file="adminHeader.jsp" %><br>
         
-        <h2 align="center">Current Post Management</h2><br>
-        <div class="container">
-        <table border="2"  align="center" cellspacing="2" cellpadding="2" class="table table-bordered">
-            <tbody>
-                <tr>
-                    <td style="text-align: center"><b>Post</b></td>
-                    <td style="text-align: center"><b>Name</b></td>
-                    <td style="text-align: center"><b>Email</b></td>
-                    <td style="text-align: center"><b>Start Date</b></td>
-                    <td style="text-align: center"><b>End Date</b></td>
-                    <td style="text-align: center" colspan='2'><b>Admin options</b></td>
-
-                </tr>
-        <%
+        
+        <div class="container" align="center">
+    <h1 align="center"> Post Management </h1>
+    <div class="row" align="center">
+			<div class="col-md-60">
+                            <div class="panel panel-primary" style="width: 950px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Staff Details</h3>
+						
+					</div>
+					<table class="table table-hover" id="dev-table">
+						<thead>
+							<tr align="center">
+								<td style="text-align: center"><b>Post</b></td>
+                                                                <td style="text-align: center"><b>Name</b></td>
+                                                                <td style="text-align: center"><b>Email</b></td>
+                                                                <td style="text-align: center"><b>Start Date</b></td>
+                                                                <td style="text-align: center"><b>End Date</b></td>
+                                                                <td style="text-align: center" colspan='2'><b>Admin options</b></td>
+                                                        </tr>
+						</thead>
+						<tbody>
+							<%
             String post=null;
             String email=null;
             String name=null;
@@ -60,6 +69,7 @@
                     postID=db.getDataAt(i,"postID");
                     startDate=db.getDataAt( i,"startDate");
                     status=db.getDataAt(i, "status");
+                    lastDate=db.getDataAt(i, "lastDate");
                     if(status.equals("active")){
                                   
         %>    
@@ -68,17 +78,18 @@
                     <td style="text-align:center;"><%=name%></td>
                     <td style="text-align:center;"><%=email%></td>
                     <td style="text-align:center;"><%=startDate%></td>
+                    <td style="text-align:center;"><%=lastDate%></td>
                     <td style="text-align:center;">
-                        <form action="profileEdit.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" name="userID" value="<%=userID%>">
-                            <input type="submit" value="Edit">
+                        <form action="EditPostMenagement.jsp" method="post"> <?---where to,action & method---?>
+                            <input type="hidden" name="postID" value="<%=postID%>">
+                            <input type="submit" value="Edit" class="btn btn-toolbar">
                         </form>
                     </td>
                     <td style="text-align:center;">
                         <form action="changeStaff.jsp" method="post" > <?---where to,action & method---?>
                             <input type="hidden" name="postID" value="<%=postID%>">
                             <input type="hidden" name="postName" value="<%=post%>">
-                            <input type="submit" value="Change staff">
+                            <input type="submit" value="Change staff" class="btn btn-toolbar">
                         </form>
                     </td>
                </tr>
@@ -86,22 +97,46 @@
                     }
                 }
         %>
+                                                    
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+	</div>
         
-        <div class="container">
-            
-        <table border="2"  align="center" cellspacing="2" cellpadding="2" class="table table-bordered">
-            <h2 align="center">Ex's Post Management</h2><br>
-            <tbody>
-                <tr>
-                    <td style="text-align: center"><b>Post</b></td>
-                    <td style="text-align: center"><b>Name</b></td>
-                    <td style="text-align: center"><b>Email</b></td>
-                    <td style="text-align: center"><b>Start Date</b></td>
-                    <td style="text-align: center"><b>End Date</b></td>
-
-                </tr>        
         
-        <%
+        <div class="container" align="center">
+    <h1 align="center"> Ex Post Management </h1>
+    <div class="row" align="center">
+			<div class="col-md-60">
+				<div class="panel panel-primary" style="width: 950px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Staff Details</h3>
+						<div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+						</div>
+					</div>
+					<div class="panel-body">
+						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table1" placeholder="Search Staff" />
+					</div>
+                                    <div style="max-height:500px; overflow-y: scroll;">
+					<table class="table table-hover" id="dev-table1">
+						<thead>
+							<tr align="center">
+								<td style="text-align: center"><b>Post</b></td>
+                                                                <td style="text-align: center"><b>Name</b></td>
+                                                                <td style="text-align: center"><b>Email</b></td>
+                                                                <td style="text-align: center"><b>Start Date</b></td>
+                                                                <td style="text-align: center"><b>End Date</b></td>
+                                                        </tr>
+						</thead>
+						<tbody>
+                                                    
+                                                    <%
                 for(int i=0; i<numOfRow; i++)
                 {
                     post=db.getDataAt( i,"postName");
@@ -125,10 +160,17 @@
             }
             db.close();
         %> 
+							
+						</tbody>
+					</table>
+                                    </div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
         
-            </tbody>
-        </table>
-        </div>
+
     </body>
 </html>
 <%@ include file="../footer.jsp" %>

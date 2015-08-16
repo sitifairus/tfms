@@ -102,7 +102,7 @@
         %>
         
         
-        <div class="container" align="center" style="width:1100px;">
+        <div class="container" align="center" ">
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
@@ -115,10 +115,10 @@
 				</div>
                         </div>
                         <div class="panel-body">
-                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table2" placeholder="Seacrh Staff" />
                         </div>
                        
-                        <table class="table table-hover" id="dev-table">
+                        <table class="table table-hover" id="dev-table2">
                             <thead>
                                     <tr align="center">
                                         <th>No.</th>
@@ -266,7 +266,7 @@
             </div>
         </div>
                                  
-        <div class="container" align="center" style="width:1100px;">
+        <div class="container" align="center"">
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
@@ -279,10 +279,10 @@
 				</div>
                         </div>
                         <div class="panel-body">
-                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table1" placeholder="Seacrh Staff" />
                         </div>
                        
-                        <table class="table table-hover" id="dev-table">
+                        <table class="table table-hover" id="dev-table1">
                             <thead>
                                     <tr align="center">
                                         <th>No.</th>

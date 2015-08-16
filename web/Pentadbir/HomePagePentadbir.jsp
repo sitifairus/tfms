@@ -27,8 +27,8 @@
 
 <body>
         
-        <%@include file="PentadbirHeader.jsp" %><br><br><br>
-        <p><h3 align="center">Welcome to Pentadbir home page!</h3><br><br><br>
+        <%@include file="PentadbirHeader.jsp" %><br>
+        <p><h3 align="center">Welcome to Pentadbir home page!</h3><br><br>
         
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel" >

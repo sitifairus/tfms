@@ -40,7 +40,7 @@
         %>
         
         <table align="center" >
-             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
+             <div class="container" style="width:500px;">
                 <h2 align="center">View Staff</h2>
                 <h3 align="center"> Search Engine</h3><br>
                 <form role="form" action="viewStaff.jsp">
@@ -49,13 +49,13 @@
                 <div class="col-sm-8">
                     <input type="" class="form-control" name="filterName" placeholder="Enter Staff's Name" >
                 </div>
-              </div><br><br>
+              </div>
               <div class="form-group">
                 <label for="FilterID" class="col-sm-4 control-label">By Staff ID:</label>
                 <div class="col-sm-8">
                     <input type="" class="form-control" name="filterID" placeholder="Enter Staff's ID" >
                 </div>
-              </div><br><br>
+              </div>
               <div class="form-group">
                 <label for="FilterPosition" class="col-sm-4 control-label">By Position:</label>
                 <div class="col-sm-8">
@@ -67,7 +67,7 @@
                         <option value="professor">Professor</option>
                     </select>
                 </div>
-              </div><br><br>
+              </div>
                 <div class="form-group">
                 <label for="FilterDepartment" class="col-sm-4 control-label">By Department:</label>
                 <div class="col-sm-8">
@@ -89,31 +89,48 @@
                         <option value="not active">Not Active</option>
                     </select>
                 </div>
-              </div><br><br>
+              </div>
                 <div class="form-group" style="padding-left:171px;">
                     
                     <button type="submit" class="btn btn-default">Search</button>
-                    <a href="viewStaff.jsp" style="text-decoration: underline;">Display All Staff</a>
+                    <a href="viewStaff.jsp" style="text-decoration: underline;">Display All Staff</a><br><br><br>
               </div>
             </form>
                
              </div>
              
         </table>
-        <div class="container">
-            
-        <table border="2"  align="center" cellspacing="2" cellpadding="2" id="myTable" class="table table-striped">
-            <tbody>
-                <tr>
-                    <td style="text-align: center"><b>No.</b></td>
-                    <td style="text-align: center"><b>Name</b></td>
-                    <td style="text-align: center"><b>Staff ID</b></td>
-                    <td style="text-align: center"><b>Position</b></td>
-                    <td style="text-align: center"><b>Department</b></td>
-                    <td style="text-align: center"><b>Status</b></td>
-
-                </tr>
-        <%
+        
+        
+        
+        <div class="container" align="center">
+    <div class="row" align="center" style="width: 900px">
+			<div class="col-md-60">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Staff Details</h3>
+						<div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+						</div>
+					</div>
+					<div class="panel-body">
+						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Search Staff" />
+					</div>
+                                    <div style="max-height: 410px; overflow-y: scroll;">
+					<table class="table table-hover" id="dev-table">
+						<thead>
+							<tr>
+								<td style="text-align: center; width: 70px;"><b>No.</b></td>
+                                                                <td><b>Name</b></td>
+                                                                <td style="text-align: center"><b>Staff ID</b></td>
+                                                                <td style="text-align: center"><b>Position</b></td>
+                                                                <td style="text-align: center"><b>Department</b></td>
+                                                                <td style="text-align: center"><b>Status</b></td>
+                                                        </tr>
+						</thead>
+						<%
                     
                     
                     System.out.println("0");
@@ -323,17 +340,13 @@
                     }
                     
         %>
-                
-                </tbody>
-        </table>
-        </div>
-        
-            
-        
-        <%
-                
-            
-        %>
+					</table>
+                                    </div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
     </body>
 </html>
 <%@ include file="../footer.jsp" %>

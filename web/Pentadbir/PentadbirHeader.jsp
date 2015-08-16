@@ -7,7 +7,7 @@
            
           .UTMlogo {
             position: absolute;
-            left: 0px;
+            left: 20px;
             width: 300px;
             padding: 10px;
           .taskLogo{
@@ -21,18 +21,18 @@
         }
       </style>
 </head>
-<body style="background-color:#FFDE9D">
+<body style="background-color:#FFFFCC">
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
                 <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:210px; height:100px; "/></div>
-                <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: darkred; height: 30px; width: 45%;
+                <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: #990033; height: 30px; width: 35%;
                      color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;"> TASKFORCE MANAGEMENT SYSTEM</div>
-                     
-                <div style="position: absolute; right: 10px; padding-top: 40px;"><img src="../images/foc.png" style="height:70px; "/></div>
+                     <div style="position: absolute; right: 15px; padding-top: 25px;"><h2 style="font-family: Arial Black, Gadget, sans-serif; color: darkred">FACULTY OF COMPUTING</h2></div>
+                 <div style="position: absolute; right: 50px; padding-top: 85px;"><img src="../images/inno.png"></div>
             </div>
             
-            <div style="background: -webkit-linear-gradient(white, grey); height: 10px">
+            <div style="background: -webkit-linear-gradient(black, darkred); height: 5px">
             </div>
      
             <div class="navbar-header" >
@@ -56,6 +56,9 @@
                     
                 </ul>
                     
+            </div>
+            <div style="background: -webkit-linear-gradient(darkred, black); height: 5px">
+                
             </div>
         </nav>
     </body>
