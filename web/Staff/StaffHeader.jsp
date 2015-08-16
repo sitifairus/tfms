@@ -24,13 +24,15 @@
         
         <nav class="navbar navbar-inverse" role="navigation" >
             <div style="background: -webkit-linear-gradient(#FFCC66, white); height: 120px;">
-                <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:210px; height:100px; "/></div>
-                <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: darkred; height: 30px; width: 45%;
-                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;">Committee/Taskforce Management System</div>
-                <div style="position: absolute; right: 10px; padding-top: 40px;"><img src="../images/foc.png" style="height:70px; "/></div>
-            </div>
+                <div class="UTMlogo"><img src="../images/logo-UTM-baru.png" alt="Home" style="width:300px; height:100px; "/></div>
+               <div style="position: absolute; right: 0px; padding: 5px 20px 5px 20px; background-color: #990033; height: 30px; width: 35%;
+                     color: white; text-align: center; font-family: Arial Black, Gadget, sans-serif; border-bottom-left-radius: 10px;"> TASKFORCE MANAGEMENT SYSTEM</div>
+                <div style="position: absolute; right: 15px; padding-top: 25px;"><h2 style="font-family: Arial Black, Gadget, sans-serif; color: darkred">FACULTY OF COMPUTING</h2></div>
+                 <div style="position: absolute; right: 50px; padding-top: 85px;"><img src="../images/inno.png"></div>
+             </div>
             
-            <div style="background: -webkit-linear-gradient(white, grey); height: 10px">
+           <div style="background: -webkit-linear-gradient(black, darkred); height: 5px">
+               
             </div>
      
             <div class="navbar-header" >
@@ -43,15 +45,17 @@
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">News</a></li>
                     <li><a href="StaffProfile.jsp">View Profile</a></li>
-                    <li><a href="searchStaff.jsp">View all staff profile</a></li>
-                    <li><a href="#">View C/T info</a></li>
+                    <li><a href="viewAllstaff.jsp">View all staff profile</a></li>
+                    <li><a href="ViewTask.jsp">View C/T info</a></li>
                 </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
                         <li><a href="../Login.jsp" ><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
                     </ul>
+            </div>
+             <div style="background: -webkit-linear-gradient(darkred, black); height: 5px">
+                
             </div>
         </nav>
     </body>
