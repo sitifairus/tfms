@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <title>admin header</title>
         <style>
            
           .UTMlogo {
@@ -96,7 +96,7 @@
                     </ul> 
                 
                      <ul class="nav navbar-nav navbar-right">
-                       <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-out"></span> LOG OUT</a></li>
+                       <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-out"> LOGOUT</span></a></li>
                        </ul>
                 </div>              
              <div style="background: -webkit-linear-gradient(darkred, black); height: 5px">

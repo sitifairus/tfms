@@ -1,7 +1,7 @@
 <%-- 
-    Document   : view CT info
-    Created on : Jul 27, 2015, 2:55:21 PM
-    Author     : asus
+    Document   : ViewTask.jsp
+    Created on : Aug 16, 2015, 11:38:26 AM
+    Author     : aya
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,10 +21,9 @@
         <title>All Community Task Force</title>
     </head>
     <body>
-        <%@ include file="PentadbirHeader.jsp" %>
+        <%@ include file="StaffHeader.jsp" %>
 <%
-    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName "
-            + "FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice";
+    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice";
     String taskName=null;
     String taskID=null;
     String coordinatorName=null;
@@ -32,11 +31,9 @@
     String officeName=null;
     String coordinatorQ=null;
     String year=null;
-    
     DB db=new DB();
-        
 %>
-           <h2 align="center">View Committee/Task Force</h2>
+        <h2 align="center">View Committee/Task Force</h2>
         <div class="container" align="center" style="width:1100px;">
             <div class="" align="center">
                 <div class="col-md-30">
@@ -50,7 +47,7 @@
 				</div>
                         </div>
                         <div class="panel-body">
-                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Search Staff" />
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
                         </div>
                        
                         <table class="table table-hover" id="dev-table">
@@ -61,7 +58,7 @@
                                         <th>Coordinator</th>
                                         <th>Office</th>
                                         <th>Year Start</th>
-                                        
+                                        <th>Admin option</th>
                                     </tr>
                             </thead>
                             <tbody>
@@ -72,7 +69,6 @@
                                     db.query(sql);
                                     int numOfRow=db.getNumberOfRows();
                                     System.out.println("sql:"+sql);
-                                    System.out.println(numOfRow);
                                     if(numOfRow-1!=-1)
                                     {
                                         System.out.println(numOfRow);
@@ -90,7 +86,7 @@
                                         <td>
                                             <%=i+1%>
                                         </td>
-                                        <td><a href="viewCT.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=taskName%></a></td>
+                                        <td><a href="ViewTaskInfo.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=taskName%></a></td>
                                         <td><%
                                             if(coordinatorQ!="none"&&coordinatorQ!=null)
                                             {
@@ -100,8 +96,30 @@
                                         
                                         <td><%=officeName%></td>
                                         <td><%=year%></td>
-                                        
-                                    </tr>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#ConfirmModal<%=i%>" class="btn btn-default">Delete Committee/Taskforce</a>
+                                        </td>
+                                    </tr>   
+                                    
+                                    <div class="modal fade" id="ConfirmModal<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
+                                        <div class="container">    
+                                            <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
+                                                <div class="panel panel-info" >
+                                                    <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to delete this '<%=taskName%>' Committee/Taskforce?</b>
+                                                        <form class="form-horizontal" role="form" method="post" action="../CTdelete">
+                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
+                                                                <button id="btn-login" class="btn btn-success" >Comfirm</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                                                                <br><br>
+                                                        </form>
+                                                    </div>                      
+                                                </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
                                  <%
                                     }
                                     }
@@ -114,9 +132,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-   
-        
+        </div>                            
     </body>
 </html>
 <%@ include file="../footer.jsp" %>
