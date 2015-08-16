@@ -46,6 +46,7 @@
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
                     <li><a href="news.jsp">News</a></li>
+                    <li><a href="viewProfile.jsp">My Profile</a></li>
                     <li><a href="viewStaff.jsp">View all staff profile</a></li>
                     <li><a href="viewCTinfo.jsp">View C/T info</a></li>
                 </ul>
