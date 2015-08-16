@@ -53,12 +53,12 @@
                                 
                                 <form class="form-horizontal" role="form" action="StaffProfile.jsp" method="post">
                                     <div class="form-group">
-                                      <label for="Name">Name</label>
-                                      <input class="form-control" type="text" name="name" id="Name"/>
+                                      <label for="filterName">Name</label>
+                                      <input class="form-control" type="text" name="name" id="filterName"/>
                                     </div> 
                                     <div class="form-group">
-                                      <label for="id">Staff ID</label>
-                                      <input class="form-control" type="text" name="Staffid" id="id" />
+                                      <label for="filterID">Staff ID</label>
+                                      <input class="form-control" type="text" name="Staffid" id="filterID" />
                                     </div>
                                     <div class="form-group">
                                       <label for="FilterPosition">Filter by Position</label>
