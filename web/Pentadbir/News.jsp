@@ -23,7 +23,7 @@
 <body>
         
         <%@include file="PentadbirHeader.jsp" %><br><br><br>
-        <p><h3 align="center">News Page!</h3><br><br><br>
+        <MARQUEE><center><p>News Page!</p></center></MARQUEE><br><br><br>
         
         
         <div id="myCarousel" class="carousel slide" data-ride="carousel" >
