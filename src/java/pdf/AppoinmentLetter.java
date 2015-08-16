@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package pdf;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -87,10 +89,35 @@ public class AppoinmentLetter extends HttpServlet {
             if(Letter.AlterLetter(noRujukan, name, position, department, gStatus, startDate, endDate, taskName, postHolderName, postHolderEmail, postName))
             {
                 out.println("Success");
+                try {
+                    String filename = "C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf";
+
+                    // set the http content type to "APPLICATION/OCTET-STREAM
+                    response.setContentType("APPLICATION/OCTET-STREAM");
+
+                    // initialize the http content-disposition header to
+                    // indicate a file attachment with the default filename
+                    // "myFile.txt"
+                    String disHeader = "Attachment";
+                    String Filename;
+                    Filename = "myFile.txt";
+                    response.setHeader("Content-Disposition", disHeader);
+
+                    // transfer the file byte-by-byte to the response object
+                    File fileToDownload = new File(filename);
+                    FileInputStream fileInputStream = new FileInputStream(fileToDownload);
+                    int i;
+                    while ((i=fileInputStream.read())!=-1)
+                    {
+                       out.write(i);
+                    }
+                    fileInputStream.close();
+                    out.close();
+                    }catch(Exception e) // file IO errors
+                    {
+                    e.printStackTrace();}
+                    
             }
-            
-            
-            
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");

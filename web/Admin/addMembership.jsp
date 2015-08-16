@@ -56,7 +56,7 @@
                         <div class="panel-body">
                                 <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
                         </div>
-                        <div style="height: 400px; overflow-y: scroll;">
+                        <div style="max-height: 400px; overflow-y: scroll;">
                        
                         <table class="table table-hover" id="dev-table" >
                             <thead>
