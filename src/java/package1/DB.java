@@ -32,7 +32,7 @@ public class DB{
       ///*
       db = "//localhost:3306/TFMSbd";  
       user = "root";
-      pwd = "";
+      pwd = "delta";
       //*/
       
       /*
