@@ -41,12 +41,16 @@ public class AppoinmentLetter extends HttpServlet {
         String startDate=null;
         String endDate=null;
         String taskName=null;
-        String noRujukan;
+        String postName=request.getParameter("postName");
+        String noRujukan=null;
+        String postHolderName=null;
+        String postHolderEmail=null;
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String memberID=request.getParameter("memberID");
             noRujukan=request.getParameter("noRujukan");
+            
             
             DB db = new DB();
             letter Letter= new letter();
@@ -61,6 +65,12 @@ public class AppoinmentLetter extends HttpServlet {
                     startDate=db.getDataAt(0, "StartDate");
                     endDate=db.getDataAt(0, "EndDate");
                     taskName=db.getDataAt(0, "TFname");
+                    
+                    if(db.query("SELECT * FROM user INNER JOIN ak_position ON user.userID=ak_position.userID WHERE ak_position.postName='"+postName+"' AND ak_position.status='active'"))
+                    {
+                        postHolderName=db.getDataAt(0, "name");
+                        postHolderEmail=db.getDataAt(0, "email");
+                    }
                 }
                 db.close();
             }
@@ -74,7 +84,7 @@ public class AppoinmentLetter extends HttpServlet {
                 System.out.println(taskName);
                 System.out.println(noRujukan);
             
-            if(Letter.AlterLetter(noRujukan, name, position, department, gStatus, startDate, endDate, taskName))
+            if(Letter.AlterLetter(noRujukan, name, position, department, gStatus, startDate, endDate, taskName, postHolderName, postHolderEmail, postName))
             {
                 out.println("Success");
             }

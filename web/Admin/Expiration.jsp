@@ -36,6 +36,7 @@
 					<div class="panel-body">
 						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Task Member" />
 					</div>
+                                        <div style="max-height: 410px; overflow-y: scroll;">
 					<table class="table table-hover" id="dev-table">
 						<thead>
 							<tr align="center">
@@ -59,7 +60,7 @@
                                                             String department;
                                                             String expiredIN;
                                                             String taskName;
-                                                            if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_SUB(CURDATE(),INTERVAL 30 DAY) <= tf_member.endDate"))
+                                                            if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_ADD(CURDATE(), INTERVAL 30 DAY) >= tf_member.endDate AND NOT tf_member.endDate< CURDATE() AND tf_member.status='active'"))
                                                             {
                                                                 for(int i=0; i<db.getNumberOfRows();i++)
                                                                 {
@@ -82,7 +83,7 @@
                                                     <%
                                                                 }
                                                             }
-                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_SUB(CURDATE(),INTERVAL -60 DAY) <= tf_member.endDate"))
+                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_ADD(CURDATE(), INTERVAL 60 DAY) >= tf_member.endDate AND NOT DATE_ADD(CURDATE(), INTERVAL 30 DAY) >= tf_member.endDate AND tf_member.status='active'"))
                                                             {
                                                                 for(int i=0; i<db.getNumberOfRows();i++)
                                                                 {
@@ -104,7 +105,7 @@
                                                     <%
                                                                 }
                                                             }
-                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_SUB(CURDATE(),INTERVAL -90 DAY) <= tf_member.endDate"))
+                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE DATE_ADD(CURDATE(), INTERVAL 90 DAY) >= tf_member.endDate AND NOT DATE_ADD(CURDATE(), INTERVAL 60 DAY) >= tf_member.endDate AND tf_member.status='active'"))
                                                             {
                                                                 for(int i=0; i<db.getNumberOfRows();i++)
                                                                 {
@@ -127,7 +128,7 @@
                                                                 }
                                                             }
                                                         
-                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE tf_member.endDate< CURDATE()"))
+                                                        if(db.query("SELECT user.name, user.staffID, user.position, user.department, tf.TFname FROM user INNER JOIN tf_member ON user.userID=tf_member.userID INNER JOIN tf ON tf.idTF=tf_member.tfID WHERE tf_member.endDate< CURDATE() AND tf_member.status='active'"))
                                                             {
                                                                 for(int i=0; i<db.getNumberOfRows();i++)
                                                                 {
@@ -155,6 +156,7 @@
 							       
 						</tbody>
 					</table>
+                                        </div>
 				</div>
 			</div>
 			

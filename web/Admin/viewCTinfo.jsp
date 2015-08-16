@@ -34,7 +34,7 @@
     DB db=new DB();
 %>
         <h2 align="center">View Committee/Task Force</h2>
-        <div class="container" align="center" style="width:1100px;">
+        <div class="container" align="center" >
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
@@ -49,7 +49,7 @@
                         <div class="panel-body">
                                 <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
                         </div>
-                       
+                        <div style="max-height: 410px; overflow-y: scroll;">
                         <table class="table table-hover" id="dev-table">
                             <thead>
                                     <tr align="center">
@@ -129,6 +129,7 @@
                                  %>  
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>

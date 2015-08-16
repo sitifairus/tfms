@@ -9,6 +9,10 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author on
@@ -18,8 +22,11 @@ public class letter {
     {
         
     }
-    public boolean AlterLetter(String rujukan, String name, String position, String department, String gStatus, String sDate, String eDate, String taskName)
+    public boolean AlterLetter(String rujukan, String name, String position, String department, String gStatus, String sDate, String eDate, String taskName, String postHolderName, String postHolderEmail, String postName)
     {
+        DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
+        Date today = Calendar.getInstance().getTime();
+        String currDate = df.format(today);
         try {
 			PdfReader pdfReader;	
                         pdfReader = new PdfReader("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Appointment letter.pdf");	
@@ -50,7 +57,7 @@ public class letter {
                                 pageContentByte.showText(rujukan);
                                 
                                 pageContentByte.setTextMatrix(500, 706);
-                                pageContentByte.showText("[current date]");
+                                pageContentByte.showText(currDate);
                                 //address
                                 pageContentByte.setTextMatrix(46, 641);
                                 pageContentByte.showText(name);
@@ -69,13 +76,13 @@ public class letter {
                                 pageContentByte.showText(eDate+" .");
                                 
                                 pageContentByte.setTextMatrix(46, 248);
-                                pageContentByte.showText("[name]");
+                                pageContentByte.showText(postHolderName);
                                 pageContentByte.setTextMatrix(46, 236);
-                                pageContentByte.showText("[post]");
+                                pageContentByte.showText(postName);
                                 pageContentByte.setTextMatrix(46, 224);
-                                pageContentByte.showText("[faculty]");
+                                pageContentByte.showText("Faculti Komputeran");
                                 pageContentByte.setTextMatrix(46, 212);
-                                pageContentByte.showText("[email]");
+                                pageContentByte.showText(postHolderEmail);
                                 
                                 
                                 pageContentByte.endText();
