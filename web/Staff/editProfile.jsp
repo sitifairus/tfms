@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*" %>
+<%@page import="package1.DB"%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -19,11 +19,11 @@ public class alterLetter {
     public static void main(String args[]){
 		try {
 			PdfReader pdfReader;	
-                    pdfReader = new PdfReader("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Appointment letter.pdf");	
+                    pdfReader = new PdfReader("C:\\Users\\asus\\Desktop\\web\\Appointment letter.pdf");	
                     //pdfReader = new PdfReader("C:\\Users\\asus\\Desktop\\TFMsystem\\Appointment letter.pdf");	
 			
 			//Create PdfStamper instance.
-			PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf"));
+			PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream("C:\\Users\\asus\\Desktop\\TFMsystem\\web\\Modified appointment letter.pdf"));
 
 			   //new FileOutputStream("C:\\Users\\asus\\Desktop\\TFMsystem\\Modified appointment letter.pdf"));
 
