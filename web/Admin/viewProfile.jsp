@@ -49,45 +49,49 @@
                         
         %>
         <div class="container">
-            <div><a href="viewStaff.jsp">Back</a></div><br>
+            <div></div><br>
      <h1 class="">Staff Personal Info</h1>
 
     <hr class="">
     <div class="row" style="align:center;">
         <!-- left column -->
-        <div class="col-md-3">
-            <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar"><!--pic for the user-->
-             
-            </div>
+        <div class="col-md-4">
+            <%// put image
+            %>
             <div>
-                <br><br>
                 <span></span><h3>Task Assign</h3>
                 <a href="#">+ add task</a>
                 <div >
                     <table class="table table-user-information">
+                        
+                        <%
+                            db.query("SELECT tf.TFname, tf.idTF, tf_member.position, tf_member.status FROM tf INNER JOIN tf_member ON tf.idTF=tf_member.tfID WHERE tf_member.userID='"+userID+"' AND tf_member.status='active'");
+                            
+                            int row=db.getNumberOfRows();
+                            if(row!=0)
+                            {
+                                %>
                         <tr>
                             <td><b>Task Name</b></td>
                             <td><b>Position</b></td>
                         </tr>
-                        <%
-                            db.query("SELECT tf.TFname, tf.idTF, tf_member.position FROM tf INNER JOIN tf_member ON tf.idTF=tf_member.tfID WHERE tf_member.userID='"+userID+"'");
-                            
-                            int row=db.getNumberOfRows();
-                            if(row-1!=-1)
-                            {
+                                <%
                                 System.out.println("sql:"+userID);
                                 for(int i=0;i<row;i++)
                                 {
                                     String tName=db.getDataAt(i, "TFname");
                                     String taskID=db.getDataAt(i, "idTF");
                                     String pos=db.getDataAt(i,"position");
+                                    String status=db.getDataAt(i,"status");
+                                    if(status.equals("active"))
+                                    {
                         %>
                         <tr>
                             <td><a href="viewCT.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=tName%></a></td>
                             <td><%=pos%></td>
                         </tr>
                         <%
+                                    }
                                 }
                             }
                             else
@@ -102,16 +106,69 @@
                     </table>
                 </div>
             </div>
+                    
+                    
+                    
+                    <div>
+                <span></span><h3>Previous Task</h3>
+                <a href="#">+ add task</a>
+                <div >
+                    <table class="table table-user-information">
+                        
+                        <%
+                            db.query("SELECT tf.TFname, tf.idTF, tf_member.position, tf_member.status FROM tf INNER JOIN tf_member ON tf.idTF=tf_member.tfID WHERE tf_member.userID='"+userID+"' AND tf_member.status='not active'" );
+                            
+                            int roww=db.getNumberOfRows();
+                            if(roww!=0)
+                            {
+                                %>
+                        <tr>
+                            <td><b>Task Name</b></td>
+                            <td><b>Position</b></td>
+                        </tr>
+                                <%
+                                System.out.println("sql:"+userID);
+                                for(int i=0;i<row;i++)
+                                {
+                                    String tName=db.getDataAt(i, "TFname");
+                                    String taskID=db.getDataAt(i, "idTF");
+                                    String pos=db.getDataAt(i,"position");
+                                    String status=db.getDataAt(i,"status");
+                                    if(status.equals("not active"))
+                                    {
+                        %>
+                        <tr>
+                            <td><a href="viewCT.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=tName%></a></td>
+                            <td><%=pos%></td>
+                        </tr>
+                        <%
+                                    }
+                                }
+                            }
+                            else
+                            {
+                        %>
+                        <tr style="align:center">
+                            <td align="center" colspan="2">Not join any Task before...</td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </table>
+                </div>
+            </div>
+                    
+                    
         </div>
         <!-- edit form column -->
-        <div class="col-md-9 personal-info">
+        <div class="col-md-8 personal-info">
             <div style="display: none;" class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a>  <i class="fa fa-coffee"></i>
 This
                 is an <strong class="">.alert</strong>. Use this to show important messages
                 to the user.</div>
              <h3 class="">Personal info</h3>
              
-             <div class=" col-md-9 col-lg-9 "> 
+             <div class=" col-md-9 col-lg-9 " > 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -122,8 +179,7 @@ This
                             {
                                 out.print(q);
                             }
-                        %>
-                        <%=name%></td>
+                        %> <%=name%></td>
                       </tr>
                       <tr>
                         <td>Gender:</td>

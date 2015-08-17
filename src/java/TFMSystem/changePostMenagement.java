@@ -45,7 +45,7 @@ public class changePostMenagement extends HttpServlet {
             if(db.connect())
             {
                 db.query("INSERT INTO ak_position (postName,userID,status,startDate,lastDate) VALUES ('"+postName+"','"+userID+"','active','"+newstartDate+"','"+newendDate+"')");
-                db.query("UPDATE ak_position SET status='not active', WHERE postID='"+postID+"'");
+                db.query("UPDATE ak_position SET status='not active' WHERE postID='"+postID+"'");
                 System.out.println("okeynn");
                 response.sendRedirect("Admin/postManagement.jsp");
             }

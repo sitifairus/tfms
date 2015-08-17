@@ -53,7 +53,8 @@
             String userID=null;
             String postID=null;
             String status=null;
-            String sql="SELECT ak_position.postName,ak_position.postID, ak_position.status, user.name, user.userID, user.email, ak_position.lastDate, ak_position.startDate FROM ak_position JOIN user ON ak_position.userID=user.userID";
+            String qualification=null;
+            String sql="SELECT ak_position.postName,ak_position.postID, ak_position.status, user.name, user.qualification, user.userID, user.email, ak_position.lastDate, ak_position.startDate FROM ak_position JOIN user ON ak_position.userID=user.userID";
             DB db= new DB();
             System.out.println("sql:"+sql);
             if(db.connect())
@@ -70,12 +71,18 @@
                     startDate=db.getDataAt( i,"startDate");
                     status=db.getDataAt(i, "status");
                     lastDate=db.getDataAt(i, "lastDate");
+                    qualification=db.getDataAt(i,"qualification");
                     if(status.equals("active")){
                                   
         %>    
                 <tr>
                     <td style="text-align:center;"><%=post%></td>
-                    <td style="text-align:center;"><%=name%></td>
+                    <td style="text-align:center;"><%
+                                    if(qualification!="none"&&qualification!=null)
+                                    {
+                                        out.print(qualification);
+                                    }
+                                %> <%=name%></td>
                     <td style="text-align:center;"><%=email%></td>
                     <td style="text-align:center;"><%=startDate%></td>
                     <td style="text-align:center;"><%=lastDate%></td>
@@ -145,11 +152,17 @@
                     startDate=db.getDataAt( i,"startDate");
                     lastDate=db.getDataAt(i, "lastDate");
                     status=db.getDataAt(i, "status");
+                    qualification=db.getDataAt(0, "qualification");
                     if(status.equals("not active")){         
         %>
                 <tr>
                     <td style="text-align:center;"><%=post%></td>
-                    <td style="text-align:center;"><%=name%></td>
+                    <td style="text-align:center;"><%
+                                    if(qualification!="none"&&qualification!=null)
+                                    {
+                                        out.print(qualification);
+                                    }
+                                %> <%=name%></td>
                     <td style="text-align:center;"><%=email%></td>
                     <td style="text-align:center;"><%=startDate%></td>
                     <td style="text-align:center;"><%=lastDate%></td>

@@ -312,7 +312,7 @@
                     <td style="text-align:center;"><%=i+1%></td>
                     <td style="text-decoration: underline;">
                         <a href="viewProfile.jsp?userID=<%=userID%>"><%
-                                    if(qualification!="none")
+                                    if(qualification!="none"||qualification!=null)
                                     {
                                         out.print(qualification);
                                     }
