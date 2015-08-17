@@ -34,12 +34,14 @@
         %>
         
         
+
         <table align="center">
             <div class="container" style="width:600px; padding-bottom: 50px; padding-top: 20px;" border="2">
                 <h2 align="center">New Committee/Taskforce data</h2><br>
                 <form role="form" method="get" action="createTask.jsp">
                     <div class="form-group">
                       <label for="TaskName" class="col-sm-3 control-label">C/T Name:</label>
+                      
                       <div class="col-sm-9">
                           <input type="" class="form-control" name="taskName" placeholder="Enter Task Name" required>
                       </div><br><br>
@@ -48,6 +50,9 @@
                     <label for="office" class="col-sm-3 control-label">Office:</label>
                     <div class="col-sm-9">
                         <select name="office" class="form-control">
+                            
+                           
+                            
                             <%
                                 
                                 //out.println("sql:"+sql);
