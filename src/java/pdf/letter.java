@@ -29,12 +29,14 @@ public class letter {
         String currDate = df.format(today);
         try {
 			PdfReader pdfReader;	
-                        pdfReader = new PdfReader("C:\\Users\\asus\\Desktop\\TFMsystem\\web\\Appointment letter.pdf");	
+                        pdfReader = new PdfReader("C:\\Users\\asus\\Desktop\\TFMsystem\\web\\Appointment letter.pdf");
+                                                    //C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Appointment letter.pdf
 			
 			//Create PdfStamper instance.
 			PdfStamper pdfStamper = new PdfStamper(pdfReader,
 			   new FileOutputStream("C:\\Users\\asus\\Desktop\\TFMsystem\\web\\Modified appointment letter.pdf"));
-			
+                                                //C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified Appointment letter.pdf
+                        
 			//Create BaseFont instance.
 			BaseFont baseFont = BaseFont.createFont(
 	                BaseFont.TIMES_ROMAN, BaseFont.CP1257, BaseFont.NOT_EMBEDDED);
@@ -50,7 +52,7 @@ public class letter {
 				
 				pageContentByte.beginText();
 				//Set text font and size.
-				pageContentByte.setFontAndSize(baseFont, 12);
+				pageContentByte.setFontAndSize(baseFont, 11);
                                 
 				//Write text
 				pageContentByte.setTextMatrix(120, 706);
@@ -66,13 +68,20 @@ public class letter {
                                  pageContentByte.setTextMatrix(46, 617);
                                 pageContentByte.showText(department);
                                 
-				pageContentByte.setTextMatrix(155, 493);
-                                pageContentByte.showText(gStatus+", "+taskName);
+                                String gstatus;
                                 
-                                pageContentByte.setTextMatrix(178, 433);
+				pageContentByte.setTextMatrix(157, 493);
+                                String changeCase = gStatus+", "+taskName;
+                                pageContentByte.showText(changeCase.toUpperCase());
+                                
+                                pageContentByte.setTextMatrix(250, 444);
+                                pageContentByte.showText(gStatus+"  "+taskName+" .");
+                                
+                                
+                                pageContentByte.setTextMatrix(180, 432);
                                 pageContentByte.showText(sDate);
                                 
-                                pageContentByte.setTextMatrix(290, 433);
+                                pageContentByte.setTextMatrix(290, 432);
                                 pageContentByte.showText(eDate+" .");
                                 
                                 pageContentByte.setTextMatrix(46, 248);
@@ -80,7 +89,7 @@ public class letter {
                                 pageContentByte.setTextMatrix(46, 236);
                                 pageContentByte.showText(postName);
                                 pageContentByte.setTextMatrix(46, 224);
-                                pageContentByte.showText("Faculti Komputeran");
+                                pageContentByte.showText("Fakulti Komputeran");
                                 pageContentByte.setTextMatrix(46, 212);
                                 pageContentByte.showText(postHolderEmail);
                                 
