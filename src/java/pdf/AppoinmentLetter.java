@@ -7,8 +7,10 @@ package pdf;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -88,46 +90,46 @@ public class AppoinmentLetter extends HttpServlet {
             
             if(Letter.AlterLetter(noRujukan, name, position, department, gStatus, startDate, endDate, taskName, postHolderName, postHolderEmail, postName))
             {
-                out.println("Success");
-                try {
-                    String filename = "C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf";
-
-                    // set the http content type to "APPLICATION/OCTET-STREAM
-                    response.setContentType("APPLICATION/OCTET-STREAM");
-
-                    // initialize the http content-disposition header to
-                    // indicate a file attachment with the default filename
-                    // "myFile.txt"
-                    String disHeader = "Attachment";
-                    String Filename;
-                    Filename = "myFile.txt";
-                    response.setHeader("Content-Disposition", disHeader);
-
-                    // transfer the file byte-by-byte to the response object
-                    File fileToDownload = new File(filename);
-                    FileInputStream fileInputStream = new FileInputStream(fileToDownload);
-                    int i;
-                    while ((i=fileInputStream.read())!=-1)
-                    {
-                       out.write(i);
-                    }
-                    fileInputStream.close();
-                    out.close();
-                    }catch(Exception e) // file IO errors
-                    {
-                    e.printStackTrace();}
+                System.out.println("Success");
                     
+                    //File appLetter=new File("C:\\Users\\on\\Desktop\\AD\\TFMsystem\\web\\Modified appointment letter.pdf");
+                    File f = new File ("C:/Users/on/Desktop/AD/TFMsystem/web/Modified appointment letter.pdf");
+                    //set the content type(can be excel/word/powerpoint etc..)
+                    response.setContentType ("application/pdf");
+                    //set the header and also the Name by which user will be prompted to save
+                    response.setHeader ("Content-Disposition", "attachment; filename=\"Appointment Letter.pdf\"");
+                    System.out.println("Success2");
+
+                    //get the file name
+                    String Fname = f.getName().substring(f.getName().lastIndexOf("/") + 1,f.getName().length());
+                    System.out.println("file:"+Fname);
+                    //OPen an input stream to the file and post the file contents thru the 
+                    //servlet output stream to the client m/c
+
+                            InputStream in = new FileInputStream(f);
+                            System.out.println("Success3");
+                            ServletOutputStream outs = response.getOutputStream();
+                            System.out.println("Success4");
+
+                            int bit = 256;
+                            int i = 0;
+                            try {
+                                    while ((bit) >= 0) {
+                                            bit = in.read();
+                                            outs.write(bit);
+                                    }
+                                    //System.out.println("" +bit);
+                            } catch (IOException ioe) {
+                                    System.out.println("not Success");
+                                    ioe.printStackTrace(System.out);
+                            }
+            		System.out.println( "\n" + i + " bytes sent.");
+            		System.out.println( "\n" + f.length() + " bytes sent.");
+                        outs.flush();
+                        outs.close();
+                        in.close();	
             }
             
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AppoinmentLetter</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AppoinmentLetter at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
         
         
