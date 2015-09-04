@@ -49,7 +49,6 @@ public class Test extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userID=null;
             String password=null;
             String userType=null;
             String name=null;
@@ -60,12 +59,7 @@ public class Test extends HttpServlet {
             String gender=null;
             String position=null;               
             String department=null;                       
-            String qualification=null;                        
-            //String day=null;                                
-            //String month=null;                                
-            //String year=null;                                            
-                                        
-            userID=request.getParameter("userID");
+            String qualification=null;
             password=request.getParameter("password");
             userType=request.getParameter("userType");
             gender=request.getParameter("gender");
@@ -82,8 +76,8 @@ public class Test extends HttpServlet {
             //System.out.println("password:");
             if(db.connect())
             {
-                out.println("password:"+userID);
-                db.query("insert into user(userID,password,staffID,userType,name,email,position,department,status,Qualification,phone,office,gender, startDate) values('"+userID+"','"+password+"','"+staffID+"','"+userType+"','"+name+"','"+email+"','"+position+"','"+department+"','active','"+qualification+"','"+phone+"','"+office+"','"+gender+"','"+startDate+"')");
+                out.println("password:"+password);
+                db.query("insert into user(password,staffID,userType,name,email,position,department,status,Qualification,phone,office,gender, startDate) values('"+password+"','"+staffID+"','"+userType+"','"+name+"','"+email+"','"+position+"','"+department+"','active','"+qualification+"','"+phone+"','"+office+"','"+gender+"','"+startDate+"')");
                 out.println("Done");
                 db.close();
                 out.println("Input has been accepted");

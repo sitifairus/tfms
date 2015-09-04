@@ -31,8 +31,6 @@
             String qualification=null;   
             String office=null;
             String startDate=null;
-                                        
-            userID=request.getParameter("userID");
             userType=request.getParameter("userType");
             gender=request.getParameter("gender");
             password=request.getParameter("password");
@@ -45,26 +43,14 @@
             department=request.getParameter("department");                      
             qualification=request.getParameter("qualification");
             startDate=request.getParameter("startDate");
-            if(userID==null)
+            if(userType==null)
             {
         %>
         <table align="center">
             <div class="container" style="width:500px; padding-bottom: 50px; padding-top: 20px;">
             <h2 align="center">Register New Staff</h2><br>
             <form role="form" action="registerMember.jsp" method="get" >
-                
-              <div class="form-group">
-                  <label for="userID" class="col-sm-3 control-label">Username :</label>
-                <div class="col-sm-9">
-                    <input type="" class="form-control" name="userID" placeholder="Enter Staff's Username" required>
-                </div>
-              </div><br><br>
-              <div class="form-group">
-                  <label for="password" class="col-sm-3 control-label">Password :</label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" name="password" placeholder="Enter Staff's Password" required>
-                </div>
-              </div><br><br>
+               
               <div class="form-group">
                 <label for="name" class="col-sm-3 control-label">Staff Name :</label>
                 <div class="col-sm-9">
@@ -75,6 +61,12 @@
                 <label for="staffID" class="col-sm-3 control-label">Staff ID :</label>
                 <div class="col-sm-9">
                     <input type="" class="form-control" name="staffID" placeholder="Enter Staff's ID" required>
+                </div>
+              </div><br><br>
+              <div class="form-group">
+                  <label for="password" class="col-sm-3 control-label">Password :</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" name="password" placeholder="Enter Staff's Password" required>
                 </div>
               </div><br><br>
               <div class="form-group">
@@ -176,14 +168,6 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Username:</td>
-                        <td><%=userID%></td>
-                      </tr>
-                      <tr>
-                        <td>Password:</td>
-                        <td><%=password%></td>
-                      </tr>
-                      <tr>
                         <td>Name:</td>
                         <td>
                         <%
@@ -201,6 +185,10 @@
                       <tr>
                         <td>Staff ID:</td>
                         <td><%=staffID%></td>
+                      </tr>
+                      <tr>
+                        <td>Password:</td>
+                        <td><%=password%></td>
                       </tr>
                       <tr>
                         <td>User Type</td>
@@ -243,7 +231,6 @@
                                     <input class="form-control" type="file" name="profilePic">
                                 </div>
                             </div>
-                            <input type="hidden" name="userID" value="<%=userID%>">
                             <input type="hidden" name="password" value="<%=password%>">
                             <input type="hidden" name="name" value="<%=name%>">
                             <input type="hidden" name="staffID" value="<%=staffID%>">

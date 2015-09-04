@@ -14,6 +14,12 @@
         <%@include file="../head.jsp" %>
     </head>
     <body >
+        <%
+            String UserSession = (String)session.getAttribute("user");
+            String UserType = (String)session.getAttribute("userType");
+            //out.println(UserSession);
+            if ((!(UserSession==null))&&(UserType.equals("admin"))) {
+        %>
         <%@ include file="adminHeader.jsp" %>
         <%
             String memberID=request.getParameter("memberID");
@@ -92,6 +98,7 @@
         <%
         
                 db.close();
+            }
             }
         %>
     </body>

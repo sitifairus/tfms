@@ -73,7 +73,7 @@
                                     db.close();
                                 }
                             %>
-                        </select>
+                        </select><a href="#">Add New Office</a>
                     </div><br><br>
                     </div>
                     <div class="form-group">

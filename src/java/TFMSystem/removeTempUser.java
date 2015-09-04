@@ -18,8 +18,8 @@ import package1.DB;
  *
  * @author on
  */
-@WebServlet(name = "changeCoordinator", urlPatterns = {"/changeCoordinator"})
-public class changeCoordinator extends HttpServlet {
+@WebServlet(name = "removeTempUser", urlPatterns = {"/removeTempUser"})
+public class removeTempUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,38 +35,17 @@ public class changeCoordinator extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String newCoordinatorID=request.getParameter("newCoordinatorID");
             String taskID=request.getParameter("taskID");
-            String memberIDoldcoor=request.getParameter("memberIDcoor");
-            
+            String userID=request.getParameter("userID");
             DB db = new DB();
             if(db.connect())
             {
-                if(db.query("UPDATE tf_member SET GStatus='Coordinator', position='Leader' WHERE userID='"+newCoordinatorID+"' AND tfID='"+taskID+"'"))
+                if(db.query("DELETE FROM tempconfirmmember WHERE userID='"+userID+"'"))
                 {
-                    db.query("SELECT * FROM tf_member WHERE idtf_member='"+memberIDoldcoor+"'");
-                    String oldCoordinatorID=db.getDataAt(0, "userID");
-                    System.out.println("GStatus:"+db.getDataAt(0,"Gstatus")+"\nuserID:"+db.getDataAt(0, "userID"));
-                    if((memberIDoldcoor!=null||!memberIDoldcoor.equals(""))&&(!oldCoordinatorID.equals(newCoordinatorID)))
-                    {
-                        response.sendRedirect("terminateMember?taskID="+taskID+"&memberID="+memberIDoldcoor+"");
-                    }
-                    else
-                        response.sendRedirect("Admin/viewCT.jsp?taskID="+taskID+"");
+                    response.sendRedirect("Admin/addMembership.jsp?taskID="+taskID+"");
                 }
                 db.close();
             }
-             
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet changeCoordinator</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet changeCoordinator at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

@@ -29,24 +29,146 @@
             String stat=null;
             String qualification=null;
             String userID=null;
-            userID=request.getParameter("userID");
+            int p=0;
+            userID=request.getParameter("userID");            
+            
             DB db= new DB();
-            db.connect();
-            if(userID==null||userID=="")
+            if(db.connect())
             {
+                if(userID!=null)
+                {
+                    if(db.query("SELECT * FROM tempconfirmmember WHERE userID='"+userID+"'"))
+                    {
+                        
+                       if(db.getNumberOfRows()==0)
+                       {
+                            System.out.println("not empty");
+                            db.query("INSERT INTO tempconfirmmember(userID) VALUES('"+userID+"')");
+                       }
+                    }
+                    else
+                    {
+                         db.query("INSERT INTO tempconfirmmember(userID) VALUES('"+userID+"')");
+                    }
+                }
+                
         %>
-        
+        <div>
         <h4 align="center">Which staff you want to add as a member for the taskforce?</h4><br>
-        <form method="post" action="addMembership.jsp">
             
         <div class="container" align="center" >
-        
-            <div class="" align="center">
                 <div class="col-md-30">
                     
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                                 <h3 class="panel-title">List of Staff</h3>
+                                <div class="pull-right">
+                                    <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                    </span>
+				</div>
+                        </div>
+                        <div class="panel-body">
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
+                        </div>
+                        <div style="max-height: 400px; overflow-y: scroll;">
+                       
+                        <table class="table table-hover" id="dev-table" >
+                            <thead>
+                                    <tr align="center">
+                                        <th>Staff Name</th>
+                                        <th>Staff ID</th>
+                                        <th>Position</th>
+                                        <th>Department</th>
+                                        <th></th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                            <%      
+                                    db.query("SELECT userID FROM tf_member WHERE tfID='"+taskID+"'");
+                                    int a=db.getNumberOfRows();
+                                    boolean flag =true;
+                                    String [] ID=new String[a];
+                                    for(int q=0; q<a; q++)
+                                    {
+                                        ID[q]=db.getDataAt(q,"userID");
+                                    }
+                                    db.query("SELECT userID FROM tempconfirmmember");
+                                    p=db.getNumberOfRows();
+                                    String [] u=new String[p];
+                                    for(int z=0; z<p; z++)
+                                    {
+                                        u[z]=db.getDataAt(z, "userID");
+                                    }
+                                    db.query("SELECT * FROM user WHERE status='active'");
+                                    int numOfRow=db.getNumberOfRows();  
+                                    for(int i=0; i<numOfRow; i++)
+                                    {
+                                        flag=true;
+                                        userID=db.getDataAt(i, "userID");
+                                        for(int k=0; k<a; k++)
+                                        {
+                                            if(ID[k].equals(userID))
+                                            {
+                                                flag=false;
+                                            }
+                                        }
+                                        for(int k=0; k<p; k++)
+                                        {
+                                            if(u[k].equals(userID))
+                                            {
+                                                flag=false;
+                                            }
+                                        }
+                                        if(flag)
+                                        {
+                                            name=db.getDataAt( i,"name");
+                                            staffID=db.getDataAt( i,"StaffID");
+                                            post=db.getDataAt( i,"position");
+                                            dept=db.getDataAt( i,"department");
+                                            stat=db.getDataAt( i,"status");
+                                            qualification=db.getDataAt(i,"qualification");
+                                        %>
+
+                                        <tr>
+                                            <td><%
+                                                if(qualification!="none"&&qualification!="None"&&qualification!=null)
+                                                {
+                                                    out.print(qualification);
+                                                }
+                                            %><%=name%></td>
+                                            <td><%=staffID%></td>
+                                            <td><%=post%></td>
+                                            <td><%=dept%></td> 
+                                            <td>
+                                                <form method="post" action="addMembership.jsp">
+                                                    <input type="hidden" name="userID" value="<%=userID%>">
+                                                    <input type="hidden" name="taskID" value="<%=taskID%>">
+                                                    <button class="btn btn-default">+ add</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                     <%
+                                        }
+                                    }
+                                 %>  
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+                        
+                        
+                        
+                        
+           
+        <div class="container" align="center" >
+                <div class="col-md-30">
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                                <h3 class="panel-title">Selected Staff</h3>
                                 <div class="pull-right">
                                     <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
                                             <i class="glyphicon glyphicon-filter"></i>
@@ -61,25 +183,22 @@
                         <table class="table table-hover" id="dev-table" >
                             <thead>
                                     <tr align="center">
-                                        <th colspan="2">Staff Name</th>
+                                        <th>Staff Name</th>
                                         <th>Staff ID</th>
                                         <th>Position</th>
                                         <th>Department</th>
+                                        <th></th>
                                     </tr>
                             </thead>
                             <tbody>
-                            <%
-                                String sql="SELECT * FROM user ";
-                                
-                                
-                                System.out.println("sql:"+sql);
-                                
-                                    db.query(sql);
-                                    int numOfRow=db.getNumberOfRows();
-                                    if(numOfRow-1!=-1)
+                            <%                               
+                                    
+                                    db.query("SELECT * FROM tempconfirmmember INNER JOIN user ON user.userID=tempconfirmmember.userID");
+                                    int numRow=db.getNumberOfRows();
+                                    if(numRow-1!=-1)
                                     {
-                                        System.out.println(numOfRow);
-                                    for(int i=0; i<numOfRow; i++)
+                                        
+                                    for(int i=0; i<numRow; i++)
                                     {
                                         name=db.getDataAt( i,"name");
                                         staffID=db.getDataAt( i,"StaffID");
@@ -89,23 +208,30 @@
                                         userID=db.getDataAt(i, "userID");
                                         qualification=db.getDataAt(i,"qualification");
                                         
-                            %>
+                                        
+                                        
+                                        %>
+
+                                                    <tr>   
+                                                        <td><%
+                                                            if(qualification!="none"&&qualification!="None"&&qualification!=null)
+                                                            {
+                                                                out.print(qualification);
+                                                            }
+                                                        %><%=name%></td>
+                                                        <td><%=staffID%></td>
+                                                        <td><%=post%></td>
+                                                        <td><%=dept%><input type="hidden" name="userID<%=i%>" value="<%=userID%>" ></td>  
+                                                        <td>
+                                                            <form method="get" action="../removeTempUser">
+                                                                <input type="hidden" name="userID" value="<%=userID%>">
+                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
+                                                                <button type="submit" class="btn btn-default">Remove</button> 
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                 <%
                             
-                                    <tr>
-                                        <td>
-                                            <input type="radio" name="userID" value="<%=userID%>" >
-                                        </td>
-                                        <td><%
-                                            if(qualification!="none")
-                                            {
-                                                out.print(qualification);
-                                            }
-                                        %><%=name%></td>
-                                        <td><%=staffID%></td>
-                                        <td><%=post%></td>
-                                        <td><%=dept%></td>   
-                                    </tr>
-                                 <%
                                     }
                                     }
                                  %>  
@@ -113,91 +239,19 @@
                         </table>
                         </div>
                     </div>
+                    <form method="post" action="addMemberConfirmation.jsp">
                         <input type="hidden" name="taskID" value="<%=taskID%>">
-                        <input type="hidden" name="numOfRow" value="<%=numOfRow%>">
                         <button type="submit" class="btn btn-default">Proceed</button>                                 
-                    
+                    </form>
+                    <form method="post" action="viewCT.jsp">
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                        <input type="hidden" name="taskID" value="<%=taskID%>">
+                    </form>
                 </div>
-            </div>
-        </div>    
-    </form>
-                        <%         
-            }
-            else
-            {
-                db.query("SELECT * FROM tf WHERE idTF='"+taskID+"'");
-                    String taskName=db.getDataAt( 0,"TFname");
-                db.query("SELECT * FROM user WHERE userID='"+userID+"'");
-                    name=db.getDataAt( 0,"name");
-                    staffID=db.getDataAt( 0,"StaffID");
-                    post=db.getDataAt( 0,"position");
-                    dept=db.getDataAt( 0,"department");
-                    stat=db.getDataAt( 0,"status");
-                    userID=db.getDataAt(0, "userID");
-                    qualification=db.getDataAt(0,"qualification");
-                        %>
-                <h2 align="center">Confirmation</h2>
-                <div class="container" align="center" style="width:500px;">
-                    <div class="" align="center">
-                        <div class="col-md-30">
-                            <div class="panel panel-primary">
-                                <form action="../addMembership" method="post">
-                                <table class="table table-hover" id="dev-table">
-                                    <thead>
-                                        <tr >
-                                            <td><b>Staff Name:</b></td>
-                                            <td ><%if(qualification!="none"||qualification!=null)
-                                                    {
-                                                        out.print(qualification);
-                                                    }
-                                                %><%=name%></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Staff ID:</b></td>
-                                            <td ><%=staffID%></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Position:</b></td>
-                                            <td >
-                                                    <%=post%></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Department:</b></td>
-                                            <td >
-                                                    <%=dept%></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Taskforce Assign:</b></td>
-                                            <td >
-                                                    <%=taskName%></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Date Start:</b></td>
-                                            <td ><input type="date" class="form-control" name="StartDate" required></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Status:</b></td>
-                                            <td ><input type="date" class="form-control" name="endDate" required></td>
-                                        </tr>
-                                        <tr>
-                                            
-                                            <td colspan="2" align="center">
-                                                <br>
-                                                    <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                    <input type="hidden" name="userID" value="<%=userID%>">
-                                                    <input type="submit" value="Confirm">
-                                                
-                                            </td>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
+            </div> 
+        </div>
         <%
+        db.close();
             }
         %>
     </body>

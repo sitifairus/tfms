@@ -34,43 +34,38 @@ public class addMembership extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userID=request.getParameter("userID");
             String taskID=request.getParameter("taskID");
-            String startDate=request.getParameter("StartDate");
-            String endDate=request.getParameter("endDate");
+            String startDate=request.getParameter("sDate");
+            String endDate=request.getParameter("lDate");
+            String [] userID=new String[100];
             DB db = new DB();
             
             if(db.connect())
             {
-                if(db.query("SELECT * FROM tf_member WHERE userID='"+userID+"'AND tfID='"+taskID+"'"))
+                db.query("SELECT * FROM tempconfirmmember");
+                int n=db.getNumberOfRows();
+                System.out.println("row="+n);
+                for(int i=0;i<n; i++)
                 {
-                    if(db.getNumberOfRows()==0)
+                    userID[i]=db.getDataAt(i, "userID");
+                    System.out.println("userID"+i+"="+userID[i]);
+                }
+                for(int k=0; k<n;k++)
+                {
+                    if(db.query("SELECT * FROM tf_member WHERE userID='"+userID[k]+"'AND tfID='"+taskID+"'"))
                     {
-                        if(db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+userID+"', 'member', 'member', '"+startDate+"', '"+endDate+"')"))
+                        if(db.getNumberOfRows()==0)
                         {
-                            response.sendRedirect("Admin/viewCT.jsp?taskID="+taskID+"");
+                            db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+userID[k]+"', 'member', 'member', '"+startDate+"', '"+endDate+"')");
+                            
                         }
                     }
-                    else
-                        response.sendRedirect("Admin/message.jsp?message=The Staff has Already Register in this Task!");
                 }
+                
                 
                 db.close();
             }
-            else
-            {
-                
-            }
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet addMembership</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet addMembership at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            response.sendRedirect("Admin/viewCT.jsp?taskID="+taskID+"");
         }
     }
 

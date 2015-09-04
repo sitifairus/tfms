@@ -15,6 +15,12 @@
         
     </head>
     <body>
+        <%
+            String UserSession = (String)session.getAttribute("user");
+            String UserType = (String)session.getAttribute("userType");
+            //out.println(UserSession);
+            if ((!(UserSession==null))&&(UserType.equals("admin"))) {
+        %>
         <%@ include file="adminHeader.jsp" %>
         <%
             String postID=request.getParameter("postID");
@@ -73,6 +79,7 @@
                     
                 }
                 db.close();
+            }
             }
         %>
              

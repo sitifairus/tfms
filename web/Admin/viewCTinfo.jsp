@@ -23,7 +23,7 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
 <%
-    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice";
+    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName FROM tf JOIN tf_member ON tf.idTF=tf_member.tfID INNER JOIN user ON user.userID=tf_member.userID INNER JOIN office ON officeID=idoffice  WHERE tf_member.GStatus='Coordinator' AND tf_member.status='active'";
     String taskName=null;
     String taskID=null;
     String coordinatorName=null;

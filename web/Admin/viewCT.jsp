@@ -26,7 +26,7 @@
             String startDate=null;
             String taskStatus=null;
             String memberID=null;
-            String sql1="SELECT tf.TFname, user.name, user.qualification, tf.startDate, office.officeName, tf.status FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice WHERE tf.idTF='"+taskID+"'";
+            String sql1="SELECT tf.TFname, user.name, user.qualification, tf.startDate, office.officeName, tf.status FROM tf INNER JOIN tf_member ON tf.idTF=tf_member.tfID INNER JOIN user ON tf_member.userID=user.userID INNER JOIN office ON officeID=idoffice WHERE tf.idTF='"+taskID+"' AND GStatus='Coordinator' AND tf_member.status='active'";
             String sql2="SELECT user.name, user.staffID, user.userID, user.qualification, tf_member.position, tf_member.idtf_member, tf_member.GStatus, tf_member.startDate, tf_member.endDate FROM tf_member INNER JOIN user ON tf_member.userID=user.userID WHERE tf_member.tfID='"+taskID+"' AND tf_member.status='active'";
             String sql3="SELECT user.name, user.qualification, user.userID, user.staffID, tf_member.position, tf_member.idtf_member, tf_member.GStatus, tf_member.startDate, tf_member.endDate FROM tf_member JOIN user ON tf_member.userID=user.userID WHERE tf_member.tfID='"+taskID+"' AND tf_member.status='not active'";
             //out.println("taskID:"+taskID);
@@ -84,7 +84,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="addMembership.jsp" method="post" > <?---where to,action & method---?>
+                                        <form action="../clearTableConfirmMember" method="post" > <?---where to,action & method---?>
                                             <input type="hidden" name="taskID" value="<%=taskID%>">
                                             <input type="submit" value="Add Membership" class="btn btn-default">
                                         </form>
