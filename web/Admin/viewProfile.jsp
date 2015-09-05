@@ -60,7 +60,6 @@
             %>
             <div>
                 <span></span><h3>Task Assign</h3>
-                <a href="#">+ add task</a>
                 <div >
                     <table class="table table-user-information">
                         
@@ -111,7 +110,6 @@
                     
                     <div>
                 <span></span><h3>Previous Task</h3>
-                <a href="#">+ add task</a>
                 <div >
                     <table class="table table-user-information">
                         

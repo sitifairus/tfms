@@ -55,20 +55,13 @@
                         
         %>
         <div class="container">
-            <div><button class="btn btn-default" onclick="history.back()" >Back</button></div><br>
+            
      <h1 class="">Edit Profile</h1>
 
     <hr class="">
     <div class="row">
         <!-- left column -->
-        <div class="col-md-3">
-            <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-                 <h6 class="">Upload a different photo...</h6>
-
-                <input class="form-control" type="file">
-            </div>
-        </div>
+        
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
             <div style="display: none;" class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a>  <i class="fa fa-coffee"></i>

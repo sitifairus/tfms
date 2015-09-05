@@ -4,6 +4,7 @@
     Author     : aya
 --%>
 
+<%@page import="package1.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -61,6 +62,23 @@
     </head>
     <body>
       <%@ include file="StaffHeader.jsp" %>
+      <%
+          String userID=(String)session.getAttribute("user");
+          String userType=(String)session.getAttribute("userType");
+          DB db=new DB();
+          if ((!(userID==null))&&(userType.equals("lecturer"))) {
+              if(db.connect())
+              {
+                  db.query("SELECT * FROM user WHERE userID='"+userID+"'");
+                  String name=db.getDataAt(0, "name");
+                  String q=db.getDataAt(0, "qualification");
+                  String position=db.getDataAt(0, "position");
+                  String email=db.getDataAt(0, "email");
+                  String phone=db.getDataAt(0, "phone");
+                  String department=db.getDataAt(0, "department");
+                  String office=db.getDataAt(0, "office");
+                  String staffID=db.getDataAt(0, "staffID");
+      %>
       <div class="container">
        <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -77,27 +95,27 @@
                     <tbody>
                       <tr>
                         <td>Staff ID:</td>
-                        <td>11451</td>
+                        <td><%=staffID%></td>
                       </tr>
                       <tr>
                         <td>Position:</td>
-                        <td>Lecturer </td>
+                        <td><%=position%></td>
                       </tr>
                       <tr>
                         <td>Department</td>
-                        <td>Computer Science</td>
+                        <td><%=department%></td>
                       </tr>
                       <tr>
                         <td>Address :</td>
-                        <td>505,Tingkat 5, N28A,Fakulti Komputeran </td>
+                        <td><%=office%></td>
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                        <td><a href="mailto:<%=email%>"><%=email%></a></td>
                       </tr>
                       <tr>
                         <td>Phone Number</td>
-                        <td>07-3557894<br><br>555-4567-890(Mobile)</td>
+                        <td><%=phone%></td>
                       </tr>
                      
                     </tbody>
@@ -123,5 +141,9 @@
         </div><!--container size-->
       </div><!--row-->
     </div><!--container-->
+    <%
+              }
+          }
+    %>
   </body>
 </html>

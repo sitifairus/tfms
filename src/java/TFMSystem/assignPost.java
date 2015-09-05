@@ -12,14 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import package1.DB;
+
 /**
  *
  * @author on
  */
-@WebServlet(name = "LoginVerification", urlPatterns = {"/LoginVerification"})
-public class LoginVerification extends HttpServlet {
+@WebServlet(name = "assignPost", urlPatterns = {"/assignPost"})
+public class assignPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,60 +35,22 @@ public class LoginVerification extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            
-            String userN = request.getParameter("username");
-             String passs= request.getParameter("password");
-             String username=null;
-             String status=null;
-             String userType=null;
-            DB db= new DB();
-            //System.out.println("password:");
+            String postID=request.getParameter("postID");
+            String startDate=request.getParameter("startDate");
+            String endDate=request.getParameter("endDate");
+            String userID=request.getParameter("userID");
+            DB db = new DB();
             if(db.connect())
             {
-            db.query("select * from user where userID='"+userN+"' and password='"+passs+"' ");
-            username=db.getDataAt( 0,"userID");
-
-            if(username!=null)
-            {
-                status=db.getDataAt( 0,"status");
-                userType=db.getDataAt( 0,"userType");
-                HttpSession session = request.getSession(true);
-                session.setAttribute("user", username);
-                session.setAttribute("userType",userType);
-                session.setAttribute("status", status);
-                if(status.equals("active"))
+                db.query("SELECT * FROM ak_position WHERE userID='"+userID+"' AND status='active'");
+                if(db.getNumberOfRows()==0)
                 {
-                    if(userType.equals("admin"))
-                    {
-                        response.sendRedirect("Admin/HomePageAdmin.jsp");
-                    }
-                    else if(userType.equals("lecturer"))
-                    {
-                        response.sendRedirect("Staff/HomePageStaff.jsp");
-                    }
-                    else
-                    {
-                        response.sendRedirect("Pentadbir/HomePagePentadbir.jsp");
-                    }
-                     
-                }
-                else
-                {
-                    out.println("your account not active!");
+                    db.query("INSERT INTO ak_position(postID, userID, status, startDate, lastDate) VALUES('"+postID+"','"+userID+"','active','"+startDate+"','"+endDate+"')");
                     
                 }
+                response.sendRedirect("Admin/postManagement.jsp");
+                db.close();
             }
-            else
-            {
-                System.out.println("wrong username or password");
-                response.sendRedirect("Login.jsp");
-            }
-         }
-         else
-         {
-             System.out.println("not connecteed!!");
-         }
         }
     }
 

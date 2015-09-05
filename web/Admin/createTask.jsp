@@ -22,23 +22,35 @@
             DB db= new DB();
             String taskName="";
             String officeID="";
-            String officeName="";
+            String officeName=request.getParameter("officeName");
             officeID=request.getParameter("office");
             taskName=request.getParameter("taskName");
             String startDate=request.getParameter("startDate");
             String endDate=request.getParameter("endDate");
             System.out.println("officeName:"+taskName);
+            if(officeName!=null)
+            {
+                if(db.connect())
+                {
+                    db.query("SELECT * FROM office WHERE officeName='"+officeName+"'");
+                    if(db.getNumberOfRows()==0)
+                    {
+                        db.query("INSERT INTO office(officeName) VALUES ('"+officeName+"')");
+                    }
+                    db.close();
+                }
+            }
             if(taskName==null)
             {
         
         %>
         
         
-
+         <form role="form" method="get" action="createTask.jsp">
         <table align="center">
             <div class="container" style="width:600px; padding-bottom: 50px; padding-top: 20px;" border="2">
                 <h2 align="center">New Committee/Taskforce data</h2><br>
-                <form role="form" method="get" action="createTask.jsp">
+               
                     <div class="form-group">
                       <label for="TaskName" class="col-sm-3 control-label">C/T Name:</label>
                       
@@ -73,7 +85,7 @@
                                     db.close();
                                 }
                             %>
-                        </select><a href="#">Add New Office</a>
+                        </select>
                     </div><br><br>
                     </div>
                     <div class="form-group">
@@ -91,11 +103,13 @@
                    .
                     <div class="form-group" style="padding-left:160px;">
                         <button class="btn btn-default">Proceed</button>
-                    </div>
-                    
-                </form>
+                    </div>        
             </div>
         </table>
+        </form>
+                        <div align="center"><a href="#" data-toggle="modal" data-target="#OfficeModal">Add New Office</a></div>
+        
+        
         <%
             }
             else
@@ -222,12 +236,31 @@
                 </div>
             </div>
         </div>
-        
-        
         <%
             }
         
         %>
+        <div class="modal fade" id="OfficeModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
+                <div class="container">    
+                    <div id="loginbox" style="margin-top:50px; width:450px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
+                        <div class="panel panel-info" >
+                            <div class="panel-title"><br>.        .<img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Insert New Office</b>
+                                <br><br>
+                                <form class="form-horizontal" role="form" method="post" action="createTask.jsp">
+                                    <div class="col-sm-7">
+                                        <input class="form-control" type="text" name="officeName" placeholder="Enter Office Name">
+                                    </div>
+                                    <div>
+                                        <button id="btn-login" class="btn btn-success" >Confirm</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+                                    </div>
+                                    <br><br>
+                                </form>
+                            </div>                      
+                        </div>  
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
 <%@ include file="../footer.jsp" %>

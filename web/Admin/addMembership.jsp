@@ -27,7 +27,7 @@
             String post=null;
             String dept=null;
             String stat=null;
-            String qualification=null;
+            String qualification;
             String userID=null;
             int p=0;
             userID=request.getParameter("userID");            
@@ -132,7 +132,7 @@
 
                                         <tr>
                                             <td><%
-                                                if(qualification!="none"&&qualification!="None"&&qualification!=null)
+                                                if(!qualification.equals("none")&&!qualification.equals("None")&&qualification!=null)
                                                 {
                                                     out.print(qualification);
                                                 }
@@ -214,7 +214,7 @@
 
                                                     <tr>   
                                                         <td><%
-                                                            if(qualification!="none"&&qualification!="None"&&qualification!=null)
+                                                            if(!qualification.equals("none")&&!qualification.equals("None")&&qualification!=null)
                                                             {
                                                                 out.print(qualification);
                                                             }

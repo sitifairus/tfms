@@ -24,7 +24,6 @@
         <%
             String memberID=request.getParameter("memberID");
             String taskID=request.getParameter("taskID");
-            out.print(memberID);
             DB db =new DB();
             if(db.connect())
             {
@@ -54,7 +53,7 @@
                     <label for="office" class="col-sm-4 control-label">Editing member :</label>
                     <div class="col-sm-8">
                         <%
-                            if(q!=null||q!="")
+                            if(q!=null&&!q.equals("none"))
                             {
                                 out.println(q);
                             }
@@ -64,13 +63,23 @@
                     <div class="form-group">
                     <label for="office" class="col-sm-4 control-label">Position :</label>
                     <div class="col-sm-8">
+                        <%
+                        if(!post.equals("Leader")&&!post.equals("leader"))
+                        {
+                        %>
                         <select name="post" class="form-control">       
                             <option value="<%=post%>"><%=post%></option>
-                            <option value="Leader">Leader</option>
                             <option value="Member">Member</option>
                             <option value="Secretary">Secretary</option>
                         </select>
-                    </div>
+                        <%
+                        }
+                        else
+                        {
+                         out.print(post);
+                        }
+                        %>
+                    </div><br>
                     </div>
                     <div class="form-group">
                         <label for="startDate" class="col-sm-4 control-label">Start Date:</label>

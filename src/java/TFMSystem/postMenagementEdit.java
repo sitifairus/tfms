@@ -35,13 +35,13 @@ public class postMenagementEdit extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String postID=request.getParameter("postID");
+            String idPost=request.getParameter("idPost");
             String sDate=request.getParameter("sDate");
             String lDate=request.getParameter("lDate");
             DB db = new DB();
             if(db.connect())
             {
-                if(db.query("UPDATE ak_position SET startDate='"+sDate+"', lastDate='"+lDate+"'"))
+                if(db.query("UPDATE ak_position SET startDate='"+sDate+"', lastDate='"+lDate+"' WHERE idPost='"+idPost+"'"))
                 {
                     response.sendRedirect("Admin/postManagement.jsp");
                 }

@@ -38,11 +38,10 @@ public class clearTableConfirmMember extends HttpServlet {
             DB db = new DB();
             if(db.connect())
             {
-                if(db.query("DROP TABLE tempconfirmmember"))
-                {
-                    System.out.println("delete");
-                    db.query("CREATE TABLE tempconfirmmember (id INT NOT NULL AUTO_INCREMENT COMMENT '', userID VARCHAR(45) NULL COMMENT '', PRIMARY KEY (id)  COMMENT '', UNIQUE INDEX id_UNIQUE (id ASC)  COMMENT '')");
-                }
+                db.query("DROP TABLE tempconfirmmember");
+                System.out.println("delete");
+                db.query("CREATE TABLE tempconfirmmember (id INT NOT NULL AUTO_INCREMENT COMMENT '', userID VARCHAR(45) NULL COMMENT '', PRIMARY KEY (id)  COMMENT '', UNIQUE INDEX id_UNIQUE (id ASC)  COMMENT '')");
+                
                 db.close();
                 response.sendRedirect("Admin/addMembership.jsp?taskID="+taskID+"");
             }

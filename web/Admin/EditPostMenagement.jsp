@@ -23,7 +23,7 @@
         %>
         <%@ include file="adminHeader.jsp" %>
         <%
-            String postID=request.getParameter("postID");
+            String idPost=request.getParameter("idPost");
             String name=null;
             String staffID=null;
             String postName=null;
@@ -32,7 +32,7 @@
             DB db = new DB();
             if(db.connect())
             {
-                if(db.query("SELECT user.name, user.staffID, ak_position.postName, ak_position.startDate, ak_position.lastDate FROM user INNER JOIN ak_position ON user.userID=ak_position.userID WHERE ak_position.postID='"+postID+"'"))
+                if(db.query("SELECT user.name, user.staffID, ak_position.postID, postdetail.postName, ak_position.startDate, ak_position.lastDate FROM user INNER JOIN ak_position ON user.userID=ak_position.userID INNER JOIN postdetail ON postdetail.postID=ak_position.postID WHERE ak_position.idPost='"+idPost+"'"))
                 {
                     name=db.getDataAt(0, "name");
                     staffID=db.getDataAt(0, "staffID");
@@ -66,7 +66,7 @@
                                 <td><input class="form-control" type="date" name="lDate" value="<%=lDate%>"></td>
                             </tr>
                             <tr>
-                                <td><input class="hidden" name="postID" value="<%=postID%>"></td>
+                                <td><input class="hidden" name="idPost" value="<%=idPost%>"></td>
                                 <td><br><input class="btn btn-toolbar" type="submit" value="Save Change"></td>
                             </tr>
                         </table>

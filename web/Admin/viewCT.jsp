@@ -61,7 +61,7 @@
                                 <tr>
                                     <td><b>C/T Coordinator Name:</b></td>
                                     <td colspan="2"><%
-                                            if(coordinatorQ!="none"||coordinatorQ!=null)
+                                            if(!coordinatorQ.equals("none"))
                                             {
                                                 out.print(coordinatorQ);
                                             }
@@ -157,6 +157,7 @@
                                                 SDate=db.getDataAt( i,"startDate");
                                                 EDate=db.getDataAt( i,"endDate");
                                                 userID=db.getDataAt(i,"userID");
+                                                coordinatorQ=db.getDataAt(i,"qualification");
                                                 memberID=db.getDataAt(i,"idtf_member");
                             %>
                             
@@ -165,7 +166,7 @@
                                             <%=i+1%>
                                         </td>
                                         <td><a href="viewProfile.jsp?userID=<%=userID%>" style="text-decoration: underline;"><%
-                                            if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                            if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                             {
                                                 out.print(coordinatorQ);
                                             }
@@ -210,7 +211,7 @@
                                             <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
                                                 <div class="panel panel-info" >
                                                     <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Request Appointment Letter for <%
-                                                                    if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                                                    if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                                                     {
                                                                         out.print(coordinatorQ);
                                                                     }
@@ -254,7 +255,7 @@
                                             <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
                                                 <div class="panel panel-info" >
                                                     <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to Terminate <%
-                                                                    if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                                                    if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                                                     {
                                                                         out.print(coordinatorQ);
                                                                     }
@@ -276,7 +277,7 @@
                                             <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
                                                 <div class="panel panel-info" >
                                                     <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to Terminate <%
-                                                                    if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                                                    if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                                                     {
                                                                         out.print(coordinatorQ);
                                                                     }
@@ -353,6 +354,7 @@
                                                 gStatus=db.getDataAt( i,"GStatus");
                                                 SDate=db.getDataAt( i,"startDate");
                                                 EDate=db.getDataAt( i,"EndDate");
+                                                coordinatorQ=db.getDataAt(i,"qualification");
                             %>
                             
                                     <tr>
@@ -360,7 +362,7 @@
                                             <%=i+1%>
                                         </td>
                                         <td><a href="viewCT.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%
-                                            if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                            if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                             {
                                                 out.print(coordinatorQ);
                                             }

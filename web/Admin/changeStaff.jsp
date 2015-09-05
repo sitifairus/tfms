@@ -20,8 +20,13 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
         <%
-            String postName=request.getParameter("postName");
             String postID=request.getParameter("postID");
+            String idPost=request.getParameter("idPost");
+            DB db= new DB();
+            if(db.connect())
+                                {
+                                    db.query("SELECT postName FROM postdetail WHERE postID='"+postID+"'");
+                                    String postName=db.getDataAt(0, "postName");
         %>
         <h2 align="center">Change Staff for <%=postName%> position</h2><br>
         <form method="get" action="../changePostMenagement">
@@ -76,10 +81,9 @@
                                 String stat=null;
                                 String qualification=null;
                                 String userID=null;
-                                DB db= new DB();
+                                
                                 System.out.println("sql:"+sql);
-                                if(db.connect())
-                                {
+                                
                                     db.query(sql);
                                     int numOfRow=db.getNumberOfRows();
                                     if(numOfRow-1!=-1)
@@ -120,8 +124,8 @@
                             </tbody>
                         </table>
                     </div>
-                        <input type="hidden" name="postID" value="<%=postID%>"> 
-                        <input type="hidden" name="postName" value="<%=postName%>">
+                        <input type="hidden" name="idPost" value="<%=idPost%>"> 
+                        <input type="hidden" name="postID" value="<%=postID%>">
                         <button type="submit" class="btn btn-default">Proceed</button>                                 
                     
                 </div>

@@ -24,6 +24,8 @@
         
         
         <div class="container" align="center">
+            
+    <a class="btn btn-default" href="assignPost.jsp">Assign Position</a>
     <h1 align="center"> Post Management </h1>
     <div class="row" align="center">
 			<div class="col-md-60">
@@ -45,16 +47,17 @@
 						</thead>
 						<tbody>
 							<%
-            String post=null;
+            String postID=null;
             String email=null;
             String name=null;
             String startDate=null;
             String lastDate=null; 
             String userID=null;
-            String postID=null;
+            String idPost=null;
+            String postName=null;
             String status=null;
             String qualification=null;
-            String sql="SELECT ak_position.postName,ak_position.postID, ak_position.status, user.name, user.qualification, user.userID, user.email, ak_position.lastDate, ak_position.startDate FROM ak_position JOIN user ON ak_position.userID=user.userID";
+            String sql="SELECT postdetail.postName,ak_position.idPost, ak_position.postID, ak_position.status, user.name, user.qualification, user.userID, user.email, ak_position.lastDate, ak_position.startDate FROM ak_position INNER JOIN user ON ak_position.userID=user.userID INNER JOIN postdetail ON postdetail.postID=ak_position.postID";
             DB db= new DB();
             System.out.println("sql:"+sql);
             if(db.connect())
@@ -63,11 +66,12 @@
                 int numOfRow=db.getNumberOfRows();
                 for(int i=0; i<numOfRow; i++)
                 {
-                    post=db.getDataAt( i,"postName");
+                    postID=db.getDataAt( i,"postID");
+                    postName=db.getDataAt(i, "postName");
                     userID=db.getDataAt(i,"userID");
                     name=db.getDataAt( i,"name");
                     email=db.getDataAt( i,"email");
-                    postID=db.getDataAt(i,"postID");
+                    idPost=db.getDataAt(i,"idPost");
                     startDate=db.getDataAt( i,"startDate");
                     status=db.getDataAt(i, "status");
                     lastDate=db.getDataAt(i, "lastDate");
@@ -76,7 +80,7 @@
                                   
         %>    
                 <tr>
-                    <td style="text-align:center;"><%=post%></td>
+                    <td style="text-align:center;"><%=postName%></td>
                     <td style="text-align:center;"><%
                                     if(qualification!="none"&&qualification!=null)
                                     {
@@ -88,14 +92,14 @@
                     <td style="text-align:center;"><%=lastDate%></td>
                     <td style="text-align:center;">
                         <form action="EditPostMenagement.jsp" method="post"> <?---where to,action & method---?>
-                            <input type="hidden" name="postID" value="<%=postID%>">
+                            <input type="hidden" name="idPost" value="<%=idPost%>">
                             <input type="submit" value="Edit" class="btn btn-toolbar">
                         </form>
                     </td>
                     <td style="text-align:center;">
                         <form action="changeStaff.jsp" method="post" > <?---where to,action & method---?>
+                            <input type="hidden" name="idPost" value="<%=idPost%>">
                             <input type="hidden" name="postID" value="<%=postID%>">
-                            <input type="hidden" name="postName" value="<%=post%>">
                             <input type="submit" value="Change staff" class="btn btn-toolbar">
                         </form>
                     </td>
@@ -146,7 +150,7 @@
                                                     <%
                 for(int i=0; i<numOfRow; i++)
                 {
-                    post=db.getDataAt( i,"postName");
+                    postName=db.getDataAt( i,"postName");
                     name=db.getDataAt( i,"name");
                     email=db.getDataAt( i,"email");
                     startDate=db.getDataAt( i,"startDate");
@@ -156,7 +160,7 @@
                     if(status.equals("not active")){         
         %>
                 <tr>
-                    <td style="text-align:center;"><%=post%></td>
+                    <td style="text-align:center;"><%=postName%></td>
                     <td style="text-align:center;"><%
                                     if(qualification!="none"&&qualification!=null)
                                     {
