@@ -19,6 +19,11 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
         <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
             DB db= new DB();
             String taskName="";
             String officeID="";

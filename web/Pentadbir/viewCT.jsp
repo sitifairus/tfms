@@ -18,6 +18,11 @@
     <body>
         <%@ include file="PentadbirHeader.jsp" %>
         <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("Pentadbir")&&!userType.equals("pentadbir"))) {
+                response.sendRedirect("../message.jsp");
+            }
             String taskID=request.getParameter("taskID");
             String taskName=null;
             String coordinatorName=null;
@@ -26,7 +31,7 @@
             String startDate=null;
             String taskStatus=null;
             String memberID=null;
-            String sql1="SELECT tf.TFname, user.name, user.qualification, tf.startDate, office.officeName, tf.status FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice WHERE tf.idTF='"+taskID+"'";
+            String sql1="SELECT tf.TFname, user.name, user.qualification, tf.startDate, office.officeName, tf.status FROM tf INNER JOIN tf_member ON tf.idTF=tf_member.tfID INNER JOIN user ON tf_member.userID=user.userID INNER JOIN office ON officeID=idoffice WHERE tf.idTF='"+taskID+"' AND GStatus='Coordinator' AND tf_member.status='active'";
             String sql2="SELECT user.name, user.staffID, user.userID, user.qualification, tf_member.position, tf_member.idtf_member, tf_member.GStatus, tf_member.startDate, tf_member.endDate FROM tf_member INNER JOIN user ON tf_member.userID=user.userID WHERE tf_member.tfID='"+taskID+"' AND tf_member.status='active'";
             String sql3="SELECT user.name, user.qualification, user.userID, user.staffID, tf_member.position, tf_member.idtf_member, tf_member.GStatus, tf_member.startDate, tf_member.endDate FROM tf_member JOIN user ON tf_member.userID=user.userID WHERE tf_member.tfID='"+taskID+"' AND tf_member.status='not active'";
             //out.println("taskID:"+taskID);
@@ -61,7 +66,7 @@
                                 <tr>
                                     <td><b>C/T Coordinator Name:</b></td>
                                     <td colspan="2"><%
-                                            if(coordinatorQ!="none"||coordinatorQ!=null)
+                                            if(!coordinatorQ.equals("none"))
                                             {
                                                 out.print(coordinatorQ);
                                             }
@@ -75,7 +80,6 @@
                                     <td><b>Status:</b></td>
                                     <td colspan="2"><%=taskStatus%></td>
                                 </tr>
-                                
                             </thead>
                         </table>
                     </div>
@@ -88,7 +92,7 @@
         %>
         
         
-        <div class="container" align="center" style="width:1100px;">
+        <div class="container" align="center">
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
@@ -101,10 +105,10 @@
 				</div>
                         </div>
                         <div class="panel-body">
-                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table2" placeholder="Seacrh Staff" />
                         </div>
-                       
-                        <table class="table table-hover" id="dev-table">
+                       <div style="max-height: 410px; overflow-y: scroll;">
+                        <table class="table table-hover" id="dev-table2">
                             <thead>
                                     <tr align="center">
                                         <th>No.</th>
@@ -142,6 +146,7 @@
                                                 SDate=db.getDataAt( i,"startDate");
                                                 EDate=db.getDataAt( i,"endDate");
                                                 userID=db.getDataAt(i,"userID");
+                                                coordinatorQ=db.getDataAt(i,"qualification");
                                                 memberID=db.getDataAt(i,"idtf_member");
                             %>
                             
@@ -149,8 +154,8 @@
                                         <td>
                                             <%=i+1%>
                                         </td>
-                                        <td><a href="viewProfile.jsp?userID=<%=userID%>" style="text-decoration: underline;"><%
-                                            if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                        <td><a href="profileMember.jsp?userID=<%=userID%>" style="text-decoration: underline;"><%
+                                            if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                             {
                                                 out.print(coordinatorQ);
                                             }
@@ -161,7 +166,6 @@
                                         <td><%=gStatus%></td>
                                         <td><%=SDate%></td>
                                         <td><%=EDate%></td>
-                                        <td>
                                     </tr>
                                  <%
                                             }
@@ -171,12 +175,13 @@
                                  %>  
                             </tbody>
                         </table>
+                       </div>
                     </div>
                 </div>
             </div>
         </div>
                                  
-        <div class="container" align="center" style="width:1100px;">
+        <div class="container" align="center">
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
@@ -189,10 +194,10 @@
 				</div>
                         </div>
                         <div class="panel-body">
-                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table1" placeholder="Seacrh Staff" />
                         </div>
-                       
-                        <table class="table table-hover" id="dev-table">
+                        <div style="max-height: 410px; overflow-y: scroll;">
+                        <table class="table table-hover" id="dev-table1">
                             <thead>
                                     <tr align="center">
                                         <th>No.</th>
@@ -222,6 +227,7 @@
                                                 gStatus=db.getDataAt( i,"GStatus");
                                                 SDate=db.getDataAt( i,"startDate");
                                                 EDate=db.getDataAt( i,"EndDate");
+                                                coordinatorQ=db.getDataAt(i,"qualification");
                             %>
                             
                                     <tr>
@@ -229,7 +235,7 @@
                                             <%=i+1%>
                                         </td>
                                         <td><a href="viewCT.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%
-                                            if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                            if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
                                             {
                                                 out.print(coordinatorQ);
                                             }
@@ -248,6 +254,7 @@
                                  %>  
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>

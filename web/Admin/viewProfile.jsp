@@ -17,6 +17,11 @@
     <body >
         <%@ include file="adminHeader.jsp" %>
         <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
             String name=null;
             String staffID=null;
             String q=null;
@@ -56,10 +61,9 @@
     <div class="row" style="align:center;">
         <!-- left column -->
         <div class="col-md-4">
-            <%// put image
-            %>
             <div>
-                <span></span><h3>Task Assign</h3>
+                <span></span><h3>Task Assign</h3><a href="assignTask.jsp?userID=<%=userID%>">+Assign Task</a>
+                
                 <div >
                     <table class="table table-user-information">
                         
@@ -126,7 +130,7 @@
                         </tr>
                                 <%
                                 System.out.println("sql:"+userID);
-                                for(int i=0;i<row;i++)
+                                for(int i=0;i<roww;i++)
                                 {
                                     String tName=db.getDataAt(i, "TFname");
                                     String taskID=db.getDataAt(i, "idTF");

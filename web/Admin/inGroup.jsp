@@ -19,9 +19,16 @@
           </style>
     </head>
 <body>
+    <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
+    %>
      <%@ include file="adminHeader.jsp" %>
     <div class="container" align="center">
-    <h1 align="center"> Staffs in taskforce/committee <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
+    <h1 align="center"> Staffs in taskforce/committee </h1>
         <div class="row" align="center">
             <div class="col-md-60">
                 <div class="panel panel-primary">
@@ -29,7 +36,7 @@
                         <h3 class="panel-title">Task Force Members</h3>
                         <div class="pull-right">
                             <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                                <i class="glyphicon glyphicon-filter"></i>
+                                <i class="glyphicon glyphicon-search"></i>
                             </span>
                         </div>
                     </div>
@@ -50,35 +57,77 @@
                         <%
                             DB db = new DB();
                             //DB db2 = new DB();
+                            String u;
                             String name;
                             String staffID;
                             String department;
                             String taskName;
-                            String userID;
-                            int no=0;
+                            String q;
                             if(db.connect())
                             {
-                                if(db.query("SELECT * FROM user NOT JOIN tf_member ON user.userID=tf_member.userID "))
+                                db.query("SELECT * FROM tf_member WHERE status='active'");
+                                String [] userIDD= new String[db.getNumberOfRows()];
+                                String [] userID= new String[db.getNumberOfRows()+1];
+                                for(int i=0; i<db.getNumberOfRows();i++)
                                 {
-                                    System.out.println(db.getNumberOfRows());
-                                    for(int i=0; i<db.getNumberOfRows();i++)
+                                    userIDD[i]=db.getDataAt(i,"userID");  
+                                }
+                                System.out.print("*");
+                                int n=0;
+                                for(int i=0; i<db.getNumberOfRows();i++)
+                                {
+                                    boolean flag=true;
+                                    for(int k=0; k<db.getNumberOfRows()-1; k++)
                                     {
-                                        name=db.getDataAt(i, "name");
-                                        staffID=db.getDataAt(i,"staffID");
-                                        department=db.getDataAt(i, "department");
-                                        userID=db.getDataAt(i, "userID");
-                                        System.out.println(userID);
+                                        if(userIDD[i].equals(userID[k]))
+                                        {
+                                            flag=false;
+                                            System.out.println(flag);
+                                        }
+                                    }
+                                    if(flag)
+                                    {
+                                        System.out.println(flag);
+                                        userID[n]=userIDD[i];
+                                        n++;
+                                    }
+                                }
+                                for(int i=0; i<n;i++)
+                                {
+                                    if(db.query("SELECT * FROM user WHERE userID='"+userID[i]+"'"))
+                                    {
+                                    
+                                        name=db.getDataAt(0, "name");
+                                        staffID=db.getDataAt(0,"staffID");
+                                        department=db.getDataAt(0, "department");
+                                        q=db.getDataAt(0, "qualification");
                                         %>
                                         <tr>
-                                        <td>1</td>
-                                        <td><%=name%></td>
-                                        <td><%=staffID%></td>
-                                        <td><%=department%></td>
-                                        <td>
-                        
-                                            <li><%//=taskName%></li>
+                                            <td><%=i+1%></td>
+                                            <td><a href="viewProfile.jsp?userID=<%=userID[i]%>"><%
+                                            if(!q.equals("none")&&q!=null)
+                                            {out.print(q);}
+                                        %><%=name%>
+                                            </a></td>
+                                            <td><%=staffID%></td>
+                                            <td><%=department%></td>
+                                            <td>
+                                        <%
+                                            if(db.query("SELECT TFname FROM tf JOIN tf_member ON tf.idTF=tf_member.tfID WHERE tf_member.userID='"+userID[i]+"'"))
+                                            {
+                                                for(int k=0; k<db.getNumberOfRows();k++)
+                                                {
+                                                    taskName=db.getDataAt(k, "TFname");
+                                                    System.out.print("*");
+                                        %>
+                                                    <%=taskName%><br>
+                                        <%
+                                                }
+                                            }
+                                        %>
                                             
-                                        </td>
+                                            
+                                            </td>
                                         </tr>
                         <%
                                     }

@@ -13,6 +13,11 @@
          <%@include file="../head.jsp" %>
     </head>
     <body>
+        <%  String userID=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userID==null))||(!userType.equals("Pentadbir")&&!userType.equals("pentadbir"))) {
+                response.sendRedirect("../message.jsp");
+            }%>
         <%@ include file="PentadbirHeader.jsp" %>
         
         <div class="container" >

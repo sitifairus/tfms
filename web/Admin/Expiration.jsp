@@ -170,6 +170,8 @@
 	</div>
     <%
             }
+            else
+                response.sendRedirect("../message.jsp");
     %>
 </body>
 </html>

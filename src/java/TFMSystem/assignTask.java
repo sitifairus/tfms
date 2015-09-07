@@ -12,15 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import package1.DB;
 
 /**
  *
  * @author on
  */
-@WebServlet(name = "ProfileEdit", urlPatterns = {"/ProfileEdit"})
-public class ProfileEdit extends HttpServlet {
+@WebServlet(name = "assignTask", urlPatterns = {"/assignTask"})
+public class assignTask extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,44 +35,22 @@ public class ProfileEdit extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true);
-            String userType=(String)session.getAttribute("userType");
-            String password=request.getParameter("password");
-            String name=request.getParameter("name");        
-            String phone=request.getParameter("phone");
-            String email=request.getParameter("email");             
-            String position=request.getParameter("position");               
-            String department=request.getParameter("department");                       
-            String qualification=request.getParameter("qualification");
-            String office=request.getParameter("office");
             String userID=request.getParameter("userID");
-            String sql="UPDATE user SET password='"+password+"', name='"+name+"', phone='"+phone+"', email='"+email+"', position='"+position+"',qualification='"+qualification+"', department='"+department+"', office='"+office+"' WHERE userID='"+userID+"'";
-            DB db= new DB();
-            System.out.println("sql:"+sql);
-            if(db.connect())
+            String taskID=request.getParameter("taskID");
+            String startDate=request.getParameter("sDate");
+            String EndDate=request.getParameter("lDate");
+            DB db =new DB();
+            db.connect();
+            if(db.query("SELECT * FROM tf_member WHERE userID='"+userID+"'AND tfID='"+taskID+"'"))
             {
-                db.query(sql);
-                System.out.println("done");
-                if(userType.equals("Admin")||userType.equals("Admin"))
-                    response.sendRedirect("Admin/viewProfile.jsp");
-                else if(userType.equals("Pentadbir")||userType.equals("pentadbir"))
-                    response.sendRedirect("Pentadbir/viewProfile.jsp");
-                else
-                    response.sendRedirect("Staff/StaffProfile.jsp");
+                if(db.getNumberOfRows()==0)
+                {
+                    db.query("INSERT INTO tf_member(tfID, userID, GStatus, position, startDate, endDate) VALUES('"+taskID+"', '"+userID+"', 'member', 'member', '"+startDate+"', '"+EndDate+"')");
+
+                }
             }
             db.close();
-            
-            
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProfileEdit</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProfileEdit at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            response.sendRedirect("Admin/viewProfile.jsp?userID="+userID+"");
         }
     }
 

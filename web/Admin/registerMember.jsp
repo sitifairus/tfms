@@ -18,6 +18,11 @@
     <body>
     <%@ include file="adminHeader.jsp" %>
         <%
+            String userSession=(String)session.getAttribute("user");
+            String userSType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userSType.equals("admin")&&!userSType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
             String userID=null;
             String password=null;
             String gender=null;

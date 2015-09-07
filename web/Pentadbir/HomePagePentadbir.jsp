@@ -26,7 +26,11 @@
 </head>
 
 <body>
-        
+        <%  String userID=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userID==null))||(!userType.equals("Pentadbir")&&!userType.equals("pentadbir"))) {
+                response.sendRedirect("../message.jsp");
+            }%>
         <%@include file="PentadbirHeader.jsp" %><br>
         <p><h3 align="center">Welcome to Pentadbir home page!</h3><br><br>
         

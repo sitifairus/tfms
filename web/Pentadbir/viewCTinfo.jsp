@@ -21,10 +21,16 @@
         <title>All Community Task Force</title>
     </head>
     <body>
+        <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("Pentadbir")&&!userType.equals("pentadbir"))) {
+                response.sendRedirect("../message.jsp");
+            }
+        %>
         <%@ include file="PentadbirHeader.jsp" %>
 <%
-    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName "
-            + "FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice";
+    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName FROM tf JOIN tf_member ON tf.idTF=tf_member.tfID INNER JOIN user ON user.userID=tf_member.userID INNER JOIN office ON officeID=idoffice  WHERE tf_member.GStatus='Coordinator' AND tf_member.status='active'";
     String taskName=null;
     String taskID=null;
     String coordinatorName=null;
@@ -32,12 +38,10 @@
     String officeName=null;
     String coordinatorQ=null;
     String year=null;
-    
     DB db=new DB();
-        
 %>
-           <h2 align="center">View Committee/Task Force</h2>
-        <div class="container" align="center" style="width:1100px;">
+        <h2 align="center">View Committee/Task Force</h2>
+        <div class="container" align="center" >
             <div class="" align="center">
                 <div class="col-md-30">
                     <div class="panel panel-primary">
@@ -50,9 +54,9 @@
 				</div>
                         </div>
                         <div class="panel-body">
-                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Search Staff" />
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
                         </div>
-                       
+                        <div style="max-height: 410px; overflow-y: scroll;">
                         <table class="table table-hover" id="dev-table">
                             <thead>
                                     <tr align="center">
@@ -61,7 +65,6 @@
                                         <th>Coordinator</th>
                                         <th>Office</th>
                                         <th>Year Start</th>
-                                        
                                     </tr>
                             </thead>
                             <tbody>
@@ -72,7 +75,6 @@
                                     db.query(sql);
                                     int numOfRow=db.getNumberOfRows();
                                     System.out.println("sql:"+sql);
-                                    System.out.println(numOfRow);
                                     if(numOfRow-1!=-1)
                                     {
                                         System.out.println(numOfRow);
@@ -100,8 +102,7 @@
                                         
                                         <td><%=officeName%></td>
                                         <td><%=year%></td>
-                                        
-                                    </tr>
+                                    </tr> 
                                  <%
                                     }
                                     }
@@ -111,12 +112,11 @@
                                  %>  
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-   
-        
+        </div>                            
     </body>
 </html>
 <%@ include file="../footer.jsp" %>

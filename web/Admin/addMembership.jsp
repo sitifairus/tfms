@@ -20,7 +20,11 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
         <%
-            
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
             String taskID=request.getParameter("taskID");
             String name=null;
             String staffID=null;

@@ -21,6 +21,13 @@
         <%@include file="../head.jsp" %>
     </head>
     <body>
+        <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("lecturer")&&!userType.equals("Lecturer"))) {
+                response.sendRedirect("../message.jsp");
+            }
+        %>
         <%@ include file="StaffHeader.jsp" %>
         <%
             String name=null;
@@ -39,26 +46,26 @@
             stat=request.getParameter("FilterStatus"); 
         %>
         
-       <div class="container">
-       <div class="row">
-        <div class="col-md-12">
-            
-            <div class="input-group" id="adv-search">
+       <div class="container" >
+       <div class="row" style="padding-left: 180px;">
+        <div class="col-md-10" >
+            <div class="input-group" id="adv-search" >
               <input type="text" class="form-control" placeholder="Search by"/>
                 <div class="input-group-btn">
                     <div class="btn-group" role="group">
                         <div class="dropdown dropdown-lg">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <div style="width: 800px;" class="dropdown-menu dropdown-menu-right" role="menu">
                                 
-                                <form class="form-horizontal" role="form" action="StaffProfile.jsp" method="post">
+                                <form class="form-horizontal" action="viewAllstaff.jsp" method="get">
+                                    <div style="width: 700px; padding-left: 80px; padding-top: 20px; padding-bottom: 10px;">
                                     <div class="form-group">
                                       <label for="filterName">Name</label>
-                                      <input class="form-control" type="text" name="name" id="filterName"/>
+                                      <input class="form-control" type="text" name="filterName" id="filterName"/>
                                     </div> 
                                     <div class="form-group">
                                       <label for="filterID">Staff ID</label>
-                                      <input class="form-control" type="text" name="Staffid" id="filterID" />
+                                      <input class="form-control" type="text" name="filterID" id="filterID" />
                                     </div>
                                     <div class="form-group">
                                       <label for="FilterPosition">Filter by Position</label>
@@ -84,12 +91,13 @@
                                       <select class="form-control" name="FilterStatus" id="FilterStatus">
                                           <option value="" selected>Not Selected</option>
                                           <option value="active">Active</option>
-                                          <option value="inactive">Inactive</option>
+                                          <option value="not active">Inactive</option>
                                       </select>
                                     </div>
                                     <span class="pull-right">  
                                     <button type="submit" class="btn btn-primary" value="search" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                     </span>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -98,13 +106,13 @@
                 </div>
             </div><!--input division-->
                     
-          </div><!--container size-->
+        </div><!--container size--><br><br>
+        <div style="padding-left: 30px;"><a href="viewAllstaff.jsp">View All Staff</a></div>
         </div><!--row-->
     </div><!---container-->
+    <br><br>
         
-        
-        
-        <div class="container" align="center">
+    <div class="container" align="center">
     <div class="row" align="center" style="width: 900px">
 			<div class="col-md-60">
 				<div class="panel panel-primary">

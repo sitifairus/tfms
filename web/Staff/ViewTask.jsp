@@ -23,7 +23,12 @@
     <body>
         <%@ include file="StaffHeader.jsp" %>
 <%
-    String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName FROM tf JOIN user ON tf.coordinatorID=user.userID INNER JOIN office ON officeID=idoffice";
+    String userSession=(String)session.getAttribute("user");
+    String userType=(String)session.getAttribute("userType");
+    if (((userSession==null))||(!userType.equals("lecturer")&&!userType.equals("Lecturer"))) {
+        response.sendRedirect("../message.jsp");
+    }
+    
     String taskName=null;
     String taskID=null;
     String coordinatorName=null;
@@ -32,8 +37,10 @@
     String coordinatorQ=null;
     String year=null;
     DB db=new DB();
-%>
-        <h2 align="center">View Committee/Task Force</h2>
+    if(db.connect())
+    {
+%><br>
+<h3 align="center">Your Current Committee/Task Force</h3><br>
         <div class="container" align="center" style="width:1100px;">
             <div class="" align="center">
                 <div class="col-md-30">
@@ -58,81 +65,152 @@
                                         <th>Coordinator</th>
                                         <th>Office</th>
                                         <th>Year Start</th>
-                                        <th>Admin option</th>
                                     </tr>
                             </thead>
                             <tbody>
                             <%
-                                System.out.println("sql:"+sql);
-                                if(db.connect())
+                                
+                                db.query("SELECT tfID FROM tf_member WHERE userID='"+userSession+"' AND status='active'");
+                                if(db.getNumberOfRows()!=0)
                                 {
-                                    db.query(sql);
-                                    int numOfRow=db.getNumberOfRows();
-                                    System.out.println("sql:"+sql);
-                                    if(numOfRow-1!=-1)
+                                    for(int i=0; i<db.getNumberOfRows(); i++)
                                     {
-                                        System.out.println(numOfRow);
-                                    for(int i=0; i<numOfRow; i++)
-                                    {
-                                        taskName=db.getDataAt( i,"TFname");
-                                        coordinatorName=db.getDataAt( i,"name");
-                                        taskID=db.getDataAt(i,"idTF");
-                                        officeName=db.getDataAt( i,"officeName");
-                                        year=db.getDataAt( i,"startDate");
-                                        coordinatorQ=db.getDataAt( i,"qualification");
-                            %>
-                            
-                                    <tr>
-                                        <td>
-                                            <%=i+1%>
-                                        </td>
-                                        <td><a href="ViewTaskInfo.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=taskName%></a></td>
-                                        <td><%
-                                            if(coordinatorQ!="none"&&coordinatorQ!=null)
+                                        taskID=db.getDataAt(i,"tfID");
+                                        if(db.query("SELECT user.name, office.officeName, tf.startDate, tf.TFname, user.qualification FROM user JOIN tf_member ON user.userID=tf_member.userID JOIN tf ON tf_member.tfID=tf.idTF JOIN office ON tf.officeID=office.idoffice WHERE tf_member.tfID='"+taskID+"' AND tf_member.Gstatus='coordinator' AND tf_member.status='active'"))
+                                        {
+                                            if(db.getNumberOfRows()!=0)
                                             {
-                                                out.print(coordinatorQ);
+                                                taskName=db.getDataAt( 0,"TFname");
+                                                coordinatorName=db.getDataAt( 0,"name");
+                                                officeName=db.getDataAt( 0,"officeName");
+                                                year=db.getDataAt( 0,"startDate");
+                                                coordinatorQ=db.getDataAt( 0,"qualification");
+                                                %>
+                                                    <tr>
+                                                        <td>
+                                                            <%=i+1%>
+                                                        </td>
+                                                        <td><a href="ViewTaskInfo.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=taskName%></a></td>
+                                                        <td><%
+                                                            if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
+                                                            {
+                                                                out.print(coordinatorQ);
+                                                            }
+                                                        %><%=coordinatorName%></td>
+
+                                                        <td><%=officeName%></td>
+                                                        <td><%=year%></td>
+                                                    </tr>
+                                                <%
                                             }
-                                        %><%=coordinatorName%></td>
-                                        
-                                        <td><%=officeName%></td>
-                                        <td><%=year%></td>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target="#ConfirmModal<%=i%>" class="btn btn-default">Delete Committee/Taskforce</a>
-                                        </td>
-                                    </tr>   
-                                    
-                                    <div class="modal fade" id="ConfirmModal<%=i%>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true" >
-                                        <div class="container">    
-                                            <div id="loginbox" style="margin-top:50px; " class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" >                    
-                                                <div class="panel panel-info" >
-                                                    <div class="panel-title"><br><img src="../images/logoUtm.png" alt="" style="width:30px;"/>.  <b>Comfirm to delete this '<%=taskName%>' Committee/Taskforce?</b>
-                                                        <form class="form-horizontal" role="form" method="post" action="../CTdelete">
-                                                                <input type="hidden" name="taskID" value="<%=taskID%>">
-                                                                <button id="btn-login" class="btn btn-success" >Comfirm</button>
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
-                                                                <br><br>
-                                                        </form>
-                                                    </div>                      
-                                                </div>  
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                 <%
-                                    }
+                                        }
                                     }
                                 }
-                                db.close();
-                                 
-                                 %>  
+                                else
+                                {
+                            %>
+                                <tr>
+                                    <td colspan="5" align="center">-----------------No Task Assign--------------</td>
+                                </tr>
+                            <%
+                                }
+                            %> 
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>                            
+        </div
+        
+        <br><br>
+        <h3 align="center">Your Previous Committee/Task Force</h3><br>
+        <div class="container" align="center" style="width:1100px;">
+            <div class="" align="center">
+                <div class="col-md-30">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                                <h3 class="panel-title">List of committee/Taskforce </h3>
+                                <div class="pull-right">
+                                    <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                                            <i class="glyphicon glyphicon-filter"></i>
+                                    </span>
+				</div>
+                        </div>
+                        <div class="panel-body">
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Seacrh Staff" />
+                        </div>
+                       
+                        <table class="table table-hover" id="dev-table">
+                            <thead>
+                                    <tr align="center">
+                                        <th>No.</th>
+                                        <th>Committee/Taskforce Name</th>
+                                        <th>Coordinator</th>
+                                        <th>Office</th>
+                                        <th>Year Start</th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                                
+                                db.query("SELECT tfID FROM tf_member WHERE userID='"+userSession+"' AND status='not active'");
+                                if(db.getNumberOfRows()!=0)
+                                {
+                                    for(int i=0; i<db.getNumberOfRows(); i++)
+                                    {
+                                        taskID=db.getDataAt(i,"tfID");
+                                        if(db.query("SELECT user.name, office.officeName, tf.startDate, tf.TFname, user.qualification FROM user JOIN tf_member ON user.userID=tf_member.userID JOIN tf ON tf_member.tfID=tf.idTF JOIN office ON tf.officeID=office.idoffice WHERE tf_member.tfID='"+taskID+"' AND tf_member.Gstatus='coordinator' AND tf_member.status='active'"))
+                                        {
+                                            if(db.getNumberOfRows()!=0)
+                                            {
+                                                taskName=db.getDataAt( 0,"TFname");
+                                                coordinatorName=db.getDataAt( 0,"name");
+                                                officeName=db.getDataAt( 0,"officeName");
+                                                year=db.getDataAt( 0,"startDate");
+                                                coordinatorQ=db.getDataAt( 0,"qualification");
+                                                %>
+                                                    <tr>
+                                                        <td>
+                                                            <%=i+1%>
+                                                        </td>
+                                                        <td><a href="ViewTaskInfo.jsp?taskID=<%=taskID%>" style="text-decoration: underline;"><%=taskName%></a></td>
+                                                        <td><%
+                                                            if(!coordinatorQ.equals("none")&&coordinatorQ!=null)
+                                                            {
+                                                                out.print(coordinatorQ);
+                                                            }
+                                                        %><%=coordinatorName%></td>
+
+                                                        <td><%=officeName%></td>
+                                                        <td><%=year%></td>
+                                                    </tr>
+                                                <%
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                            %>
+                                <tr>
+                                    <td colspan="5" align="center">-----------------No Previous Task--------------</td>
+                                </tr>
+                            <%
+                                }
+                            %> 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%
+            db.close();
+        }
+    %>
+            
+            
+
     </body>
 </html>
 <%@ include file="../footer.jsp" %>

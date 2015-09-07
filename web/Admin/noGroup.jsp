@@ -19,9 +19,16 @@
           </style>
     </head>
 <body>
+     <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
+        %>
      <%@ include file="adminHeader.jsp" %>
     <div class="container" align="center">
-    <h1 align="center"> Staffs in taskforce/committee <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
+    <h1 align="center"> Staffs currently Not in any taskforce/committee</h1>
         <div class="row" align="center">
             <div class="col-md-60">
                 <div class="panel panel-primary">
@@ -29,7 +36,7 @@
                         <h3 class="panel-title">Task Force Members</h3>
                         <div class="pull-right">
                             <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                                <i class="glyphicon glyphicon-filter"></i>
+                                <i class="glyphicon glyphicon-search"></i>
                             </span>
                         </div>
                     </div>
@@ -52,12 +59,13 @@
                             String name;
                             String staffID;
                             String department;
+                            String q;
                             String taskName;
                             String userID;
                             int no=0;
                             if(db.connect())
                             {
-                                if(db.query("SELECT * FROM user WHERE user.userID NOT IN (SELECT userID FROM tf_member)"))
+                                if(db.query("SELECT * FROM user WHERE user.userID NOT IN (SELECT userID FROM tf_member WHERE status='active')"))
                                 {
                                     System.out.println(db.getNumberOfRows());
                                     for(int i=0; i<db.getNumberOfRows();i++)
@@ -65,12 +73,17 @@
                                         name=db.getDataAt(i, "name");
                                         staffID=db.getDataAt(i,"staffID");
                                         department=db.getDataAt(i, "department");
+                                        q=db.getDataAt(i, "qualification");
                                         userID=db.getDataAt(i, "userID");
                                         System.out.println(userID);
                                         %>
                                         <tr>
                                         <td><%=i+1%></td>
-                                        <td><%=name%></td>
+                                        <td><a href="viewProfile.jsp?userID=<%=userID%>"><%
+                                            if(!q.equals("none")&&q!=null)
+                                            {out.print(q);}
+                                        %><%=name%>
+                                            </a></td>
                                         <td><%=staffID%></td>
                                         <td><%=department%></td>
                                         </tr>

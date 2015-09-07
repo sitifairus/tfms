@@ -52,7 +52,7 @@
                 </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="FAQ.jsp"><span class="glyphicon glyphicon-user"></span>FAQ</a></li>
-                        <li><a href="../Login.jsp"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+                        <li><form method="post" action="../Logout"><button><span class="glyphicon glyphicon-log-out"> LOGOUT</span></button></form></li>
                     </ul>
                     
                 </ul>

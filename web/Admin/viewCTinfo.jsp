@@ -21,6 +21,13 @@
         <title>All Community Task Force</title>
     </head>
     <body>
+        <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
+        %>
         <%@ include file="adminHeader.jsp" %>
 <%
     String sql="SELECT tf.idTF, tf.TFname, user.name, user.qualification, tf.startDate, office.officeName FROM tf JOIN tf_member ON tf.idTF=tf_member.tfID INNER JOIN user ON user.userID=tf_member.userID INNER JOIN office ON officeID=idoffice  WHERE tf_member.GStatus='Coordinator' AND tf_member.status='active'";

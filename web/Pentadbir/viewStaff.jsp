@@ -22,6 +22,11 @@
     </head>
     <body>
         <%@ include file="PentadbirHeader.jsp" %>
+        <%  String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("Pentadbir")&&!userType.equals("pentadbir"))) {
+                response.sendRedirect("../message.jsp");
+            }%>
         <%
             String name=null;
             String staffID=null;

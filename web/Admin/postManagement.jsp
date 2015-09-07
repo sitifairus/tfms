@@ -20,6 +20,13 @@
         <%@include file="../head.jsp" %>
     </head>
     <body>
+        <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
+        %>
         <%@ include file="adminHeader.jsp" %><br>
         
         

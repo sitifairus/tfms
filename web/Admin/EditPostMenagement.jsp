@@ -81,6 +81,8 @@
                 db.close();
             }
             }
+            else
+                response.sendRedirect("../message.jsp");
         %>
              
     </body>

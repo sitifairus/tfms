@@ -15,6 +15,11 @@
     <body>
         <%@ include file="adminHeader.jsp" %>
         <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
             int numOfRow=100;
             String taskID=null;
             taskID=request.getParameter("taskID");
@@ -100,7 +105,7 @@
                                 <th><input type="date" class="form-control" name="sDate"></th>
                             </tr>
                             <tr>
-                                <th><label for="startDate" class="col-sm-8 control-label">End Date:</label></th>
+                                <th><label for="endDate" class="col-sm-8 control-label">End Date:</label></th>
                                 <th><input type="date" class="form-control" name="lDate"></th>
                             </tr>
                             <tr>

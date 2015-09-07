@@ -59,11 +59,11 @@ public class LoginVerification extends HttpServlet {
                 session.setAttribute("status", status);
                 if(status.equals("active"))
                 {
-                    if(userType.equals("admin"))
+                    if(userType.equals("admin")||userType.equals("Admin"))
                     {
                         response.sendRedirect("Admin/HomePageAdmin.jsp");
                     }
-                    else if(userType.equals("lecturer"))
+                    else if(userType.equals("lecturer")||userType.equals("Lecturer"))
                     {
                         response.sendRedirect("Staff/HomePageStaff.jsp");
                     }

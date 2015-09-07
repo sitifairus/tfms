@@ -82,9 +82,7 @@ and open the template in the editor.
         <%
             }
         else
-            {
-                out.println("You have not login!");
-            }
+            response.sendRedirect("../message.jsp");
         %>
        
     </body>

@@ -11,13 +11,16 @@
     <head>
         <title>TFMSystem</title>
         <%@include file="../head.jsp" %>
-        
-        
-  </style>
-        
     </head>
     <body>
         <%@include file="adminHeader.jsp" %>
+        <%
+            String userSession=(String)session.getAttribute("user");
+            String userType=(String)session.getAttribute("userType");
+            if (((userSession==null))||(!userType.equals("admin")&&!userType.equals("Admin"))) {
+                response.sendRedirect("../message.jsp");
+            }
+        %>
         <div id="Wrapper">
             <center>
                 <br>
